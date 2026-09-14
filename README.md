@@ -1,21 +1,15 @@
 # README
 
-This is a demo file showing three applications and a variety of quantum approaches, benchmarked against existing approaches and actual computers.
-
-Novelty is not necessary:
-- reimplementations are verifiable
-- technical novelty isn't chased, they'll be looking for taste and design in my code: docs, testing, etc.
-- we can do actual benchmarking
+This is a demo repo showing three applications and a variety of quantum approaches, benchmarked against existing approaches and actual computers.
 
 Applications:
 
-- logistics (job shop scheduling?)
-    - can use CVRPLIB, Solomon, TSPLIB, BPPLIB for standard instances
+- job shop scheduling
 - energy (unit commitment with storage, EV charging?) Elexon BMRS and the National Grid ESO data portal
 - finance (not portfolio optimisation! ECR or CVA?)
 
 Formulations:
-- QUBO/Ising for annealing/QAOA?
+- QUBO/Ising for annealing/QAOA
 - MAX-LINSAT with DQI
 - QCMC?
 
@@ -24,10 +18,10 @@ Benchmarks:
 - MILP (HiGHS or CBC)
 - noiseless simulation
 - noisy simulation
-- real QC?
+- real QC
 
 Remember:
-- use real public data to differentiate
+- use real public data
 - prominently show negative results and crossover analysis
 - resource estimation (what's needed, when expected?)
 - fair evaluation (TTS, seeds, confidences, tuning budgets)
