@@ -26,12 +26,13 @@ class SolverResult:
     metadata: dict = field(default_factory=dict)
 
     def pprint(self):
-        print(f"{self.solver} result:")
-        print(f" * makespan:    {self.makespan}")
-        print(f" * feasible:    {self.feasible}")
-        print(f" * start times: {self.start_times}")
-        print(f" * time taken:  {self.seconds}")
-        print(f" * metadata:    {json.dumps(self.metadata, indent=4)}")
+        print(f"{self.solver} result")
+        print(f" * feasible     : {self.feasible}")
+        print(f" * makespan     : {self.makespan}")
+        print(f" * start times  : {self.start_times}")
+        print(f" * time taken   : {self.seconds}")
+        print(f" * calls        : {self.calls}")
+        print(f" * metadata     : {json.dumps(self.metadata, indent=4)}")
 
 
 class Solver(ABC):

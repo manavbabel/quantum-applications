@@ -235,7 +235,7 @@ class LRQAOASolver(_SampledVariationalSolver):
             "delta_gamma": self.delta_gamma,
             "delta_beta": self.delta_beta,
             "backend": self.backend.name,
-            "depth": circuit.depth(),
+            "circuit_depth": circuit.depth(),
             "parameter_free": True,
         }
         return self._finish(state, metadata)
