@@ -41,7 +41,7 @@ def add_makespan_task(problem):
     return Problem(list(problem.tasks) + [(problem.num_machines, 0, sinks)])
 
 
-# compute the QUBO
+# compute the QUBO and return a Formulation
 # objective spans [0, horizon] and penalty is horizon + 1
 # so all infeasible solutions are worse than all feasible ones
 def build_formulation(problem):
@@ -134,6 +134,12 @@ def energy(bits, formulation):
         )
         + formulation.offset
     )
+
+
+# convert a Qiskit counts key into a list of bits
+# Qiskit keys are little-endian: qubit 0 is the rightmost character, so reverse it
+def counts_to_bits(key):
+    return [int(bit) for bit in reversed(key)]
 
 
 # convert a bitstring into a set of start times
