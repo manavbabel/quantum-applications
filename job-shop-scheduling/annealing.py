@@ -3,10 +3,9 @@
 
 import dimod
 import numpy as np
+from base import Solver, SolverUnavailable, best_feasible
 from dwave.samplers import SimulatedAnnealingSampler
 from dwave.system import DWaveSampler, EmbeddingComposite
-
-from base import Solver, SolverUnavailable, best_feasible
 
 
 # base solver: sample QUBO, decode and validate samples

@@ -2,16 +2,10 @@
 
 This is a demo repo showing three applications and a variety of quantum approaches, benchmarked against existing approaches and actual computers.
 
-Applications:
+TO-DO:
 
-- job shop scheduling
-- energy (unit commitment with storage, EV charging?) Elexon BMRS and the National Grid ESO data portal
-- finance (not portfolio optimisation! ECR or CVA?)
-
-Formulations:
-- QUBO/Ising for annealing/QAOA
-- MAX-LINSAT with DQI
-- QCMC?
+- unit commitment use-case (MAX-LINSAT with DQI)
+- finance use-case (QCMC)
 
 Benchmarks:
 - OR-Tools
