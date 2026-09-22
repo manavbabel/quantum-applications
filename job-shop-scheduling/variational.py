@@ -13,7 +13,7 @@ from itertools import combinations
 import numpy as np
 
 from base import Solver, best_feasible
-from formulation import counts_to_bits, energy, qubo_to_ising
+from formulation import build_formulation, counts_to_bits, energy, qubo_to_ising
 
 
 # get the ring of neighbouring qubits within one block
@@ -160,6 +160,19 @@ class _SampledVariationalSolver(Solver):
         best = state["best"]
         return (best[1] if best else None), state["calls"], metadata
 
+    # what one solve would need, without running anything
+    # the circuit is the logical one, before backend.prepare routes and translates it
+    # each objective evaluation samples once, which is one job
+    # subclasses give the circuit through _circuit(formulation) and the job count through _jobs(circuit)
+    def estimate_resources(self, problem):
+        circuit = self._circuit(build_formulation(problem))
+        return {
+            "logical_qubits": circuit.num_qubits,
+            "logical_depth": circuit.depth(),
+            "shots_per_circuit": self.shots,
+            "jobs": self._jobs(circuit),
+        }
+
 # XY-mixer QAOA with a classical optimiser
 class QAOASolver(_SampledVariationalSolver):
     base_name = "qaoa"
@@ -170,11 +183,19 @@ class QAOASolver(_SampledVariationalSolver):
         self.maxiter = maxiter
         self.optimizer = optimizer
 
+    def _circuit(self, formulation):
+        return build_qaoa_circuit(formulation, self.reps)
+
+    # COBYLA's maxiter caps the objective evaluations, so this is an upper bound: it can converge sooner
+    # scipy's COBYLA raises that cap to at least one more than its initial simplex, num_parameters + 2
+    def _jobs(self, circuit):
+        return max(self.maxiter, 2 * self.reps + 2)
+
     def _solve(self, problem):
         from scipy.optimize import minimize
 
         formulation = self.formulation(problem)
-        circuit = self.backend.prepare(build_qaoa_circuit(formulation, self.reps))
+        circuit = self.backend.prepare(self._circuit(formulation))
         state = {"calls": 0, "best": None}
 
         def objective(angles):
@@ -214,6 +235,13 @@ class LRQAOASolver(_SampledVariationalSolver):
         self.delta_gamma = delta_gamma
         self.delta_beta = delta_beta
 
+    def _circuit(self, formulation):
+        return build_qaoa_circuit(formulation, self.p)
+
+    # fixed angles, so a single run
+    def _jobs(self, circuit):
+        return 1
+
     def _solve(self, problem):
         formulation = self.formulation(problem)
         state = {"calls": 0, "best": None}
@@ -224,7 +252,7 @@ class LRQAOASolver(_SampledVariationalSolver):
             ((layers + 1) / self.p) * self.delta_gamma,
             (1 - layers / self.p) * self.delta_beta,
         ])
-        circuit = self.backend.prepare(build_qaoa_circuit(formulation, self.p))
+        circuit = self.backend.prepare(self._circuit(formulation))
         self._track(self.backend.sample(circuit, self.shots, angles),
                     formulation, problem, state)
 
@@ -252,11 +280,18 @@ class VQESolver(_SampledVariationalSolver):
         self.maxiter = maxiter
         self.optimizer = optimizer
 
+    def _circuit(self, formulation):
+        return build_vqe_circuit(formulation.num_variables, self.p)
+
+    # an upper bound, raised to scipy's COBYLA minimum as for QAOA
+    def _jobs(self, circuit):
+        return max(self.maxiter, circuit.num_parameters + 2)
+
     def _solve(self, problem):
         from scipy.optimize import minimize
 
         formulation = self.formulation(problem)
-        circuit = build_vqe_circuit(formulation.num_variables, self.p)
+        circuit = self._circuit(formulation)
         num_parameters = circuit.num_parameters
         circuit = self.backend.prepare(circuit)
         state = {"calls": 0, "best": None}
@@ -268,13 +303,13 @@ class VQESolver(_SampledVariationalSolver):
 
         rng = np.random.default_rng(self.seed)
         x0 = rng.uniform(0, 2 * np.pi, num_parameters)
-        # COBYLA's initial simplex is num_parameters + 1 points, so it needs that many
-        # evaluations before it can make a move
+        # COBYLA's initial simplex is num_parameters + 1 points, and scipy's COBYLA wants at
+        # least one evaluation beyond that before it can make a move
         result = minimize(
             objective,
             x0,
             method=self.optimizer,
-            options={"maxiter": max(self.maxiter, num_parameters + 1)},
+            options={"maxiter": max(self.maxiter, num_parameters + 2)},
         )
 
         metadata = {
