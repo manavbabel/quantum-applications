@@ -2,6 +2,7 @@ import time
 from itertools import pairwise
 
 import numpy as np
+from formulation import best_feasible, build_formulation, qubo_to_ising
 from qiskit import QuantumCircuit, generate_preset_pass_manager
 from qiskit.circuit.library import qaoa_ansatz
 from qiskit.exceptions import QiskitError
@@ -9,8 +10,6 @@ from qiskit.quantum_info import SparsePauliOp
 from qiskit_ibm_runtime import IBMBackend, SamplerV2
 from qiskit_optimization.minimum_eigensolvers import QAOA
 from qiskit_optimization.optimizers import COBYLA
-
-from formulation import best_feasible, build_formulation, qubo_to_ising
 from solver import Solver, SolverUnavailable, fraction
 
 # the QAOA solvers below work on the formulation without its one-hot penalty
