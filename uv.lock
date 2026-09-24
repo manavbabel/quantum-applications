@@ -189,15 +189,6 @@ css = [
 ]
 
 [[package]]
-name = "blinker"
-version = "1.9.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/21/28/9b3f50ce0e048515135495f198351908d99540d69bfdc8c1d15b73dc55ce/blinker-1.9.0.tar.gz", hash = "sha256:b4ce2265a7abece45e7cc896e98dbebe6cead56bcf805a3d23136d145f5445bf", size = 22460, upload-time = "2024-11-08T17:25:47.436Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/10/cb/f2ad4230dc2eb1a74edf38f1a38b9b52277f75bef262d8908e60d957e13c/blinker-1.9.0-py3-none-any.whl", hash = "sha256:ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc", size = 8458, upload-time = "2024-11-08T17:25:46.184Z" },
-]
-
-[[package]]
 name = "certifi"
 version = "2026.7.22"
 source = { registry = "https://pypi.org/simple" }
@@ -470,12 +461,6 @@ wheels = [
 ]
 
 [[package]]
-name = "cuquantum-python"
-version = "26.6.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/39/c8/36c541e76a391d98607e55c1077099817bc32a3c369df8fa779ee10e07f9/cuquantum_python-26.6.0.tar.gz", hash = "sha256:30e70064151c2d169e8d828fca638bd522398720ed0cb20cca3bfb52a125a542", size = 6894, upload-time = "2026-06-29T20:52:37.918Z" }
-
-[[package]]
 name = "cycler"
 version = "0.12.1"
 source = { registry = "https://pypi.org/simple" }
@@ -581,22 +566,6 @@ wheels = [
 ]
 
 [[package]]
-name = "dwave-gate"
-version = "0.3.5"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "numpy" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/54/1f/d91986a2fddf4c0ea03177a25a1c80a8cb8d86165e084b5fc70b7c2a4a0a/dwave_gate-0.3.5.tar.gz", hash = "sha256:e638af54bc0dc98e212ce35b629a91b2d69c3282fba33db64554f8d6e80fd168", size = 366648, upload-time = "2025-11-19T22:28:51.928Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/06/75/b24269fab12878bdb8cfb7a68ad570198df9e7e3f40f12e07cb3203c864e/dwave_gate-0.3.5-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:8e6243956a4435c92481585df7bb784c8a4cf0b36a81e367a58de4e425f3344e", size = 585820, upload-time = "2025-11-19T22:28:45.787Z" },
-    { url = "https://files.pythonhosted.org/packages/08/c0/d95e8be36ba3ddae61298a8624050436b4cc6e45a19a0c87f89fd6fea706/dwave_gate-0.3.5-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:4663cbfd1c2af8a3f6081e8713503418626af7f0f54e3e64e7da401d58482798", size = 581287, upload-time = "2025-11-19T22:28:46.767Z" },
-    { url = "https://files.pythonhosted.org/packages/fe/13/986ad1a0f4879f536811450ff18ab0cacc4a47b877eb423db335713d7fc7/dwave_gate-0.3.5-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:945b2ccb35c41f320b0fcb8cf933ab4f987d4920646df73a5c85649177bc685a", size = 1491673, upload-time = "2025-11-19T22:28:47.931Z" },
-    { url = "https://files.pythonhosted.org/packages/c4/f7/5083d2ac314d072c2da298cee5e1905a92a63729e6a1391a631a67aba3ed/dwave_gate-0.3.5-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:14aa496225d53d849520e0d0b06923f363e152ca0c89401997f417358ca00e75", size = 1496271, upload-time = "2025-11-19T22:28:49.427Z" },
-    { url = "https://files.pythonhosted.org/packages/07/a0/c20bc7b214624ed4cfe001e331077c004a755a95ecfd4b9680a3e0e35c6c/dwave_gate-0.3.5-cp314-cp314-win_amd64.whl", hash = "sha256:74a31f3679236a322ad1b4bf447a38b6330400d1a31c0d17cf32d9b73a967644", size = 561968, upload-time = "2025-11-19T22:28:50.592Z" },
-]
-
-[[package]]
 name = "dwave-graphs"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -608,83 +577,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/cc/fb/2b6fdb4a36f0dde5640d5ce3ef033f459cb3c143f825e0cb01c04f7b58a0/dwave_graphs-1.0.0.tar.gz", hash = "sha256:f38313eb5e0363c0b9cf8a871ce54121368d97205f993e29b1fd5fb6b3194b0b", size = 92934, upload-time = "2026-06-11T17:53:17.461Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/2c/e0/e4f92aafe4a6ff77bf2e762309b03093fd4c317e47470fe37e0593db09a4/dwave_graphs-1.0.0-py3-none-any.whl", hash = "sha256:0554a72627d5daecbf7b56eb15bd9f4ad94a571b09b4ae18c85612360ad66ecd", size = 95929, upload-time = "2026-06-11T17:53:16.438Z" },
-]
-
-[[package]]
-name = "dwave-hybrid"
-version = "0.6.16"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "click" },
-    { name = "dimod" },
-    { name = "dwave-cloud-client" },
-    { name = "dwave-graphs" },
-    { name = "dwave-preprocessing" },
-    { name = "dwave-samplers" },
-    { name = "dwave-system" },
-    { name = "minorminer" },
-    { name = "networkx" },
-    { name = "numpy" },
-    { name = "plucky" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/eb/86/9f05639fb1301999071d4efad127ef9ffb9f7d137d68f5d24b961e962f89/dwave_hybrid-0.6.16.tar.gz", hash = "sha256:5e41f637920905128b0fe4b7b2f0de6d12f921933cd31b9ae611289352d6b9f0", size = 96040, upload-time = "2026-06-17T17:54:39.174Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/35/82/ec7765cafe0dcbb57788c8f0b90d68eb39f8a8b1b9999215d457190f59ac/dwave_hybrid-0.6.16-py3-none-any.whl", hash = "sha256:d327bec5a2d13ac953b599c9bdf78520d8c400c93310a7c8e897818d7a68003b", size = 78483, upload-time = "2026-06-17T17:54:38.177Z" },
-]
-
-[[package]]
-name = "dwave-inspector"
-version = "0.5.5"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "dimod" },
-    { name = "dwave-cloud-client" },
-    { name = "dwave-system" },
-    { name = "flask" },
-    { name = "numpy" },
-    { name = "orjson" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/f2/58/2d5f02a4a44c6074bc3f82bf883bc6391cbfd40dfe7db3df3377e499d5a2/dwave_inspector-0.5.5.tar.gz", hash = "sha256:fb8273c72bdac907761d0f8c10b23ce516b6d2e5e7f608d5b168d17bccd1ce96", size = 35330, upload-time = "2025-09-02T14:40:32.358Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/2f/93/d5be9efd8403596ea022d0b9b748217b7ac12aeda3ea63e4ba0228f29dad/dwave_inspector-0.5.5-py3-none-any.whl", hash = "sha256:77aff77948e8b61cce42ff5230a4cf9b7397cd55141055c559d7407c9e825d95", size = 30481, upload-time = "2025-09-02T14:40:31.133Z" },
-]
-
-[[package]]
-name = "dwave-networkx"
-version = "0.8.19"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "dimod" },
-    { name = "networkx" },
-    { name = "numpy" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/cc/66/e5ac373539bd225604f5b92029d3f9da3506e28beb3468e5a744feccb88e/dwave_networkx-0.8.19.tar.gz", hash = "sha256:1a06359dec8a2b3f5a4f13dc5b8f6cc8d47c16b34f23969e582aad524bd97127", size = 103666, upload-time = "2026-06-16T23:19:03.11Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d5/7e/f174579898b355503d213e5adf6ccd4af5c96460d27cf93c5f444b938ef7/dwave_networkx-0.8.19-py3-none-any.whl", hash = "sha256:fc53e54133fb4d85d9d52fb3066b66fca13db2c95e18a824fc1544f90f287c3d", size = 106818, upload-time = "2026-06-16T23:19:01.979Z" },
-]
-
-[[package]]
-name = "dwave-ocean-sdk"
-version = "9.4.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "dimod" },
-    { name = "dwave-cloud-client" },
-    { name = "dwave-gate" },
-    { name = "dwave-graphs" },
-    { name = "dwave-hybrid" },
-    { name = "dwave-inspector" },
-    { name = "dwave-networkx" },
-    { name = "dwave-optimization" },
-    { name = "dwave-preprocessing" },
-    { name = "dwave-samplers" },
-    { name = "dwave-system" },
-    { name = "minorminer" },
-    { name = "penaltymodel" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/0f/c0/45f1407485ecbb0ac4a68663ee18fafd9fa7bd7f4d7eefd8134ccb2cc2de/dwave_ocean_sdk-9.4.0.tar.gz", hash = "sha256:aab1c2ab9b4dc82ec293553b93cb71c162b2183a02287c63a5db99dfd378f997", size = 8652, upload-time = "2026-06-18T16:49:42.772Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/05/bd/49036be835d487a5a4c30b651ecef75f964a6be6028021b3f6e8f24c8978/dwave_ocean_sdk-9.4.0-py3-none-any.whl", hash = "sha256:75cc0aae1537ace788c1ceee3c2fc3cf3defbd211f0dd09657acf74b48a2f95f", size = 8438, upload-time = "2026-06-18T16:49:41.937Z" },
 ]
 
 [[package]]
@@ -800,23 +692,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/33/a4/9473c7c3b87009d9c1d74034e4a0f6a35ff0d42dd0f9866d0c3ec4e9217b/fastjsonschema-2.22.2.tar.gz", hash = "sha256:72064e12356a7d6ef02165be2946b9abadbdf238536e07eb587e3dbaa33099cf", size = 385171, upload-time = "2026-08-15T19:47:08.853Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/49/82/2755c7c982086f00d4dab85bc120ec35045a9fc2191893a6ce79afe94443/fastjsonschema-2.22.2-py3-none-any.whl", hash = "sha256:0fb3915616adac85ccfdd737d26be1089845d2019819505b42d39888458f74d4", size = 27413, upload-time = "2026-08-15T19:47:04.406Z" },
-]
-
-[[package]]
-name = "flask"
-version = "3.1.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "blinker" },
-    { name = "click" },
-    { name = "itsdangerous" },
-    { name = "jinja2" },
-    { name = "markupsafe" },
-    { name = "werkzeug" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/26/00/35d85dcce6c57fdc871f3867d465d780f302a175ea360f62533f12b27e2b/flask-3.1.3.tar.gz", hash = "sha256:0ef0e52b8a9cd932855379197dd8f94047b359ca0a78695144304cb45f87c9eb", size = 759004, upload-time = "2026-02-19T05:00:57.678Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7f/9c/34f6962f9b9e9c71f6e5ed806e0d0ff03c9d1b0b2340088a0cf4bce09b18/flask-3.1.3-py3-none-any.whl", hash = "sha256:f4bcbefc124291925f1a26446da31a5178f9483862233b23c0c96a20701f670c", size = 103424, upload-time = "2026-02-19T05:00:56.027Z" },
 ]
 
 [[package]]
@@ -1008,15 +883,6 @@ wheels = [
 ]
 
 [[package]]
-name = "iniconfig"
-version = "2.3.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/72/34/14ca021ce8e5dfedc35312d08ba8bf51fdd999c576889fc2c24cb97f4f10/iniconfig-2.3.0.tar.gz", hash = "sha256:c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730", size = 20503, upload-time = "2025-10-18T21:55:43.219Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/cb/b1/3846dd7f199d53cb17f49cba7e651e9ce294d8497c8c150530ed11865bb8/iniconfig-2.3.0-py3-none-any.whl", hash = "sha256:f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12", size = 7484, upload-time = "2025-10-18T21:55:41.639Z" },
-]
-
-[[package]]
 name = "ipykernel"
 version = "7.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1099,15 +965,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/7c/1a/3c8edc664e06e6bd06cce40c6b22da5f1429aa4224d0c590f3be21c91ead/isoduration-20.11.0.tar.gz", hash = "sha256:ac2f9015137935279eac671f94f89eb00584f940f5dc49462a0c4ee692ba1bd9", size = 11649, upload-time = "2020-11-01T11:00:00.312Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7b/55/e5326141505c5d5e34c5e0935d2908a74e4561eca44108fbfb9c13d2911a/isoduration-20.11.0-py3-none-any.whl", hash = "sha256:b2904c2a4228c3d44f409c8ae8e2370eb21a26f7ac2ec5446df141dde3452042", size = 11321, upload-time = "2020-11-01T10:59:58.02Z" },
-]
-
-[[package]]
-name = "itsdangerous"
-version = "2.2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/9c/cb/8ac0172223afbccb63986cc25049b154ecfb5e85932587206f42317be31d/itsdangerous-2.2.0.tar.gz", hash = "sha256:e0050c0b7da1eea53ffaf149c0cfbb5c6e2e2b69c4bef22c81fa6eb73e5f6173", size = 54410, upload-time = "2024-04-16T21:28:15.614Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/04/96/92447566d16df59b2a776c0fb82dbc4d9e07cd95062562af01e408583fc4/itsdangerous-2.2.0-py3-none-any.whl", hash = "sha256:c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef", size = 16234, upload-time = "2024-04-16T21:28:14.499Z" },
 ]
 
 [[package]]
@@ -1834,22 +1691,6 @@ wheels = [
 ]
 
 [[package]]
-name = "penaltymodel"
-version = "1.3.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "dimod" },
-    { name = "homebase" },
-    { name = "networkx" },
-    { name = "numpy" },
-    { name = "scipy" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/02/f6/3af591b63fca93de731711f8c985e5b7f5ef97de28e334ffeec413c31c82/penaltymodel-1.3.0.tar.gz", hash = "sha256:34af628916420218b16a8ceca608abbf8530b731fe05902392a3a3bceee395d0", size = 32231, upload-time = "2025-08-26T16:27:26.769Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/2a/16/501a538776abb83ef02243e937fb7b196a7377e49bb474798ca8bc5a58a6/penaltymodel-1.3.0-py3-none-any.whl", hash = "sha256:543f596a5c1fb602d18355c46349e8ccb2842b335de86958d7525de0d993eda9", size = 36133, upload-time = "2025-08-26T16:27:25.868Z" },
-]
-
-[[package]]
 name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1927,15 +1768,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/4f/4e/a2d3157ec7031ea3ccc313400db27b92a65a9c002396a709e7457626f7ad/plucky-0.4.3.tar.gz", hash = "sha256:5bc75d43ae6b40f1b7ba42000b37e4934fa6bd2d6a6cd4e47461f803a404c194", size = 8478, upload-time = "2018-09-05T06:14:27.532Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d8/70/7b43e7280284bafecb345f4edb3eea7042cf0d089c5d112920eda650fda5/plucky-0.4.3-py2.py3-none-any.whl", hash = "sha256:a358878f3e45b5e51d0b4e5b5c89d704422a72c2cf8ee9aaf9acedfa53f89105", size = 10566, upload-time = "2018-09-05T06:14:29.278Z" },
-]
-
-[[package]]
-name = "pluggy"
-version = "1.6.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/f9/e2/3e91f31a7d2b083fe6ef3fa267035b518369d9511ffab804f839851d2779/pluggy-1.6.0.tar.gz", hash = "sha256:7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3", size = 69412, upload-time = "2025-05-15T12:30:07.975Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl", hash = "sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746", size = 20538, upload-time = "2025-05-15T12:30:06.134Z" },
 ]
 
 [[package]]
@@ -2210,22 +2042,6 @@ wheels = [
 ]
 
 [[package]]
-name = "pytest"
-version = "9.1.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-    { name = "iniconfig" },
-    { name = "packaging" },
-    { name = "pluggy" },
-    { name = "pygments" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/e4/47/b9efed96c114afcfa3c9d3fe98a76a1d14c74a9e266d397cf6eb64be5e01/pytest-9.1.1.tar.gz", hash = "sha256:1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313", size = 1636369, upload-time = "2026-06-19T10:58:32.857Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl", hash = "sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c", size = 386536, upload-time = "2026-06-19T10:58:31.347Z" },
-]
-
-[[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
 source = { registry = "https://pypi.org/simple" }
@@ -2430,46 +2246,27 @@ name = "quantum-applications"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "dwave-ocean-sdk" },
+    { name = "dwave-system" },
     { name = "gurobipy" },
-    { name = "ipykernel" },
     { name = "jupyter" },
     { name = "matplotlib" },
     { name = "qiskit" },
     { name = "qiskit-aer" },
     { name = "qiskit-ibm-runtime" },
     { name = "qiskit-optimization" },
-    { name = "scipy" },
-]
-
-[package.optional-dependencies]
-gpu = [
-    { name = "cuquantum-python" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "cuquantum-python", marker = "extra == 'gpu'", specifier = ">=25.3.0" },
-    { name = "dwave-ocean-sdk", specifier = ">=9.4.0" },
+    { name = "dwave-system", specifier = ">=1.35.0" },
     { name = "gurobipy", specifier = ">=13.0.3" },
-    { name = "ipykernel", specifier = ">=7.3.0" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "matplotlib", specifier = ">=3.11.1" },
     { name = "qiskit", specifier = ">=2.5.2" },
     { name = "qiskit-aer", specifier = ">=0.17.2" },
     { name = "qiskit-ibm-runtime", specifier = ">=0.49.0" },
     { name = "qiskit-optimization", specifier = ">=0.7.0" },
-    { name = "scipy", specifier = ">=1.18.1" },
 ]
-provides-extras = ["gpu"]
-
-[package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=9.1.1" }]
 
 [[package]]
 name = "referencing"
