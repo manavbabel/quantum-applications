@@ -2,6 +2,8 @@ from collections import Counter, defaultdict
 from itertools import combinations
 from typing import NamedTuple
 
+from qiskit_addon_opt_mapper import OptimizationProblem
+
 from problem import Problem
 
 
@@ -64,23 +66,10 @@ def build_formulation(problem:Problem, for_qaoa:bool=False):
             for a, b in combinations(block, 2):
                 Q[(a, b)] += 2 * penalty
 
-    # constraint: every parent finishes before its child starts
-    # penalise each pair of start times that would break this
-    for i, (_, _, dependencies) in enumerate(problem.tasks):
-        for p in dependencies:
-            for kp in windows[p]:
-                for ki in windows[i]:
-                    if ki < kp + problem.tasks[p][1]:  # i starts before p finishes
-                        Q[(index[(p, kp)], index[(i, ki)])] += penalty
-
-    # constraint: one task per machine at a time
-    # penalise each pair of start times whose intervals overlap
-    for i, j in combinations(range(len(problem)), 2):
-        if problem.tasks[i][0] == problem.tasks[j][0]:
-            for ki in windows[i]:
-                for kj in windows[j]:
-                    if ki < kj + problem.tasks[j][1] and kj < ki + problem.tasks[i][1]:
-                        Q[(index[(i, ki)], index[(j, kj)])] += penalty
+    # constraints: parents finish before their children start, and one task per machine at a time
+    # penalise each pair of start times that would break either
+    for a, b in clashes(problem, windows):
+        Q[(index[a], index[b])] += penalty
 
     # the offset is the +1 per task left over from the one-hot squares
     return Formulation(
@@ -91,6 +80,51 @@ def build_formulation(problem:Problem, for_qaoa:bool=False):
         dict(Q),
         0 if for_qaoa else penalty * len(problem),
     )
+
+# the pairs of (task, time) variables that cannot both be set
+# a pair that breaks both constraints comes up twice, so is penalised twice
+def clashes(problem:Problem, windows):
+    # every parent finishes before its child starts: pair each child start before the parent finishes
+    for i, (_, _, dependencies) in enumerate(problem.tasks):
+        for p in dependencies:
+            for kp in windows[p]:
+                for ki in windows[i]:
+                    if ki < kp + problem.tasks[p][1]:  # i starts before p finishes
+                        yield (p, kp), (i, ki)
+
+    # one task per machine at a time: pair each two start times whose intervals overlap
+    for i, j in combinations(range(len(problem)), 2):
+        if problem.tasks[i][0] == problem.tasks[j][0]:
+            for ki in windows[i]:
+                for kj in windows[j]:
+                    if ki < kj + problem.tasks[j][1] and kj < ki + problem.tasks[i][1]:
+                        yield (i, ki), (j, kj)
+
+# the same problem as a constrained model in qiskit-addon-opt-mapper, Qiskit's supported modelling layer,
+# for its converters, translators (e.g. to docplex, to write an LP file) and classical reference solvers
+# the variables come in the same order as build_formulation's, variable n named x{task}_{time}
+# OptimizationProblemToQubo(penalty=formulation.penalty) turns it into exactly formulation.Q and offset,
+# but takes seconds on ft06 where build_formulation takes milliseconds, so the solvers use that instead
+def build_model(problem:Problem, for_qaoa:bool=False):
+    problem = add_makespan_task(problem)
+    windows = problem.windows()
+    model = OptimizationProblem(name="job_shop")
+    for i, window in enumerate(windows):
+        for k in window:
+            model.binary_var(f"x{i}_{k}")
+
+    # the objective is the makespan task's start time
+    model.minimize(linear={f"x{len(problem) - 1}_{k}": k for k in windows[-1]})
+
+    # each task starts exactly once, unless the QAOA mixer sees to that
+    if not for_qaoa:
+        for i, window in enumerate(windows):
+            model.linear_constraint({f"x{i}_{k}": 1 for k in window}, "==", 1)
+
+    # no two clashing start times are both set
+    for (i, ki), (j, kj) in clashes(problem, windows):
+        model.linear_constraint({f"x{i}_{ki}": 1, f"x{j}_{kj}": 1}, "<=", 1)
+    return model
 
 # add zero-duration makespan task whose parents are every childless task, on its own machine
 def add_makespan_task(problem:Problem):
