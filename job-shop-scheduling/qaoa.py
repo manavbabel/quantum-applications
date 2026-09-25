@@ -8,8 +8,7 @@ from qiskit.circuit.library import qaoa_ansatz
 from qiskit.exceptions import QiskitError
 from qiskit.quantum_info import SparsePauliOp
 from qiskit_ibm_runtime import IBMBackend, SamplerV2
-from qiskit_optimization.minimum_eigensolvers import QAOA
-from qiskit_optimization.optimizers import COBYLA
+from scipy.optimize import minimize
 from solver import Solver, SolverUnavailable, fraction
 
 # the QAOA solvers below work on the formulation without its one-hot penalty
@@ -27,7 +26,7 @@ def counts_to_bits(key):
 # the cost Hamiltonian: the QUBO's Ising form, as Z and ZZ terms
 # scaled so its largest coefficient is 1, which keeps the QAOA angles meaning the same thing from one
 # instance to the next; the constant only adds a global phase, so it is dropped
-# built directly, as qiskit-optimization's QuadraticProgram.to_ising takes minutes on ft06
+# built directly, as qiskit-addon-opt-mapper's to_ising takes minutes on ft06
 def cost_operator(formulation):
     h, J = qubo_to_ising(formulation.Q)
     scale = max(map(abs, [*h.values(), *J.values()]), default=0) or 1
@@ -67,6 +66,23 @@ def linear_ramp(p, delta_gamma, delta_beta):
     layers = np.arange(p)
     return np.concatenate([(1 - layers / p) * delta_beta, (layers + 1) / p * delta_gamma])
 
+# the energy of each bitstring (bits in variable order, one row each) under an operator of Z terms
+# each term counts its coefficient, negated when an odd number of the bits it acts on are set
+def energies(operator, bits):
+    parity = np.asarray(bits, dtype=np.int64) @ operator.paulis.z.T.astype(np.int64) % 2
+    return (1 - 2 * parity) @ operator.coeffs.real
+
+# the mean energy of the lowest alpha fraction of the shots (the CVaR), with alpha = 1 the plain mean
+# weights say how often each energy came up; the shots straddling the alpha cut count in part
+def cvar(energies, weights, alpha):
+    order = np.argsort(energies)
+    energies, weights = energies[order], np.asarray(weights, dtype=float)[order]
+    weights /= weights.sum()
+    # each energy's share of the alpha taken: its weight, or what is left of alpha once the lower
+    # energies have taken theirs
+    taken = np.clip(alpha - (np.cumsum(weights) - weights), 0, weights)
+    return taken @ energies / alpha
+
 
 # shared set-up for the gate-based solvers
 # backend is an AerSimulator (or fake backend) for local runs, or an IBM backend for a real device
@@ -95,7 +111,6 @@ class _QAOASolver(Solver):
         return formulation
 
     # the logical circuit, with its angles left free
-    # built as qiskit-optimization's QAOA builds its own, so both solvers run the same ansatz
     def _ansatz(self, formulation, p):
         circuit = qaoa_ansatz(
             cost_operator(formulation),
@@ -105,6 +120,10 @@ class _QAOASolver(Solver):
         )
         circuit.measure_all()
         return circuit
+
+    # one execution of the transpiled circuit at the given angles, as Qiskit counts
+    def _sample(self, circuit, angles):
+        return self.sampler.run([(circuit, angles)]).result()[0].data.meas.get_counts()
 
     def _metadata(self, formulation, p, samples):
         return {
@@ -145,62 +164,59 @@ class _QAOASolver(Solver):
                 estimate["shot_duration"] = None
         return estimate
 
-# QAOA, with the angles found by a classical optimiser through qiskit-optimization
+# QAOA, with the angles found by scipy's COBYLA, the loop IBM's QAOA tutorial runs
 # they start on the linear ramp LR-QAOA uses below, which the optimiser then refines
+# each evaluation samples the circuit and scores the shots against the cost operator
 # alpha < 1 minimises the CVaR (the mean energy of the best alpha fraction of shots) instead of the mean
 class QAOASolver(_QAOASolver):
     name = "qaoa"
 
-    @staticmethod
-    def _optimizer(optimizer):
-        return optimizer or COBYLA(maxiter=100)
-
-    def _solve(self, problem, p=1, alpha=1.0, optimizer=None, delta_gamma=0.6, delta_beta=0.3):
+    def _solve(self, problem, p=1, alpha=1.0, maxiter=100, delta_gamma=0.6, delta_beta=0.3):
+        if not 0 < alpha <= 1:
+            raise ValueError(f"alpha must be in (0, 1], got {alpha}")
         formulation = self._formulation(problem)
-        evaluated = []  # when each objective evaluation finished
-        qaoa = QAOA(
-            self.sampler,
-            self._optimizer(optimizer),
-            reps=p,
-            initial_state=w_states(formulation),
-            mixer=xy_mixer(formulation),
-            initial_point=linear_ramp(p, delta_gamma, delta_beta),
-            aggregation=alpha,
-            callback=lambda *_: evaluated.append(time.perf_counter()),
-            pass_manager=self.pass_manager,
-        )
-
         cost = cost_operator(formulation)
-        t0 = time.perf_counter()
-        eigen = qaoa.compute_minimum_eigenvalue(cost)
-        t1 = time.perf_counter()
+        circuit = self.pass_manager.run(self._ansatz(formulation, p))
 
+        def objective(angles):
+            counts = self._sample(circuit, angles)
+            bits = [counts_to_bits(key) for key in counts]
+            return cvar(energies(cost, bits), list(counts.values()), alpha)
+
+        t0 = time.perf_counter()
+        optimum = minimize(
+            objective,
+            linear_ramp(p, delta_gamma, delta_beta),
+            method="COBYLA",
+            options={"maxiter": maxiter},
+        )
+        t1 = time.perf_counter()
         # the samples are the distribution at the optimised angles, each shot a run of its own
-        # the distribution is keyed by integer outcome, with qubit n as bit n
-        distribution = eigen.eigenstate
+        counts = self._sample(circuit, optimum.x)
+        t2 = time.perf_counter()
+
         start_times, samples = best_feasible(
-            [[(state >> n) & 1 for n in range(formulation.num_variables)] for state in distribution],
-            list(distribution.values()),
+            [counts_to_bits(key) for key in counts],
+            list(counts.values()),
             formulation,
             problem,
         )
 
-        evaluations = int(eigen.cost_function_evals)
         metadata = self._metadata(formulation, p, samples)
         metadata.update({
             "alpha": alpha,
-            "optimizer_evaluations": evaluations,
-            "optimisation_time": evaluated[-1] - t0,
-            "optimal_point": eigen.optimal_point.tolist(),
+            "optimizer_evaluations": optimum.nfev,
+            "optimisation_time": t1 - t0,
+            "optimal_point": optimum.x.tolist(),
         })
         # one circuit execution per objective evaluation, and one more for the final distribution
-        return start_times, t1 - t0, evaluations + 1, metadata, samples
+        return start_times, t2 - t0, optimum.nfev + 1, metadata, samples
 
-    # the optimiser stops by maxiter evaluations at the latest, one circuit execution each (as for
-    # COBYLA; SPSA takes two), then samples the final distribution once more
+    # COBYLA stops by maxiter evaluations at the latest, one circuit execution each, then the final
+    # distribution is sampled once more
     # scipy's COBYLA raises maxiter to at least one more than its initial simplex, i.e. the 2p angles + 2
-    def estimate(self, problem, p=1, alpha=1.0, optimizer=None, delta_gamma=0.6, delta_beta=0.3):
-        iterations = max(self._optimizer(optimizer).settings["maxiter"], 2 * p + 2)
+    def estimate(self, problem, p=1, alpha=1.0, maxiter=100, delta_gamma=0.6, delta_beta=0.3):
+        iterations = max(maxiter, 2 * p + 2)
         return self._estimate(problem, p, iterations, iterations + 1)
 
 # LR-QAOA: the angles follow a fixed annealing-like schedule, so there is no optimiser and one execution
@@ -213,8 +229,7 @@ class LRQAOASolver(_QAOASolver):
         circuit = self.pass_manager.run(self._ansatz(formulation, p))
 
         t0 = time.perf_counter()
-        job = self.sampler.run([(circuit, linear_ramp(p, delta_gamma, delta_beta))])
-        counts = job.result()[0].data.meas.get_counts()
+        counts = self._sample(circuit, linear_ramp(p, delta_gamma, delta_beta))
         t1 = time.perf_counter()
 
         # each shot is a run of its own
