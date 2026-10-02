@@ -39,8 +39,10 @@ def build_formulation(problem: Problem, for_qaoa: bool = False):
     # get the list of possible start times for each task
     windows = problem.windows()
 
-    # a feasible energy is at most the horizon, so breaking a constraint only has to cost more than that
-    penalty = problem.horizon + 1
+    # the makespan task can't start before `earliest`, so we measure the objective from there
+    # it then runs from 0 to horizon - earliest, so breaking a constraint only has to cost more than that
+    earliest = windows[-1].start
+    penalty = problem.horizon - earliest + 1
 
     # variables indexed by task and time
     variables = [(i, k) for i in range(len(problem)) for k in windows[i]]
@@ -53,10 +55,10 @@ def build_formulation(problem: Problem, for_qaoa: bool = False):
 
     Q = defaultdict(int)
 
-    # the objective is the makespan task's start time
-    # each of its variables gets a linear cost equal to its time, so the one set at time k adds k
+    # the objective is the makespan task's start time, less `earliest`
+    # each of its variables gets a linear cost equal to its time, so the one set at time k adds k - earliest
     for n in blocks[-1]:  # the makespan task is the last one
-        Q[(n, n)] += variables[n][1]
+        Q[(n, n)] += variables[n][1] - earliest
 
     # constraint: each task starts exactly once
     # penalty * (sum_k x_ik - 1)^2, expanded using x^2 = x for binary x
@@ -74,8 +76,8 @@ def build_formulation(problem: Problem, for_qaoa: bool = False):
     for a, b in clashes(problem, windows):
         Q[(index[a], index[b])] += penalty
 
-    # the offset is the +1 per task left over from the one-hot squares
-    offset = 0 if for_qaoa else penalty * len(problem)
+    # the offset adds back `earliest`, and the +1 per task left over from the one-hot squares
+    offset = earliest + (0 if for_qaoa else penalty * len(problem))
     return Formulation(problem.horizon, penalty, variables, blocks, dict(Q), offset)
 
 
