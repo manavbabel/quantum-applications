@@ -1,5 +1,7 @@
 import math
+import random
 import time
+from collections import Counter
 from itertools import combinations, islice, product
 
 import gurobipy as gp
@@ -50,6 +52,27 @@ def estimate_exact(problem, trials=1000):
         "within_limit": total <= MAX_COMBINATIONS,
         "expected_time": total * per_combination,  # seconds
     }
+
+
+# random guessing: each shot picks every task's start time uniformly from its window
+# this is the distribution QAOA starts from, so it's the baseline the samplers have to beat
+def solve_random(problem, shots=4096, seed=None):
+    rng = random.Random(seed)
+    windows = problem.windows()
+
+    t0 = time.perf_counter()
+    best, samples = None, Counter()
+    for _ in range(shots):
+        start_times = [rng.choice(window) for window in windows]
+        makespan = problem.makespan(start_times) if problem.is_feasible(start_times) else None
+        samples[makespan] += 1
+        if makespan is not None and (best is None or makespan < problem.makespan(best)):
+            best = start_times
+    tts = time.perf_counter() - t0
+
+    return make_result(
+        problem, "random", best, tts, calls=shots, metadata={"calls_unit": "shots"}, samples=samples
+    )
 
 
 # solves either the MILP directly, or the QUBO to see how the formulation affects things
