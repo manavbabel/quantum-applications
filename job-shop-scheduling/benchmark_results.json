@@ -1,0 +1,7672 @@
+[
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0004005000228062272
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": false,
+  "ratio": 1.1666666666666667,
+  "p_optimum": 0.0,
+  "time": 2.829998265951872e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000157299917191267
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.004900599946267903
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.018310546875,
+  "time": 0.012707199901342392
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.17919921875,
+  "time": 1.747912000049837
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0908203125,
+  "time": 0.06771149998530746
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.431,
+  "time": 0.4972247000550851
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": false,
+  "ratio": 1.1666666666666667,
+  "p_optimum": 0,
+  "time": 17.884777
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-48",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.672,
+  "time": 0.12887796
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-57",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0009373999200761318
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-57",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.8399983420968056e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-57",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015740003436803818
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-57",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006110799964517355
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-57",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.006103515625,
+  "time": 0.013957199989818037
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-57",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.106,
+  "time": 0.7629606999689713
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-57",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.022,
+  "time": 0.10743756
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00010389997623860836
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.229997284710407e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00027810002211481333
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005167700001038611
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.051025390625,
+  "time": 0.013811300043016672
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.25048828125,
+  "time": 1.3565262000774965
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.19384765625,
+  "time": 0.03539299999829382
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.502,
+  "time": 0.3309883000329137
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.001708984375,
+  "time": 18.026606
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-70",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.629,
+  "time": 0.11007796
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-90",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0007968000136315823
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-90",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.0800001695752144e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-90",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00018239999189972878
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-90",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008615099941380322
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-90",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.005126953125,
+  "time": 0.012423499953001738
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-90",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.114,
+  "time": 0.7127276000101119
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-90",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.051,
+  "time": 0.16203795999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00027290009893476963
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.8499984182417393e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00022829999215900898
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005361299961805344
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.010986328125,
+  "time": 0.013339300057850778
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.1552734375,
+  "time": 2.073660699999891
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.066162109375,
+  "time": 0.06950990005861968
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.251,
+  "time": 0.5161180000286549
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 18.37622
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-99",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.298,
+  "time": 0.16661716000000001
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003728000447154045
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.9499991796910763e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00022960000205785036
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0057625999907031655
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.021728515625,
+  "time": 0.014065600000321865
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.164306640625,
+  "time": 2.5168820000253618
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.099609375,
+  "time": 0.09006910002790391
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.327,
+  "time": 0.5326658999547362
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 18.367192
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-101",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.292,
+  "time": 0.15961716
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000546799972653389
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": false,
+  "ratio": 1.3333333333333333,
+  "p_optimum": 0.0,
+  "time": 2.8399983420968056e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00014860008377581835
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00797529995907098
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00341796875,
+  "time": 0.014369099983014166
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.048583984375,
+  "time": 4.292069899966009
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.03271484375,
+  "time": 0.18114550004247576
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.137,
+  "time": 0.5552070999983698
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": false,
+  "ratio": 1.1666666666666667,
+  "p_optimum": 0,
+  "time": 18.039386
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-125",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.094,
+  "time": 0.14025676
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-128",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000816499930806458
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-128",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.200001083314419e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-128",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0001620999537408352
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-128",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00447589997202158
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-128",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004150390625,
+  "time": 0.010329099954105914
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-128",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.152,
+  "time": 0.7811315999133512
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-128",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.183,
+  "time": 0.16441876
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00040030002128332853
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.029995761811733e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00017090002074837685
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006201399955898523
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.069580078125,
+  "time": 0.01429910003207624
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.258056640625,
+  "time": 2.0914479000493884
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.204345703125,
+  "time": 0.06351740006357431
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.536,
+  "time": 0.49284660001285374
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 18.01634
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-174",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.671,
+  "time": 0.11547755999999999
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-177",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0018883999437093735
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-177",
+  "qubits": 25,
+  "optimal": false,
+  "ratio": 1.3333333333333333,
+  "p_optimum": 0.0,
+  "time": 3.029999788850546e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-177",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00016719999257475138
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-177",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005343299941159785
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-177",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.008544921875,
+  "time": 0.013004599954001606
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-177",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.291,
+  "time": 0.8400506000034511
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-177",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.187,
+  "time": 0.21067635999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0001183999702334404
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.0399998649954796e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00023200002033263445
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.009193000034429133
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.1298828125,
+  "time": 0.016374300001189113
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.572265625,
+  "time": 1.5059475000016391
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.640869140625,
+  "time": 0.02962159994058311
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.759,
+  "time": 0.2884591999463737
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.09375,
+  "time": 17.528355
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-178",
+  "qubits": 13,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.826,
+  "time": 0.15141756
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-185",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0015041000442579389
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-185",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.4100026823580265e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-185",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00017030001617968082
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-185",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008181000011973083
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-185",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00927734375,
+  "time": 0.012477200012654066
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-185",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.167,
+  "time": 0.8047643000027165
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-185",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.098,
+  "time": 0.12321716
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005040999967604876
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.9499991796910763e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015470001380890608
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0048859999515116215
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.032470703125,
+  "time": 0.011088600032962859
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.18115234375,
+  "time": 6.627827699994668
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.12841796875,
+  "time": 0.2766908999765292
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.426,
+  "time": 0.5893896999768913
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 18.318129
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-187",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.36,
+  "time": 0.10933716
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015529990196228027
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.8999987989664078e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015189999248832464
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007063099998049438
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.076904296875,
+  "time": 0.014765000087209046
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.298828125,
+  "time": 1.636510799988173
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.22509765625,
+  "time": 0.046389900031499565
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.531,
+  "time": 0.33917109994217753
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00244140625,
+  "time": 17.696783
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-206",
+  "qubits": 14,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.664,
+  "time": 0.15317716
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-219",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005763999652117491
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-219",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.200001083314419e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-219",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00018289999570697546
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-219",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006995300063863397
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-219",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.013427734375,
+  "time": 0.011884900042787194
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-219",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.414,
+  "time": 0.6770579000003636
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-219",
+  "qubits": 21,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.413,
+  "time": 0.13575795999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-230",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0008166000479832292
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-230",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.0199997127056122e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-230",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015700003132224083
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-230",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007433700026012957
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-230",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004638671875,
+  "time": 0.010730999987572432
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-230",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.112,
+  "time": 0.8261479999637231
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-230",
+  "qubits": 23,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.044,
+  "time": 0.13019716
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0008018999360501766
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": false,
+  "ratio": 1.1428571428571428,
+  "p_optimum": 0.0,
+  "time": 2.8199981898069382e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015600002370774746
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.01515230000950396
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.01513671875,
+  "time": 0.013394100009463727
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.16552734375,
+  "time": 7.943408800056204
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.099365234375,
+  "time": 0.34312070009764284
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.405,
+  "time": 0.6294174999929965
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": false,
+  "ratio": 1.1428571428571428,
+  "p_optimum": 0,
+  "time": 18.270796
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-236",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.681,
+  "time": 0.10533596
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002669000532478094
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.9799994081258774e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002968000480905175
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.009921099990606308
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0625,
+  "time": 0.011578700039535761
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.38916015625,
+  "time": 2.189314000075683
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.444580078125,
+  "time": 0.06048930005636066
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.729,
+  "time": 0.44410329998936504
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.001708984375,
+  "time": 17.979657
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-238",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.659,
+  "time": 0.11099716
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00028980011120438576
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.070000093430281e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00016910000704228878
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0068913999712094665
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.028564453125,
+  "time": 0.011709399987012148
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.2255859375,
+  "time": 2.041520499973558
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.165771484375,
+  "time": 0.06799529993440956
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.464,
+  "time": 0.47791090002283454
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00048828125,
+  "time": 18.370277
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-239",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.416,
+  "time": 0.12973716
+ },
+ {
+  "solver": "exact",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00033579999580979347
+ },
+ {
+  "solver": "greedy",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.390002530068159e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015320000238716602
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.011000099941156805
+ },
+ {
+  "solver": "random",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.05908203125,
+  "time": 0.011686300043947995
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.379150390625,
+  "time": 1.835237400024198
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.46044921875,
+  "time": 0.05723909998778254
+ },
+ {
+  "solver": "annealing",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.683,
+  "time": 0.4357431000098586
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0009765625,
+  "time": 18.070684
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 4,
+  "problem": "random-243",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.677,
+  "time": 0.14381676000000002
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0006520000752061605
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.3100019209086895e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015480001457035542
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005324100027792156
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.059814453125,
+  "time": 0.014148599933832884
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.2138671875,
+  "time": 3.195655299932696
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.199951171875,
+  "time": 0.14644099993165582
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.572,
+  "time": 0.4679643000708893
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 17.990858
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-0",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.668,
+  "time": 0.14887796
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00041259999852627516
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.300001844763756e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002652999246492982
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.004471499938517809
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.071533203125,
+  "time": 0.013737799949012697
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.516845703125,
+  "time": 2.8843225000891834
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.376708984375,
+  "time": 0.11629879998508841
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.913,
+  "time": 0.5083435999695212
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 17.868754
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-1",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.855,
+  "time": 0.09419836
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-12",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.003812400042079389
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-12",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.6800047382712364e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-12",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003749999450519681
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-12",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.02603339997585863
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-12",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.02197265625,
+  "time": 0.017587200039997697
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-12",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.503,
+  "time": 0.720320799970068
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-12",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.497,
+  "time": 0.15109756
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0004894000012427568
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.429991193115711e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000238100066781044
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005536300013773143
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0556640625,
+  "time": 0.015347399981692433
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.24853515625,
+  "time": 2.444961200002581
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.213623046875,
+  "time": 0.07864820002578199
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.597,
+  "time": 0.4401926000136882
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 17.932652
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-16",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.859,
+  "time": 0.10615716
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-17",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.004334300057962537
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-17",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.47999918833375e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-17",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00017769995611160994
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-17",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006397300050593913
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-17",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00341796875,
+  "time": 0.01289610005915165
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-17",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.183,
+  "time": 0.8999649999896064
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-17",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.036,
+  "time": 0.12597716
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-22",
+  "qubits": 38,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.01994669996201992
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-22",
+  "qubits": 38,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.3699943237006664e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-22",
+  "qubits": 38,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003106000367552042
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-22",
+  "qubits": 38,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.03950660000555217
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-22",
+  "qubits": 38,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00634765625,
+  "time": 0.012744899955578148
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-22",
+  "qubits": 38,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.294,
+  "time": 1.6367617000360042
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-22",
+  "qubits": 38,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.008,
+  "time": 0.15103835999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-25",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0024701000656932592
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-25",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.6199926398694515e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-25",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002679000608623028
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-25",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.004958100034855306
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-25",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.022705078125,
+  "time": 0.013515800004824996
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-25",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.477,
+  "time": 0.6889476999640465
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-25",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.592,
+  "time": 0.14527716000000002
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-29",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.011257600039243698
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-29",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.609996151179075e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-29",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00031379994470626116
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-29",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.02462310006376356
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-29",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00048828125,
+  "time": 0.008952899952419102
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-29",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.081,
+  "time": 1.6821353000123054
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-29",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.013,
+  "time": 0.14919796
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00045789999421685934
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.350002225488424e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002351999282836914
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.010956199956126511
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.038330078125,
+  "time": 0.014426700072363019
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.105224609375,
+  "time": 2.024820899940096
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.17529296875,
+  "time": 0.060663699987344444
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.649,
+  "time": 0.4290809000376612
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00048828125,
+  "time": 18.720065
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-34",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.726,
+  "time": 0.12935756
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0008475000504404306
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.50000336766243e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00019910000264644623
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005346899968571961
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.028564453125,
+  "time": 0.0122189000248909
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.194580078125,
+  "time": 6.259721599984914
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.21044921875,
+  "time": 0.2954385000048205
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.64,
+  "time": 0.5830826000310481
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 19.221972
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-40",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.492,
+  "time": 0.14211716
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0010852999985218048
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.470003139227629e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00012599991168826818
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.004803200019523501
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.027099609375,
+  "time": 0.014298999914899468
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.215576171875,
+  "time": 4.7201399999903515
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.16796875,
+  "time": 0.22366699995473027
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.433,
+  "time": 0.5181311999913305
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 18.197583
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-43",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.596,
+  "time": 0.11833716
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0007804000051692128
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.5100034438073635e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00021650001872330904
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008190700085833669
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.031005859375,
+  "time": 0.015598399913869798
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.241943359375,
+  "time": 5.15399019990582
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.14013671875,
+  "time": 0.21185199997853488
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.7,
+  "time": 0.5272853999631479
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 17.998787
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-44",
+  "qubits": 19,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.641,
+  "time": 0.12671636
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-46",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006715300027281046
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-46",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.730005118995905e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-46",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002538999542593956
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-46",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00906139996368438
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-46",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00830078125,
+  "time": 0.017695400048978627
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-46",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.536,
+  "time": 0.9400960000930354
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-46",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.131,
+  "time": 0.14043716
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-49",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0015917000127956271
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-49",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.599992487579584e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-49",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000278300023637712
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-49",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00699030002579093
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-49",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.010498046875,
+  "time": 0.011238400009460747
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-49",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.378,
+  "time": 0.7063466999679804
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-49",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.303,
+  "time": 0.13743756
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-57",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0030314999166876078
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-57",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.4200063459575176e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-57",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002644999185577035
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-57",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006973600015044212
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-57",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0185546875,
+  "time": 0.013561300002038479
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-57",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.351,
+  "time": 0.7485543000511825
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-57",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.218,
+  "time": 0.10617796
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-59",
+  "qubits": 33,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.009614100097678602
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-59",
+  "qubits": 33,
+  "optimal": false,
+  "ratio": 1.5714285714285714,
+  "p_optimum": 0.0,
+  "time": 3.7800054997205734e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-59",
+  "qubits": 33,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00020490004681050777
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-59",
+  "qubits": 33,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007817699923180044
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-59",
+  "qubits": 33,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.011630699969828129
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-59",
+  "qubits": 33,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.024,
+  "time": 1.1782006999710575
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-59",
+  "qubits": 33,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.005,
+  "time": 0.14109835999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-62",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.03167840000241995
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-62",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.7299970649182796e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-62",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00028519995976239443
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-62",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.04519920004531741
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-62",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00439453125,
+  "time": 0.011609500041231513
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-62",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.28,
+  "time": 2.0974781000986695
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-62",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.015,
+  "time": 0.20319876
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-65",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.002547199954278767
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-65",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.020007327198982e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-65",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002090999623760581
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-65",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00428340001963079
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-65",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004638671875,
+  "time": 0.01064100000075996
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-65",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.325,
+  "time": 0.8223477000137791
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-65",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.164,
+  "time": 0.20077796
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005718000466004014
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.270001616328955e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0001786999637261033
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005883199977688491
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.077392578125,
+  "time": 0.014321200083941221
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.434814453125,
+  "time": 2.3060690000420436
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.477294921875,
+  "time": 0.06542760005686432
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.686,
+  "time": 0.4223794999998063
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.001220703125,
+  "time": 18.780309
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-66",
+  "qubits": 18,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.764,
+  "time": 0.12205676
+ },
+ {
+  "solver": "exact",
+  "tasks": 5,
+  "problem": "random-79",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0036626000655815005
+ },
+ {
+  "solver": "greedy",
+  "tasks": 5,
+  "problem": "random-79",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.6499928683042526e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 5,
+  "problem": "random-79",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00029799994081258774
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 5,
+  "problem": "random-79",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005045099998824298
+ },
+ {
+  "solver": "random",
+  "tasks": 5,
+  "problem": "random-79",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.017822265625,
+  "time": 0.016504400060512125
+ },
+ {
+  "solver": "annealing",
+  "tasks": 5,
+  "problem": "random-79",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.334,
+  "time": 0.7266578000271693
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 5,
+  "problem": "random-79",
+  "qubits": 25,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.201,
+  "time": 0.11889636
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-0",
+  "qubits": 58,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.9196589000057429
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-0",
+  "qubits": 58,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.849989924579859e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-0",
+  "qubits": 58,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.002320699975825846
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-0",
+  "qubits": 58,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.07193149998784065
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-0",
+  "qubits": 58,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0009765625,
+  "time": 0.016489200061187148
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-0",
+  "qubits": 58,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.101,
+  "time": 3.6581202000379562
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-0",
+  "qubits": 58,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.002,
+  "time": 0.10901796000000001
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-7",
+  "qubits": 49,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.252831699908711
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-7",
+  "qubits": 49,
+  "optimal": false,
+  "ratio": 1.125,
+  "p_optimum": 0.0,
+  "time": 6.340001709759235e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-7",
+  "qubits": 49,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.360001422464848e-05
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-7",
+  "qubits": 49,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.05521219992078841
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-7",
+  "qubits": 49,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00048828125,
+  "time": 0.013512399978935719
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-7",
+  "qubits": 49,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.164,
+  "time": 2.7049898999975994
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-7",
+  "qubits": 49,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.008,
+  "time": 0.14075756
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000784300034865737
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.079996142536402e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002661000471562147
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007337199989706278
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.02294921875,
+  "time": 0.014558000024408102
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.1259765625,
+  "time": 4.9805508001009
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.195068359375,
+  "time": 0.2421633000485599
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.436,
+  "time": 0.4670328999636695
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 17.787752
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-8",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.316,
+  "time": 0.14427716000000002
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-9",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0031558999326080084
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-9",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.099996294826269e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-9",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002489000326022506
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-9",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00640189996920526
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-9",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.033203125,
+  "time": 0.01494350004941225
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-9",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.648,
+  "time": 0.6173166000517085
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-9",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.509,
+  "time": 0.13091796
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-10",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00510409998241812
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-10",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.2199972085654736e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-10",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015100010205060244
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-10",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.009735699975863099
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-10",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.009765625,
+  "time": 0.012620899942703545
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-10",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.438,
+  "time": 0.6924270000308752
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-10",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.585,
+  "time": 0.14089716
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-12",
+  "qubits": 48,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.16795950010418892
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-12",
+  "qubits": 48,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 6.419990677386522e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-12",
+  "qubits": 48,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0030675999587401748
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-12",
+  "qubits": 48,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.07365680008661002
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-12",
+  "qubits": 48,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.012004200019873679
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-12",
+  "qubits": 48,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.111,
+  "time": 2.707699599908665
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-12",
+  "qubits": 48,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.008,
+  "time": 0.13551796
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-14",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.012888900004327297
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-14",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.429998807609081e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-14",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00040010001976042986
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-14",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008061599917709827
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-14",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.003173828125,
+  "time": 0.014660199987702072
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-14",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.369,
+  "time": 0.9971901000244543
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-14",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.122,
+  "time": 0.13795676
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-16",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00377509999088943
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-16",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.179996903985739e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-16",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002655000425875187
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-16",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006848899996839464
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-16",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004150390625,
+  "time": 0.01105430000461638
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-16",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.26,
+  "time": 0.8157621000427753
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-16",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.199,
+  "time": 0.12913716
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-19",
+  "qubits": 32,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.018137100036256015
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-19",
+  "qubits": 32,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.39999857917428e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-19",
+  "qubits": 32,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003095000283792615
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-19",
+  "qubits": 32,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008602799964137375
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-19",
+  "qubits": 32,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 0.013268200098536909
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-19",
+  "qubits": 32,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.103,
+  "time": 5.832550000050105
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-19",
+  "qubits": 32,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.036,
+  "time": 0.13589836
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-26",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007195900077931583
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-26",
+  "qubits": 28,
+  "optimal": false,
+  "ratio": 1.0909090909090908,
+  "p_optimum": 0.0,
+  "time": 4.23000892624259e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-26",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.279993638396263e-05
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-26",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005998400039970875
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-26",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.01025390625,
+  "time": 0.013082400080747902
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-26",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.377,
+  "time": 3.8164971000514925
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-26",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.304,
+  "time": 0.14409796
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-27",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.027405399945564568
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-27",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.959998816251755e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-27",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00028439995367079973
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-27",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.009011800051666796
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-27",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.007080078125,
+  "time": 0.015140599920414388
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-27",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.586,
+  "time": 1.1991600999608636
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-27",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.078,
+  "time": 0.11491836
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-34",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.04696980002336204
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-34",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.789997521787882e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-34",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003727999283000827
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-34",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006005899980664253
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-34",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00146484375,
+  "time": 0.014898000052198768
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-34",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.295,
+  "time": 1.454757699975744
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-34",
+  "qubits": 37,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.135,
+  "time": 0.13715796
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-38",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.001523400074802339
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-38",
+  "qubits": 28,
+  "optimal": false,
+  "ratio": 1.0714285714285714,
+  "p_optimum": 0.0,
+  "time": 4.1499966755509377e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-38",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0018239000346511602
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-38",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0048807000275701284
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-38",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.010009765625,
+  "time": 0.014105200069025159
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-38",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.308,
+  "time": 1.0522752000251785
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-38",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.103,
+  "time": 0.10993716
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000543600064702332
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.559992182999849e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002610000083222985
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008034200058318675
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.119140625,
+  "time": 0.0162752999458462
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.495361328125,
+  "time": 1.615947800106369
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.87939453125,
+  "time": 0.051750099984928966
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.933,
+  "time": 0.35052550002001226
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.015625,
+  "time": 18.510951
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-42",
+  "qubits": 17,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.94,
+  "time": 0.15131756
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0009422000730410218
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.9499951526522636e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00015129998791962862
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0045695999870076776
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0244140625,
+  "time": 0.01614800002425909
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.11669921875,
+  "time": 8.00800250004977
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.12890625,
+  "time": 0.33674059994518757
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.555,
+  "time": 0.5081255999393761
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 18.051753
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-47",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.522,
+  "time": 0.13214076
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0008999999845400453
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.93999507650733e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00016549997963011265
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00760220002848655
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.04248046875,
+  "time": 0.015891899936832488
+ },
+ {
+  "solver": "qaoa",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.240234375,
+  "time": 4.883280999958515
+ },
+ {
+  "solver": "lr-qaoa",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.186279296875,
+  "time": 0.28568089997861534
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.47,
+  "time": 0.47965950006619096
+ },
+ {
+  "solver": "lr-qaoa (ibm)",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 17.9597
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-52",
+  "qubits": 20,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.407,
+  "time": 0.12032076
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-60",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.16876390005927533
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-60",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 6.749993190169334e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-60",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0025077000027522445
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-60",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.03902559995185584
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-60",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.002197265625,
+  "time": 0.015436999965459108
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-60",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.303,
+  "time": 2.294462400022894
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-60",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.012,
+  "time": 0.21912196
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-64",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0025710000190883875
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-64",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.109996370971203e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-64",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000170599902048707
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-64",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007544600055553019
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-64",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.008544921875,
+  "time": 0.011605000006966293
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-64",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.308,
+  "time": 0.6086848999839276
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-64",
+  "qubits": 24,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.346,
+  "time": 0.13770076
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-66",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.05290370003785938
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-66",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 8.639995940029621e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-66",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0008027000585570931
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-66",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.016217300086282194
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-66",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.011801299988292158
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-66",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.194,
+  "time": 1.6021480999188498
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-66",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.056,
+  "time": 0.11092156
+ },
+ {
+  "solver": "exact",
+  "tasks": 6,
+  "problem": "random-69",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.001732399920001626
+ },
+ {
+  "solver": "greedy",
+  "tasks": 6,
+  "problem": "random-69",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 3.769993782043457e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 6,
+  "problem": "random-69",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00018860003910958767
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 6,
+  "problem": "random-69",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005299100070260465
+ },
+ {
+  "solver": "random",
+  "tasks": 6,
+  "problem": "random-69",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.021240234375,
+  "time": 0.01570830005221069
+ },
+ {
+  "solver": "annealing",
+  "tasks": 6,
+  "problem": "random-69",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.392,
+  "time": 0.4958458000328392
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 6,
+  "problem": "random-69",
+  "qubits": 22,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.248,
+  "time": 0.13564156
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-0",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.06538589997217059
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-0",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.269997149705887e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-0",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00030179996974766254
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-0",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007709100027568638
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-0",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004150390625,
+  "time": 0.015678100055083632
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-0",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.428,
+  "time": 2.2803143000928685
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-0",
+  "qubits": 34,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.332,
+  "time": 0.18292235999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-2",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008428600034676492
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-2",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.410006269812584e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-2",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002492000348865986
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-2",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006866500014439225
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-2",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00341796875,
+  "time": 0.015576299978420138
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-2",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.517,
+  "time": 0.8429900000337511
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-2",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.231,
+  "time": 0.13636196
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-4",
+  "qubits": 43,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.1793660999974236
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-4",
+  "qubits": 43,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 8.899997919797897e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-4",
+  "qubits": 43,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0006382999708876014
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-4",
+  "qubits": 43,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006485600024461746
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-4",
+  "qubits": 43,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 0.013967899954877794
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-4",
+  "qubits": 43,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.309,
+  "time": 1.7016769000329077
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-4",
+  "qubits": 43,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.022,
+  "time": 0.21889996
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-10",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.04659899999387562
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-10",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.08999577909708e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-10",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000358699937351048
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-10",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005629600025713444
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-10",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00244140625,
+  "time": 0.014096200000494719
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-10",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.1,
+  "time": 1.1347760000498965
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-10",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.018,
+  "time": 0.16472035999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-14",
+  "qubits": 31,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.023035399965010583
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-14",
+  "qubits": 31,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.019995246082544e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-14",
+  "qubits": 31,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00048449996393173933
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-14",
+  "qubits": 31,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005677300039678812
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-14",
+  "qubits": 31,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 0.013263699947856367
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-14",
+  "qubits": 31,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.257,
+  "time": 1.0563318999484181
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-14",
+  "qubits": 31,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.178,
+  "time": 0.11004236
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-17",
+  "qubits": 69,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 6.749245899962261
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-17",
+  "qubits": 69,
+  "optimal": false,
+  "ratio": 1.2857142857142858,
+  "p_optimum": 0.0,
+  "time": 7.139996159821749e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-17",
+  "qubits": 69,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0015427999896928668
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-17",
+  "qubits": 69,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.18251840001903474
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-17",
+  "qubits": 69,
+  "optimal": false,
+  "ratio": 1.2142857142857142,
+  "p_optimum": 0,
+  "time": 0.013145299977622926
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-17",
+  "qubits": 69,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.01,
+  "time": 4.769213299965486
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-17",
+  "qubits": 69,
+  "optimal": false,
+  "ratio": 1.2142857142857142,
+  "p_optimum": 0,
+  "time": 0.17459956
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-19",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.2391533999470994
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-19",
+  "qubits": 42,
+  "optimal": false,
+  "ratio": 1.125,
+  "p_optimum": 0.0,
+  "time": 6.789993494749069e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-19",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.360001422464848e-05
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-19",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.010940499952994287
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-19",
+  "qubits": 42,
+  "optimal": false,
+  "ratio": 1.0625,
+  "p_optimum": 0,
+  "time": 0.013948799925856292
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-19",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.086,
+  "time": 1.7459719000617042
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-19",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.016,
+  "time": 0.13689956
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-23",
+  "qubits": 68,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.548819100018591
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-23",
+  "qubits": 68,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 6.84000551700592e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-23",
+  "qubits": 68,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0004821999464184046
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-23",
+  "qubits": 68,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.15596470003947616
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-23",
+  "qubits": 68,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.015341499936766922
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-23",
+  "qubits": 68,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.116,
+  "time": 3.996863500098698
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-23",
+  "qubits": 68,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.20146155999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-27",
+  "qubits": 46,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.36598929995670915
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-27",
+  "qubits": 46,
+  "optimal": false,
+  "ratio": 1.1666666666666667,
+  "p_optimum": 0.0,
+  "time": 7.660000119358301e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-27",
+  "qubits": 46,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0032073999755084515
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-27",
+  "qubits": 46,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.022427399992011487
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-27",
+  "qubits": 46,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.015122100012376904
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-27",
+  "qubits": 46,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.045,
+  "time": 2.0662020000163466
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-27",
+  "qubits": 46,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.003,
+  "time": 0.17684035999999997
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.6253247000277042
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.059999138116837e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0037941000191494823
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.10342130006756634
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.014766499982215464
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.176,
+  "time": 4.634857899975032
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004,
+  "time": 0.19548076
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-31",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007350799976848066
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-31",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.199996616691351e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-31",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00026480003725737333
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-31",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005986399948596954
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-31",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0087890625,
+  "time": 0.014563300064764917
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-31",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.51,
+  "time": 0.7556546999840066
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-31",
+  "qubits": 27,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.321,
+  "time": 0.12813876
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-38",
+  "qubits": 52,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.858846899936907
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-38",
+  "qubits": 52,
+  "optimal": false,
+  "ratio": 1.2727272727272727,
+  "p_optimum": 0.0,
+  "time": 6.980006583034992e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-38",
+  "qubits": 52,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.490002412348986e-05
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-38",
+  "qubits": 52,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.04208470007870346
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-38",
+  "qubits": 52,
+  "optimal": false,
+  "ratio": 1.0909090909090908,
+  "p_optimum": 0,
+  "time": 0.011378100025467575
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-38",
+  "qubits": 52,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.071,
+  "time": 3.6202258000848815
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-38",
+  "qubits": 52,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.006,
+  "time": 0.13916035999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-39",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.007483699941076338
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-39",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 6.029999349266291e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-39",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00044709991198033094
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-39",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.010809600003995001
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-39",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.011962890625,
+  "time": 0.020708799944259226
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-39",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.64,
+  "time": 0.6351487999781966
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-39",
+  "qubits": 26,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.678,
+  "time": 0.12955916
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-41",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.18140979995951056
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-41",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.569999434053898e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-41",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005424999399110675
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-41",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.01933639997150749
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-41",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00048828125,
+  "time": 0.015331000089645386
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-41",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.23,
+  "time": 1.7573224999941885
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-41",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.01,
+  "time": 0.14391956
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-45",
+  "qubits": 40,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.13879989995621145
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-45",
+  "qubits": 40,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.490002412348986e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-45",
+  "qubits": 40,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.004310399992391467
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-45",
+  "qubits": 40,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.01099919993430376
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-45",
+  "qubits": 40,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.001220703125,
+  "time": 0.013097700080834329
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-45",
+  "qubits": 40,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.316,
+  "time": 1.598110600025393
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-45",
+  "qubits": 40,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.093,
+  "time": 0.18166116000000002
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-49",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.3401321000419557
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-49",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 6.740004755556583e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-49",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0024686999386176467
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-49",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.029712899937294424
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-49",
+  "qubits": 47,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.012381899985484779
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-49",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.202,
+  "time": 2.216844799928367
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-49",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.021,
+  "time": 0.10694116000000001
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-51",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0643111999379471
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-51",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 8.059991523623466e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-51",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005891000619158149
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-51",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.013635699986480176
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-51",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.013671875,
+  "time": 0.017601100029423833
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-51",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.302,
+  "time": 1.2768881999654695
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-51",
+  "qubits": 39,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.147,
+  "time": 0.10345955999999999
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-53",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.15550019999500364
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-53",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.220000356435776e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-53",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0008595999097451568
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-53",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.017764999996870756
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-53",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 0.011976600042544305
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-53",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.259,
+  "time": 1.768560399999842
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-53",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.018,
+  "time": 0.15441956
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-57",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.01350190001539886
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-57",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.13000413775444e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-57",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000292200013063848
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-57",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.009369299979880452
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-57",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.0078125,
+  "time": 0.014064099988900125
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-57",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.404,
+  "time": 0.9020503000356257
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-57",
+  "qubits": 29,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.025,
+  "time": 0.12651916
+ },
+ {
+  "solver": "exact",
+  "tasks": 7,
+  "problem": "random-62",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.845439700060524
+ },
+ {
+  "solver": "greedy",
+  "tasks": 7,
+  "problem": "random-62",
+  "qubits": 51,
+  "optimal": false,
+  "ratio": 1.25,
+  "p_optimum": 0.0,
+  "time": 6.7099928855896e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 7,
+  "problem": "random-62",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.759992826730013e-05
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 7,
+  "problem": "random-62",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.017039099941030145
+ },
+ {
+  "solver": "random",
+  "tasks": 7,
+  "problem": "random-62",
+  "qubits": 51,
+  "optimal": false,
+  "ratio": 1.0833333333333333,
+  "p_optimum": 0,
+  "time": 0.012244400102645159
+ },
+ {
+  "solver": "annealing",
+  "tasks": 7,
+  "problem": "random-62",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.031,
+  "time": 2.2567601000191644
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 7,
+  "problem": "random-62",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.007,
+  "time": 0.18047996
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-2",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.22815179999452084
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-2",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 8.289993274956942e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-2",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003645999822765589
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-2",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008059300016611814
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-2",
+  "qubits": 41,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.012896499945782125
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-2",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.133,
+  "time": 1.5311123999999836
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-2",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.023,
+  "time": 0.16390036
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-3",
+  "qubits": 74,
+  "optimal": false,
+  "ratio": 1.0952380952380953,
+  "p_optimum": 0.0,
+  "time": 9.8800053820014e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-3",
+  "qubits": 74,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.002281300025060773
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-3",
+  "qubits": 74,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.27144790010061115
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-3",
+  "qubits": 74,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.010811500018462539
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-3",
+  "qubits": 74,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004,
+  "time": 5.137752900016494
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-3",
+  "qubits": 74,
+  "optimal": false,
+  "ratio": 1.0952380952380953,
+  "p_optimum": 0,
+  "time": 0.11774076
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-8",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.8290572999976575
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-8",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.599999662488699e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-8",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003743999404832721
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-8",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.018820199999026954
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-8",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000732421875,
+  "time": 0.01318030001129955
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-8",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.252,
+  "time": 2.0280281000304967
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-8",
+  "qubits": 47,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.034,
+  "time": 0.12384036
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-9",
+  "qubits": 64,
+  "optimal": false,
+  "ratio": 1.1666666666666667,
+  "p_optimum": 0.0,
+  "time": 5.139992572367191e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-9",
+  "qubits": 64,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0024088999489322305
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-9",
+  "qubits": 64,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.07409000000916421
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-9",
+  "qubits": 64,
+  "optimal": false,
+  "ratio": 1.0833333333333333,
+  "p_optimum": 0,
+  "time": 0.012902999995276332
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-9",
+  "qubits": 64,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.014,
+  "time": 3.6286762000527233
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-9",
+  "qubits": 64,
+  "optimal": false,
+  "ratio": 1.0833333333333333,
+  "p_optimum": 0,
+  "time": 0.14769916
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-10",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.6816187999211252
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-10",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.609999738633633e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-10",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003989000106230378
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-10",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.01460699993185699
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-10",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.013436499983072281
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-10",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.193,
+  "time": 1.9068324000108987
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-10",
+  "qubits": 45,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.068,
+  "time": 0.10787956
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-11",
+  "qubits": 72,
+  "optimal": false,
+  "ratio": 1.3333333333333333,
+  "p_optimum": 0.0,
+  "time": 6.170000415295362e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-11",
+  "qubits": 72,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.002163600060157478
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-11",
+  "qubits": 72,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.10649999999441206
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-11",
+  "qubits": 72,
+  "optimal": false,
+  "ratio": 1.1333333333333333,
+  "p_optimum": 0,
+  "time": 0.01217859995085746
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-11",
+  "qubits": 72,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004,
+  "time": 4.034220599918626
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-11",
+  "qubits": 72,
+  "optimal": false,
+  "ratio": 1.0666666666666667,
+  "p_optimum": 0,
+  "time": 0.18001836
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-13",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.038337300065904856
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-13",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.800001185387373e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-13",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005688000237569213
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-13",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.005568099906668067
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-13",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.00390625,
+  "time": 0.018882200005464256
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-13",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.605,
+  "time": 0.8157597999088466
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-13",
+  "qubits": 30,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.651,
+  "time": 0.12009956
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-14",
+  "qubits": 75,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.8299902118742466e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-14",
+  "qubits": 75,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0017606000183150172
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-14",
+  "qubits": 75,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.13381879997905344
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-14",
+  "qubits": 75,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.013094400055706501
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-14",
+  "qubits": 75,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.088,
+  "time": 4.604489900055341
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-14",
+  "qubits": 75,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.002,
+  "time": 0.18703876
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-16",
+  "qubits": 55,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.658259900053963
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-16",
+  "qubits": 55,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 9.720004163682461e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-16",
+  "qubits": 55,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0009012999944388866
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-16",
+  "qubits": 55,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.05596249992959201
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-16",
+  "qubits": 55,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.011593000032007694
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-16",
+  "qubits": 55,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.273,
+  "time": 2.694283499964513
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-16",
+  "qubits": 55,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.015,
+  "time": 0.13938035999999998
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-17",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.07009910000488162
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-17",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 8.290004916489124e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-17",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0006257999921217561
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-17",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.010951400035992265
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-17",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.01220110000576824
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-17",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.208,
+  "time": 1.1984748999821022
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-17",
+  "qubits": 35,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.338,
+  "time": 0.13531916
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-20",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.2616277999477461
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-20",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.660000119358301e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-20",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.00038139999378472567
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-20",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.011506199953146279
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-20",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.011906299972906709
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-20",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.18,
+  "time": 1.5590601000003517
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-20",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.085,
+  "time": 0.12182076
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-21",
+  "qubits": 71,
+  "optimal": false,
+  "ratio": 1.1176470588235294,
+  "p_optimum": 0.0,
+  "time": 4.75000124424696e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-21",
+  "qubits": 71,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.002892900025472045
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-21",
+  "qubits": 71,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.1306923000374809
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-21",
+  "qubits": 71,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.01162640005350113
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-21",
+  "qubits": 71,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.011,
+  "time": 5.070533100049943
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-21",
+  "qubits": 71,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.19197756
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-22",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.3310136999934912
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-22",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.000103199970908463
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-22",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0003819999983534217
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-22",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.008140700054354966
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-22",
+  "qubits": 41,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.012745699961669743
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-22",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.15,
+  "time": 1.4408766999840736
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-22",
+  "qubits": 41,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.044,
+  "time": 0.13195916
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-24",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.006147100008092821
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-24",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.770001396536827e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-24",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0002442999975755811
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-24",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.004495600005611777
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-24",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.001708984375,
+  "time": 0.01624719996470958
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-24",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.196,
+  "time": 0.8383216999936849
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-24",
+  "qubits": 28,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.114,
+  "time": 0.20763876
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-25",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.64999645575881e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-25",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0017362999496981502
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-25",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.06661119998898357
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-25",
+  "qubits": 63,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.013018700061365962
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-25",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.082,
+  "time": 3.3994563999585807
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-25",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004,
+  "time": 0.21661996
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-27",
+  "qubits": 63,
+  "optimal": false,
+  "ratio": 1.4166666666666667,
+  "p_optimum": 0.0,
+  "time": 4.810001701116562e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-27",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0013775000115856528
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-27",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.04417530004866421
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-27",
+  "qubits": 63,
+  "optimal": false,
+  "ratio": 1.1666666666666667,
+  "p_optimum": 0,
+  "time": 0.01408110000193119
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-27",
+  "qubits": 63,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.003,
+  "time": 3.4142145999940112
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-27",
+  "qubits": 63,
+  "optimal": false,
+  "ratio": 1.1666666666666667,
+  "p_optimum": 0,
+  "time": 0.12082076
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-28",
+  "qubits": 65,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 4.429998807609081e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-28",
+  "qubits": 65,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0004797999281436205
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-28",
+  "qubits": 65,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.056170399999246
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-28",
+  "qubits": 65,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.014516799943521619
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-28",
+  "qubits": 65,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.141,
+  "time": 3.433692099992186
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-28",
+  "qubits": 65,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.17167756
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 5.674398300005123
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": false,
+  "ratio": 1.0666666666666667,
+  "p_optimum": 0.0,
+  "time": 7.650000043213367e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0018242000369355083
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.04948889999650419
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": false,
+  "ratio": 1.0666666666666667,
+  "p_optimum": 0,
+  "time": 0.014299500035122037
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.041,
+  "time": 2.9617389999330044
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-30",
+  "qubits": 60,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.002,
+  "time": 0.16013916
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-34",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 2.023129799985327
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-34",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 7.589999586343765e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-34",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005226999055594206
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-34",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.02869289997033775
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-34",
+  "qubits": 51,
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.014868800062686205
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-34",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.102,
+  "time": 3.183544399915263
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-34",
+  "qubits": 51,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.008,
+  "time": 0.15321996
+ },
+ {
+  "solver": "exact",
+  "tasks": 8,
+  "problem": "random-36",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.22322440007701516
+ },
+ {
+  "solver": "greedy",
+  "tasks": 8,
+  "problem": "random-36",
+  "qubits": 42,
+  "optimal": false,
+  "ratio": 1.0588235294117647,
+  "p_optimum": 0.0,
+  "time": 7.770000956952572e-05
+ },
+ {
+  "solver": "gurobi milp",
+  "tasks": 8,
+  "problem": "random-36",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.0005299999611452222
+ },
+ {
+  "solver": "gurobi qubo",
+  "tasks": 8,
+  "problem": "random-36",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 1.0,
+  "time": 0.010233599925413728
+ },
+ {
+  "solver": "random",
+  "tasks": 8,
+  "problem": "random-36",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.000244140625,
+  "time": 0.013123800046741962
+ },
+ {
+  "solver": "annealing",
+  "tasks": 8,
+  "problem": "random-36",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.075,
+  "time": 1.4831280999351293
+ },
+ {
+  "solver": "annealing (d-wave)",
+  "tasks": 8,
+  "problem": "random-36",
+  "qubits": 42,
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.004,
+  "time": 0.11181916
+ }
+]
