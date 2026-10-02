@@ -6,6 +6,7 @@ from formulation import best_feasible, build_formulation, qubo_to_ising
 from qiskit import QuantumCircuit, generate_preset_pass_manager
 from qiskit.circuit.library import qaoa_ansatz
 from qiskit.exceptions import QiskitError
+from qiskit.primitives import BackendSamplerV2
 from qiskit.quantum_info import SparsePauliOp
 from qiskit_ibm_runtime import IBMBackend, SamplerV2
 from results import SolverUnavailable, make_result
@@ -106,14 +107,15 @@ def ansatz(formulation, p):
     return circuit
 
 
-# a sampler and a transpiler for the backend
-# an AerSimulator (or fake backend) runs locally, in Qiskit Runtime's local testing mode; an IBM backend
-# runs on the device; seed fixes the transpiler and, on a simulator, the shots
+# a sampler and a transpiler for the backend; seed fixes the transpiler and, on a simulator, the shots
+# an IBM backend runs on the device through Qiskit Runtime; an AerSimulator (or fake backend) runs locally
+# through Qiskit's BackendSamplerV2, which is what Runtime's local testing mode uses, but that mode
+# ignores a seed of 0
 def sampler_and_pass_manager(backend, shots, seed):
-    options = {"default_shots": shots}
-    if seed is not None and not isinstance(backend, IBMBackend):
-        options["simulator"] = {"seed_simulator": seed}
-    sampler = SamplerV2(mode=backend, options=options)
+    if isinstance(backend, IBMBackend):
+        sampler = SamplerV2(mode=backend, options={"default_shots": shots})
+    else:
+        sampler = BackendSamplerV2(backend=backend, options={"default_shots": shots, "seed_simulator": seed})
     return sampler, generate_preset_pass_manager(backend=backend, seed_transpiler=seed)
 
 
