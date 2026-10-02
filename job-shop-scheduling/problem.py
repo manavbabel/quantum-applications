@@ -1,26 +1,24 @@
 import json
 import random
+from bisect import bisect_right, insort
 from collections import defaultdict
 from functools import cached_property
 from graphlib import TopologicalSorter
 from itertools import pairwise
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib import patches
 
+INSTANCES = Path(__file__).parent / "benchmark_instances.json"
 
-# a random dependency graph with no redundant dependencies
-# tasks are placed one at a time; each draws how many parents it wants, evenly between min_parents and
-# max_parents (none making it a starting task), then picks them one by one, uniformly from the tasks placed
-# before it that neither depend on nor are depended on by the parents it already has
-# so no parent is implied by another, and as a new task has no children yet, no earlier dependency becomes
-# implied either
-# a task that runs out of such tasks keeps what it found, unless that is fewer than min_parents: then, as for
-# the first task, it starts with none
-# any graph meeting these rules can come up, though not all equally often
-# the placement order is shuffled into the task indices, so a parent may have a higher index than its child
+
+# a random dependency graph with no redundant edges (never A -> C as well as A -> B -> C)
+# tasks are placed one at a time, each picking between min_parents and max_parents parents from the
+# earlier tasks unrelated to the parents it already has; a task that can't find min_parents gets none
+# the order is then shuffled, so a parent may have a higher index than its child
 def random_dependencies(num_tasks, min_parents, max_parents, rng):
-    # ancestors[i] is a bitmask of the earlier-placed tasks that task i depends on, directly or not
+    # ancestors[i] is a bitmask of every task that task i depends on, directly or not
     ancestors, parents = [], []
     for i in range(num_tasks):
         wanted = rng.randint(min_parents, max_parents)
@@ -63,7 +61,7 @@ def random_machines(num_tasks, num_machines, rng):
     unused, used, machines = list(range(num_machines)), [], []
     for i in range(num_tasks, 0, -1):
         j = len(unused)
-        # an unused machine, or one already in use, as often as the ways to finish from each
+        # a new machine or a used one, weighted by the number of ways to finish from each
         if j and rng.randrange(ways[i][j]) < j * ways[i - 1][j - 1]:
             used.append(unused.pop(rng.randrange(j)))
             machines.append(used[-1])
@@ -73,10 +71,8 @@ def random_machines(num_tasks, num_machines, rng):
 
 
 class Problem:
-    def __init__(self, tasks, name: str = None, optimum: int | None = None):
+    def __init__(self, tasks, name: str | None = None, optimum: int | None = None):
         # each task is a tuple of (machine, duration, dependencies), where dependencies is a tuple of task indices, 0-indexed
-
-        # validate tasks
         for task in tasks:
             machine, duration, dependencies = task
 
@@ -96,8 +92,8 @@ class Problem:
 
     @classmethod
     def load(cls, instance_name):
-        """Loads an instance from benchmark_instances.json. Note these are special classes of our general problem where each task has at most one parent."""
-        with open("benchmark_instances.json", "r") as f:
+        """Load a named instance from benchmark_instances.json. These are classic job shops, where each job is a chain of tasks, so every task has at most one parent."""
+        with open(INSTANCES) as f:
             instance_dict = json.load(f)[instance_name]
 
         durations = instance_dict["duration_matrix"]
@@ -110,12 +106,11 @@ class Problem:
                 if i == 0:
                     parent = ()
                 else:
-                    # the previous task in this job, which was the last one added
+                    # the previous task in the same job
                     parent = (len(tasks) - 1,)
 
                 tasks.append((machines[j][i], durations[j][i], parent))
 
-        # the benchmark set records the optimal makespan where it is known
         return cls(name=instance_dict["name"], tasks=tasks, optimum=instance_dict["metadata"].get("optimum"))
 
     @classmethod
@@ -129,29 +124,17 @@ class Problem:
         max_duration=10,
         seed=None,
     ):
-        # a seeded random problem with
-        # num_tasks tasks
-        # num_machines machines, each given at least one task, the assignment uniform among those that do
-        # between min and max parents for each task: each aims for a count drawn evenly across that range, and
-        # gets fewer when the tasks before it cannot supply enough independent ones; one that cannot get
-        # min_parents (the first placed, at least) gets none, and min_parents=0 lets any task be a starting task
-        # no dependency implied by others (A before B before C, and A before C), as it would only add
-        # QUBO couplings
-        # between min and max durations (integers), uniformly
+        # a random problem where every machine gets at least one task, each task gets between min_parents
+        # and max_parents parents (or none, if too few are available), and durations are uniform integers
+        # implied dependencies are left out, as they would only add QUBO couplings
         if num_tasks < 1:
             raise ValueError(f"need at least one task, got {num_tasks}")
         if not 1 <= num_machines <= num_tasks:
-            raise ValueError(
-                f"need 1 <= num_machines <= num_tasks, got {num_machines} and {num_tasks}"
-            )
+            raise ValueError(f"need 1 <= num_machines <= num_tasks, got {num_machines} and {num_tasks}")
         if not 0 <= min_parents <= max_parents:
-            raise ValueError(
-                f"need 0 <= min_parents <= max_parents, got {min_parents} and {max_parents}"
-            )
+            raise ValueError(f"need 0 <= min_parents <= max_parents, got {min_parents} and {max_parents}")
         if not 0 <= min_duration <= max_duration:
-            raise ValueError(
-                f"need 0 <= min_duration <= max_duration, got {min_duration} and {max_duration}"
-            )
+            raise ValueError(f"need 0 <= min_duration <= max_duration, got {min_duration} and {max_duration}")
 
         rng = random.Random(seed)
         dependencies = random_dependencies(num_tasks, min_parents, max_parents, rng)
@@ -170,9 +153,8 @@ class Problem:
         print(f" * makespan     : between {self.lower_bound} and {self.horizon}")
         print(f" * optimum      : {'unknown' if self.optimum is None else self.optimum}")
 
-    # the optimal makespan, if known: from the benchmark set, set by hand, recorded by a solver that
-    # proves it, or implied when the lower bound already meets the greedy schedule
-    # success probabilities and reps99 are measured against it
+    # the optimal makespan if known: given (by the benchmark set, or set after an exact solve), or implied
+    # when the lower bound meets the greedy makespan; the solvers measure success against it
     @property
     def optimum(self):
         if self._optimum is None and self.lower_bound == self.horizon:
@@ -201,9 +183,7 @@ class Problem:
                 children[p].append(i)
         return children
 
-    # given an adjacency list (parents or children) and a task
-    # find all tasks reachable from this task, not including the task itself
-    # a loop rather than recursion, so a long chain cannot hit the recursion limit
+    # every task reachable from task_index through an adjacency list (parents or children), excluding itself
     def reachable(self, task_index, adjacency):
         found, stack = set(), list(adjacency[task_index])
         while stack:
@@ -221,10 +201,9 @@ class Problem:
             load[machine] += duration
         return max(load.values(), default=0)
 
-    # the earliest each task can start: the later of every parent finishing at its own earliest,
-    # and the busiest machine working through everything before it
-    # worked out parents first, so a task builds on its parents' bounds rather than on raw durations,
-    # and a parent held back by a busy machine holds back everything after it too
+    # the earliest each task can start: after every parent has finished, and after the busiest machine
+    # has worked through all of the task's ancestors on it
+    # computed parents first, so each task builds on its parents' heads
     @cached_property
     def heads(self):
         heads = [0] * len(self)
@@ -235,8 +214,8 @@ class Problem:
             )
         return heads
 
-    # the least time from each task starting to everything after it finishing, by the same two
-    # measures over the task and everything after it, worked out children first
+    # the least time from each task starting to the end of the schedule, by the same two bounds,
+    # computed children first
     @cached_property
     def tails(self):
         tails = [0] * len(self)
@@ -256,15 +235,40 @@ class Problem:
             self.machine_load(range(len(self))),
         )
 
-    # an upper bound on the makespan: whatever the greedy schedule manages
-    # straight from _solve, since solve measures against the optimum, which needs the horizon
-    # the solvers are imported here rather than at the top, as they import Problem themselves
+    # a quick schedule: tasks are placed once their parents are done, longest remaining chain first,
+    # each in the first gap on its machine that fits
+    def greedy_schedule(self):
+        # each task's priority: the longest chain of durations from it to the end, itself included
+        chain = [0] * len(self)
+        for i in TopologicalSorter(dict(enumerate(self.children))).static_order():
+            chain[i] = self.tasks[i][1] + max((chain[c] for c in self.children[i]), default=0)
+
+        order = TopologicalSorter(dict(enumerate(self.dependencies)))
+        order.prepare()
+        start_times = [0] * len(self)
+        # each machine's busy intervals, sorted; as they never overlap, their ends are sorted too
+        busy = defaultdict(list)
+        while order.is_active():
+            ready = sorted(order.get_ready(), key=lambda i: chain[i], reverse=True)
+            for i in ready:
+                machine, duration, dependencies = self.tasks[i]
+                start = max((start_times[p] + self.tasks[p][1] for p in dependencies), default=0)
+                # skip the intervals over by the time the parents finish, then move past any in the way
+                # until the task fits in a gap
+                intervals = busy[machine]
+                k = bisect_right(intervals, start, key=lambda interval: interval[1])
+                while k < len(intervals) and intervals[k][0] < start + duration:
+                    start = max(start, intervals[k][1])
+                    k += 1
+                insort(intervals, (start, start + duration))
+                start_times[i] = start
+            order.done(*ready)
+        return start_times
+
+    # an upper bound on the makespan: the greedy schedule's
     @cached_property
     def horizon(self):
-        from classical import GreedySolver
-
-        start_times, *_ = GreedySolver()._solve(self)
-        return self.makespan(start_times)
+        return self.makespan(self.greedy_schedule())
 
     # for a given task, what are the possible start times?
     # from its earliest start, to the horizon less the least time after it
@@ -273,9 +277,7 @@ class Problem:
 
     # given a solution (start times for each task), what is the makespan?
     def makespan(self, start_times):
-        return max(
-            start + duration for start, (_, duration, _) in zip(start_times, self.tasks)
-        )
+        return max(start + duration for start, (_, duration, _) in zip(start_times, self.tasks))
 
     # check the dependency and machine constraints hold (start times are assumed to be non-negative)
     def is_feasible(self, start_times):
@@ -284,9 +286,7 @@ class Problem:
 
         # check that all dependencies finish by the time this task starts
         for i, dependencies in enumerate(self.dependencies):
-            if any(
-                start_times[p] + self.tasks[p][1] > start_times[i] for p in dependencies
-            ):
+            if any(start_times[p] + self.tasks[p][1] > start_times[i] for p in dependencies):
                 return False
 
         # check that no two tasks on the same machine overlap
@@ -299,45 +299,47 @@ class Problem:
             for (_, end), (next_start, _) in pairwise(sorted(intervals))
         )
 
-    # draw a schedule as a Gantt chart, by default the greedy one
-    # zero-duration tasks, such as the makespan task, get no bar
-    def draw(self, start_times=None, title=None):
+    # draw a schedule as a Gantt chart (by default the greedy one), with an arrow from each parent's end
+    # to its child's start; zero-duration tasks, such as the makespan task, get no bar
+    def draw(self, start_times=None, title=None, ax=None):
         if start_times is None:
-            from classical import GreedySolver
-
-            start_times = GreedySolver().solve(self).start_times
+            start_times = self.greedy_schedule()
             title = title or "greedy"
-
+        if ax is None:
+            _, ax = plt.subplots(figsize=(10, 1.2 + 0.6 * self.num_machines), layout="constrained")
         total = self.makespan(start_times)
 
-        figure, ax = plt.subplots(figsize=(10, 6))
-        for i, (machine, duration, _) in enumerate(self.tasks):
-            if not duration:
-                continue
-            ax.add_patch(
-                patches.Rectangle(
-                    (start_times[i], machine - 0.5),
+        for i, (machine, duration, dependencies) in enumerate(self.tasks):
+            if duration:
+                bar = patches.Rectangle(
+                    (start_times[i], machine - 0.4),
                     duration,
-                    1,
-                    edgecolor="black",
-                    facecolor="skyblue",
+                    0.8,
+                    facecolor="#86b6ef",
+                    edgecolor="white",
+                    linewidth=2,
                 )
-            )
-            ax.text(
-                start_times[i] + duration / 2,
-                machine,
-                f"T{i}",
-                ha="center",
-                va="center",
-            )
+                ax.add_patch(bar)
+                ax.text(start_times[i] + duration / 2, machine, f"T{i}", ha="center", va="center")
+            for p in dependencies:
+                ax.annotate(
+                    "",
+                    xy=(start_times[i], machine),
+                    xytext=(start_times[p] + self.tasks[p][1], self.tasks[p][0]),
+                    arrowprops={
+                        "arrowstyle": "->",
+                        "color": "#52514e",
+                        "linewidth": 1,
+                        "shrinkA": 0,
+                        "shrinkB": 0,
+                    },
+                )
 
         ax.set_xlim(0, total)
-        ax.set_ylim(-1, self.num_machines)
-        ax.set_xlabel("Time")
-        ax.set_ylabel("Machines")
-        ax.set_yticks(range(self.num_machines))
-        ax.set_yticklabels([f"M{i}" for i in range(self.num_machines)])
-        ax.grid(True)
-        ax.set_title(f"{title or self.name or 'schedule'} (makespan {total})")
-        figure.tight_layout()
-        plt.show()
+        ax.set_ylim(-0.6, self.num_machines - 0.4)
+        ax.set_xlabel("time")
+        ax.set_yticks(range(self.num_machines), [f"M{m}" for m in range(self.num_machines)])
+        ax.grid(axis="x", color="#e1e0d9", linewidth=0.8)
+        ax.set_axisbelow(True)
+        ax.spines[["top", "right"]].set_visible(False)
+        ax.set_title(f"{title or self.name or 'schedule'} (makespan {total})", loc="left")
