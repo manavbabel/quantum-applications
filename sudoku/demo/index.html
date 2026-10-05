@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can a quantum computer solve sudoku?</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" class="defs" aria-hidden="true">
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-new" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M19.8 3.8v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-erase" viewBox="0 0 24 24"><path d="M9 20h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4.6 14.6l9.2-9.2a2 2 0 0 1 2.8 0l3 3a2 2 0 0 1 0 2.8L12 19.8H8.8l-4.2-4.2a.8.8 0 0 1 0-1z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.2 11l6 6" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3"/><path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3" transform="rotate(60 12 12)"/>
+    <path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3" transform="rotate(120 12 12)"/><path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3" transform="rotate(180 12 12)"/>
+    <path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3" transform="rotate(240 12 12)"/><path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3" transform="rotate(300 12 12)"/>
+  </g></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="currentColor"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" fill="currentColor"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 13.5c2.2 1.6 3.8 3.4 5 5.5C11.6 12 15.8 6.8 21 3.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main id="app">
+
+  <!-- 1. Pick a size -->
+  <section class="screen" id="pick">
+    <header class="pick-head">
+      <h1>Can a quantum computer solve sudoku?</h1>
+      <p>Pick a puzzle and solve it against the clock. Then watch a quantum annealer solve the same one.</p>
+    </header>
+    <div class="cards">
+      <button class="card" data-size="4" style="--tilt: -2.5deg">
+        <span class="card-grid" data-n="4"></span>
+        <span class="card-size">4 &times; 4</span>
+        <span class="card-hint"><span class="stars s1"></span>Quick</span>
+      </button>
+      <button class="card" data-size="6" style="--tilt: 1.2deg">
+        <span class="card-grid" data-n="6"></span>
+        <span class="card-size">6 &times; 6</span>
+        <span class="card-hint"><span class="stars s2"></span>Medium</span>
+      </button>
+      <button class="card" data-size="9" style="--tilt: 2.4deg">
+        <span class="card-grid" data-n="9"></span>
+        <span class="card-size">9 &times; 9</span>
+        <span class="card-hint"><span class="stars s3"></span>Challenge</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 2. Solve it -->
+  <section class="screen" id="solve">
+    <div class="topbar">
+      <button class="key small" data-act="back"><svg><use href="#i-back"/></svg>Back</button>
+      <h2>Solve it as fast as you can</h2>
+      <button class="key small" data-act="new"><svg><use href="#i-new"/></svg>New puzzle</button>
+    </div>
+    <div class="work">
+      <div class="sheet" id="solve-sheet">
+        <div class="sheet-head"></div>
+        <div class="grid-slot"></div>
+        <div class="start-cover">
+          <button class="key primary huge" id="start-btn"><svg><use href="#i-play"/></svg>Start</button>
+        </div>
+      </div>
+      <aside class="side">
+        <div class="lcd">
+          <span class="lcd-label">Time</span>
+          <span class="lcd-value" id="timer">0.0<small> s</small></span>
+        </div>
+        <div class="pad" id="pad"></div>
+        <div class="done-card" id="done-card">
+          <span class="done-title">You solved it!</span>
+          <span class="done-time" id="done-time">0.0 s</span>
+          <span class="done-note">Write your time on the board!</span>
+        </div>
+        <div class="side-actions">
+          <button class="key wide" id="anneal-it-btn"><svg><use href="#i-snow"/></svg>Anneal it</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 3. Anneal -->
+  <section class="screen" id="anneal">
+    <div class="topbar">
+      <button class="key small" data-act="back"><svg><use href="#i-back"/></svg>Back</button>
+      <h2>How a quantum annealer solves it</h2>
+      <button class="key small" data-act="new"><svg><use href="#i-new"/></svg>New puzzle</button>
+    </div>
+    <div class="work">
+      <div class="sheet" id="anneal-sheet">
+        <div class="sheet-head"></div>
+        <div class="grid-slot"></div>
+        <div class="stamp" id="anneal-stamp">Solved!</div>
+      </div>
+      <div class="thermo" id="thermo" role="slider" tabindex="0" aria-label="Temperature" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+        <span class="screw top"></span>
+        <span class="t-label hot">HOT</span>
+        <div class="tube" id="tube">
+          <div class="ticks"></div>
+          <div class="bore">
+            <div class="liquid" id="liquid"><i class="liq-hot" id="liq-hot"></i><i class="liq-cold" id="liq-cold"></i></div>
+          </div>
+          <div class="knob-track"><div class="knob-rail" id="knob-rail"><span class="knob"><i></i><i></i><i></i></span></div></div>
+        </div>
+        <div class="bulb"><i class="liq-hot" id="bulb-hot"></i><i class="liq-cold" id="bulb-cold"></i><b></b></div>
+        <span class="t-label cold">COLD</span>
+        <span class="screw bottom"></span>
+      </div>
+      <aside class="side notes">
+        <ol class="steps">
+          <li id="step-pencil"><span class="num">1</span><div><b>Pencil in every number that could fit</b><span>Numbers already in the same row, column or box are crossed out.</span></div></li>
+          <li id="step-cool"><span class="num">2</span><div><b>Cool it down slowly</b><span>Drag the thermometer down to COLD, or press Anneal.</span></div></li>
+        </ol>
+        <p class="status" id="anneal-status">&nbsp;</p>
+        <p class="legend">Each pencil mark is a <b>qubit</b>. Big and dark means likely, small and faint means unlikely. Red squares are breaking a rule.</p>
+        <div class="side-actions">
+          <button class="key primary wide" id="anneal-btn"><svg><use href="#i-snow"/></svg>Anneal</button>
+          <button class="key primary wide hidden" id="send-btn"><svg><use href="#i-chip"/></svg>Send to quantum annealer</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4. Send to quantum annealer -->
+  <section class="screen" id="send">
+    <div class="topbar">
+      <button class="key small" data-act="back"><svg><use href="#i-back"/></svg>Back</button>
+      <h2>Send it to a real quantum computer</h2>
+      <button class="key small" data-act="new"><svg><use href="#i-new"/></svg>New puzzle</button>
+    </div>
+    <div class="work">
+      <div class="checklist">
+        <ol id="stages">
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Formulating the problem</b><span>Each possible number becomes a qubit.</span></div></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Mapping to physical qubits</b><span>Finding room for them on the chip.</span></div></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Sending the problem</b><span>Off to a chip colder than space.</span></div></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Processing results</b><span>100 answers come back.</span></div></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Done</b><span>The best answer goes on the grid.</span></div></li>
+        </ol>
+        <button class="key primary wide hidden" id="again-btn"><svg><use href="#i-new"/></svg>Try another puzzle</button>
+      </div>
+      <div class="display">
+        <div class="glass">
+          <div class="hud" id="hud"></div>
+          <div class="views">
+            <div class="view" id="v1"><div class="sq" id="v1-sq"><canvas id="v1-canvas"></canvas></div></div>
+            <div class="view" id="v2"><div class="die" id="v2-die"><div class="die-clip"><div class="zoom" id="v2-zoom"><canvas id="v2-base"></canvas><canvas id="v2-glow"></canvas></div></div></div></div>
+            <div class="view" id="v3">
+              <svg class="fridge" viewBox="0 0 470 500" aria-hidden="true">
+                <defs>
+                  <linearGradient id="g-side" x1="0" x2="1">
+                    <stop offset="0" stop-color="#6e5216"/><stop offset=".22" stop-color="#e9c46a"/><stop offset=".45" stop-color="#a77d24"/>
+                    <stop offset=".7" stop-color="#f6dc93"/><stop offset="1" stop-color="#6a4e14"/>
+                  </linearGradient>
+                  <linearGradient id="g-top" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#fff0c2"/><stop offset=".5" stop-color="#e2b955"/><stop offset="1" stop-color="#9c7322"/>
+                  </linearGradient>
+                  <linearGradient id="g-rod" x1="0" x2="1">
+                    <stop offset="0" stop-color="#7d868e"/><stop offset=".45" stop-color="#e8edf1"/><stop offset="1" stop-color="#6b737a"/>
+                  </linearGradient>
+                  <radialGradient id="g-pulse"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#9fe2ff"/><stop offset="1" stop-color="#3aa8ff" stop-opacity="0"/></radialGradient>
+                </defs>
+                <g id="fridge-parts"></g>
+                <line class="cable" x1="200" y1="-30" x2="200" y2="434"/>
+                <g class="chip-pkg"><rect x="182" y="434" width="36" height="36" rx="4"/><rect class="chip-core" x="190" y="442" width="20" height="20" rx="2"/></g>
+                <g class="pulse"><circle cx="200" cy="0" r="16" fill="url(#g-pulse)"/></g>
+                <circle class="chip-glow" cx="200" cy="452" r="34" fill="url(#g-pulse)"/>
+              </svg>
+              <div class="cold-panel">
+                <div class="mini-thermo"><div class="mt-tube"><i></i></div><div class="mt-bulb"></div></div>
+                <div class="cold-text">
+                  <span class="kelvin">0.015 K</span>
+                  <span class="colder">colder than outer space</span>
+                  <span class="fine">That is -273.135 &deg;C. Outer space is about 2.7 K.</span>
+                </div>
+              </div>
+            </div>
+            <div class="view" id="v4"><div class="hist" id="hist"></div></div>
+            <div class="view" id="v5"><div class="sheet result" id="result-sheet"><div class="grid-slot"></div><div class="stamp" id="result-stamp">Solved!</div></div></div>
+          </div>
+          <div class="caption" id="caption">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="staff-dot" title=""></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

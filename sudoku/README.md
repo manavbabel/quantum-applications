@@ -17,6 +17,7 @@ quantum annealing on one of three backends:
 - `annealers.py`: the three backends; each takes a dimod BQM and returns a dimod SampleSet
 - `puzzles/`: example puzzles
 - `test_sudoku.py`: checks the encoding on every state of a small puzzle
+- `demo/`: the booth demo; see `demo/README.md`
 
 ## Usage
 

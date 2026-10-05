@@ -75,8 +75,8 @@ def candidates(puzzle):
             for r in range(n) for c in range(n) if puzzle[r, c] == 0}
 
 
-def build_bqm(puzzle):
-    """QUBO over variables (r, c, v); ground-state energy 0 iff solvable."""
+def constraint_groups(puzzle):
+    """The "exactly one" groups of variables (r, c, v)."""
     n = len(puzzle)
     cand = candidates(puzzle)
     groups = [[(r, c, v) for v in vs] for (r, c), vs in cand.items()]  # one value per blank cell
@@ -84,9 +84,13 @@ def build_bqm(puzzle):
         given = {puzzle[r, c] for r, c in u}
         for v in set(range(1, n + 1)) - given:  # each missing value exactly once per unit
             groups.append([(r, c, v) for r, c in u if v in cand.get((r, c), ())])
+    return groups
 
+
+def build_bqm(puzzle):
+    """QUBO over variables (r, c, v); ground-state energy 0 iff solvable."""
     bqm = dimod.BinaryQuadraticModel("BINARY")
-    for g in groups:  # (sum x - 1)^2 = 1 - sum x_i + 2 sum_{i<j} x_i x_j, using x^2 = x
+    for g in constraint_groups(puzzle):  # (sum x - 1)^2 = 1 - sum x_i + 2 sum_{i<j} x_i x_j, using x^2 = x
         bqm.offset += 1
         for x in g:
             bqm.add_linear(x, -1)

@@ -48,15 +48,20 @@ Everything new lives in `sudoku/demo/`.
 | `setup_dwave.py` | creates `.venv`, installs `requirements.txt`, saves the token to `dwave.conf`, checks the connection and the chip mappings | `python` |
 | `requirements.txt` | `dwave-cloud-client==0.14.6`, the version in `uv.lock` | |
 | `precompute.py` | builds `data.js`; run by us in the repo's uv environment, never on the demo laptop | `uv run` |
-| `test_demo.py` | tests | `uv run pytest` |
+| `test_demo.py`, `test_serve.py` | tests of the generated data, and of the server | `uv run pytest` |
 | `README.md` | the four commands above and what the staff marker means | |
 
 Changes outside the folder:
 
 - `sudoku/annealers.py`: `_sqa_read` gains a `record_every` argument and also
-  returns snapshots of the Trotter slices every `record_every` sweeps
-  (`record_every=0` records nothing). `anneal_sqa` behaves as before and still
-  draws its seeds from the global numpy RNG.
+  returns snapshots of the Trotter slices at the random start and every
+  `record_every` sweeps (`record_every=0` records nothing). The scaling and
+  sparse-matrix setup moves into `_sqa_inputs`, shared with `precompute.py`.
+  `anneal_sqa` returns identical results for the same seed and still draws
+  its seeds from the global numpy RNG.
+- `sudoku/sudoku.py`: the group-building part of `build_bqm` becomes
+  `constraint_groups`, which `precompute.py` also uses; `build_bqm` is
+  unchanged in behaviour.
 - `.gitignore`: add `sudoku/demo/dwave.conf`. The existing `.venv` pattern
   already covers `sudoku/demo/.venv`.
 - `sudoku/README.md`: one line pointing to `demo/`.
@@ -158,7 +163,11 @@ from: filled for D-Wave, hollow for the recorded simulation.
 - The jitter is one CSS keyframe animation with a random delay per mark; its
   amplitude is a CSS custom property on the grid, set from the slider, so no
   JavaScript runs per mark per frame.
-- Slider positions between recorded frames are interpolated linearly.
+- Slider positions between recorded frames are interpolated linearly. The
+  thermometer spreads 35% of its travel evenly over the frames and 65% in
+  proportion to how much changes between frames, so the settled tail doesn't
+  take up half the slider.
+- Cell heat is scaled by the recording's own maximum.
 - The chip lattice is drawn once to a canvas; only the highlights are redrawn.
 
 ## Data (`data.js`)
@@ -174,9 +183,9 @@ with a script tag (so it works when `index.html` is opened from disk) and
   - `variables`: the `(r, c, v)` of each logical qubit, in a fixed order
   - `groups`: the "exactly one" groups as lists of variable indices, which
     give both the energy and the lines drawn in stage 1
-  - `frames`: about 80 frames, each with the probability of every variable
-    (its share of the 16 Trotter slices set to 1) and the broken-rule share of
-    every blank cell
+  - `frames`: 80 frames, each with the probability of every variable (its
+    share of the Trotter slices set to 1) and the broken-rule share of every
+    blank cell
   - `qpu`: the chains (one list of physical qubits per variable), the physical
     Ising problem `h` and `J`, chain strength, `num_reads` (100) and
     `annealing_time`
@@ -185,9 +194,14 @@ with a script tag (so it works when `index.html` is opened from disk) and
 
 How `precompute.py` fills it:
 
-- Recordings: run `_sqa_read` with the default settings and `record_every`
-  chosen to give about 80 frames, trying seeds in order until the read ends at
-  energy 0. Seeds come from the global RNG.
+- Recordings: one `_sqa_read` run per puzzle, with settings chosen for the
+  display: 128 slices, beta 16, 312 sweeps, and Gamma from 16 down to 0.007,
+  spaced so the slice coupling Jp rises linearly. The frames are the random
+  start, a snapshot every 4 sweeps, and the read-out. Seeds come from the
+  global RNG, tried in order until the read ends at energy 0 with every slice
+  agreeing. `anneal_sqa`'s defaults (16 slices, beta 160) solve well but look
+  static: each slice starts cold and solves a small puzzle on its own within
+  a few sweeps, so the slider would have little to show.
 - Chip mappings: fetch the solver's properties (free), find an embedding with
   `minorminer.find_embedding` under a fixed seed, set chain strength with
   `uniform_torque_compensation` (what `EmbeddingComposite` uses), and embed
@@ -248,16 +262,24 @@ with the repo's uv environment and pull the new `data.js`.
 
 ## Testing
 
-`test_demo.py`, run with `uv run pytest sudoku`:
+Run with `uv run pytest sudoku`.
 
-- majority-vote readback on made-up chains, including a tie and a broken chain
+`test_demo.py`:
+
 - energies from `groups` match `build_bqm(...).energies` on random bit strings
 - for every puzzle in `data.js`: exactly one solution, `solution` passes
-  `is_solution`, the last frame rounds to the solution, the fallback's best
-  read decodes to the solution, and every chain is connected and covers each
-  logical coupler on the stored chip graph (`dwave.embedding.verify_embedding`)
+  `is_solution`, the last frame equals the solution, the recording starts hot
+  and its slices agree at the end, the fallback's best read decodes to the
+  solution, and every chain is connected and covers each logical coupler on
+  the stored chip graph (`dwave.embedding.verify_embedding`)
+
+`test_serve.py`:
+
+- majority-vote readback on made-up chains, including a tie and a broken chain
 - the server, with the D-Wave call swapped for a fake, returns the right shape
-  from `/api/sample`, and returns 503 when the fake raises
+  from `/api/sample`, returns 503 when the fake raises, and never serves
+  `dwave.conf`
+- reading results through the client's own `Future`, with and without numpy
 
 By hand, in Chrome and Edge:
 

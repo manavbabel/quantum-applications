@@ -72,19 +72,27 @@ def _evolve(psi, n, levels, level_of, total_time, steps):
 
 
 @njit(cache=True)
-def _sqa_read(h, indptr, indices, data, slices, beta, gammas, seed):
+def _sqa_read(h, indptr, indices, data, slices, beta, gammas, seed, record_every):
     """One SQA run on the Ising model sum h_i s_i + sum_{i<j} J_ij s_i s_j.
 
     J is symmetric CSR (indptr, indices, data). Trotter slices are coupled
     ferromagnetically with Jp = 1/2 ln coth(beta Gamma / P), so Boltzmann
     weight is exp(-(beta/P) sum_k E(s_k) + Jp sum_k sum_i s_i^k s_i^(k+1)).
-    Returns all slices; the caller keeps the best.
+    Returns all slices (the caller keeps the best) and a history of shape
+    (frames, slices, n): all slices at the random start, after every
+    record_every sweeps and after the last sweep, or no frames if record_every
+    is 0.
     """
     np.random.seed(seed)
     n = h.size
     s = np.where(np.random.random((slices, n)) < 0.5, -1.0, 1.0)
     bp = beta / slices
-    for gamma in gammas:
+    frames = 1 + (gammas.size + record_every - 1) // record_every if record_every > 0 else 0
+    history = np.empty((frames, slices, n))
+    if record_every > 0:
+        history[0] = s
+    for t in range(gammas.size):
+        gamma = gammas[t]
         jp = 0.5 * np.log(1.0 / np.tanh(beta * gamma / slices))
         # Local single-spin flips in each slice.
         for k in range(slices):
@@ -107,7 +115,21 @@ def _sqa_read(h, indptr, indices, data, slices, beta, gammas, seed):
             if dx >= 0.0 or np.random.random() < np.exp(dx):
                 for k in range(slices):
                     s[k, i] = -s[k, i]
-    return s
+        if record_every > 0 and ((t + 1) % record_every == 0 or t == gammas.size - 1):
+            history[1 + t // record_every] = s
+    return s, history
+
+
+def _sqa_inputs(bqm, variables):
+    """h and symmetric CSR J (indptr, indices, data) for _sqa_read, divided by the largest |coefficient|."""
+    h, (row, col, j), _ = bqm.spin.to_numpy_vectors(variables)
+    scale = max(np.abs(h).max(initial=0), np.abs(j).max(initial=0)) or 1.0
+    rows, cols = np.concatenate([row, col]), np.concatenate([col, row])
+    order = np.argsort(rows, kind="stable")
+    indptr = np.concatenate([[0], np.cumsum(np.bincount(rows, minlength=len(h)))])
+    indices = cols[order].astype(np.int64)
+    data = np.concatenate([j, j])[order] / scale
+    return h / scale, indptr, indices, data
 
 
 def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5, 1e-3),
@@ -121,19 +143,13 @@ def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5
     soon as one reaches it (sudoku ground states have energy 0).
     """
     variables = list(bqm.variables)
-    h, (row, col, j), _ = bqm.spin.to_numpy_vectors(variables)
-    scale = max(np.abs(h).max(initial=0), np.abs(j).max(initial=0)) or 1.0
-    rows, cols = np.concatenate([row, col]), np.concatenate([col, row])
-    order = np.argsort(rows, kind="stable")
-    indptr = np.concatenate([[0], np.cumsum(np.bincount(rows, minlength=len(h)))])
-    indices = cols[order].astype(np.int64)
-    data = np.concatenate([j, j])[order] / scale
+    h, indptr, indices, data = _sqa_inputs(bqm, variables)
     gammas = np.linspace(gamma[0], gamma[1], sweeps)
 
     samples, energies = [], []
     for _ in range(num_reads):
-        spins = _sqa_read(h / scale, indptr, indices, data, slices, beta, gammas,
-                          np.random.randint(2**31))
+        spins, _ = _sqa_read(h, indptr, indices, data, slices, beta, gammas,
+                             np.random.randint(2**31), 0)
         bits = ((spins + 1) // 2).astype(np.int8)
         slice_e = bqm.energies((bits, variables))
         best = int(np.argmin(slice_e))

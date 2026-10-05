@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# D-Wave token for the sudoku demo
+sudoku/demo/dwave.conf
