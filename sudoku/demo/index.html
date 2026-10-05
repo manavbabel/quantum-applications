@@ -10,6 +10,7 @@
 
 <svg width="0" height="0" class="defs" aria-hidden="true">
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
   <symbol id="i-new" viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M19.8 3.8v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-erase" viewBox="0 0 24 24"><path d="M9 20h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4.6 14.6l9.2-9.2a2 2 0 0 1 2.8 0l3 3a2 2 0 0 1 0 2.8L12 19.8H8.8l-4.2-4.2a.8.8 0 0 1 0-1z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.2 11l6 6" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
@@ -19,7 +20,6 @@
     <path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3" transform="rotate(240 12 12)"/><path d="M12 12V2.6M9.5 4.3L12 6.6l2.5-2.3" transform="rotate(300 12 12)"/>
   </g></symbol>
   <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="currentColor"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z" fill="currentColor"/></symbol>
   <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 13.5c2.2 1.6 3.8 3.4 5 5.5C11.6 12 15.8 6.8 21 3.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -27,26 +27,25 @@
 
   <!-- 1. Pick a size -->
   <section class="screen" id="pick">
-    <header class="pick-head">
-      <h1>Can a quantum computer solve sudoku?</h1>
-      <p>Pick a puzzle and solve it against the clock. Then watch a quantum annealer solve the same one.</p>
-    </header>
-    <div class="cards">
-      <button class="card" data-size="4" style="--tilt: -2.5deg">
-        <span class="card-grid" data-n="4"></span>
-        <span class="card-size">4 &times; 4</span>
-        <span class="card-hint"><span class="stars s1"></span>Quick</span>
-      </button>
-      <button class="card" data-size="6" style="--tilt: 1.2deg">
-        <span class="card-grid" data-n="6"></span>
-        <span class="card-size">6 &times; 6</span>
-        <span class="card-hint"><span class="stars s2"></span>Medium</span>
-      </button>
-      <button class="card" data-size="9" style="--tilt: 2.4deg">
-        <span class="card-grid" data-n="9"></span>
-        <span class="card-size">9 &times; 9</span>
-        <span class="card-hint"><span class="stars s3"></span>Challenge</span>
-      </button>
+    <div class="pick-wrap">
+      <header class="pick-head">
+        <h1>Can a quantum computer solve sudoku?</h1>
+        <p>Pick a puzzle and race the clock. Then a quantum annealer has a go at the same one.</p>
+      </header>
+      <div class="cards">
+        <button class="card" data-size="4" style="--tilt: -2.5deg; --k: .64">
+          <span class="card-grid" data-n="4"></span>
+          <span class="card-size">4x4</span>
+        </button>
+        <button class="card" data-size="6" style="--tilt: 1.2deg; --k: .8">
+          <span class="card-grid" data-n="6"></span>
+          <span class="card-size">6x6</span>
+        </button>
+        <button class="card" data-size="9" style="--tilt: 2deg; --k: 1">
+          <span class="card-grid" data-n="9"></span>
+          <span class="card-size">9x9</span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -67,14 +66,13 @@
       </div>
       <aside class="side">
         <div class="lcd">
-          <span class="lcd-label">Time</span>
           <span class="lcd-value" id="timer">0.0<small> s</small></span>
         </div>
         <div class="pad" id="pad"></div>
         <div class="done-card" id="done-card">
           <span class="done-title">You solved it!</span>
           <span class="done-time" id="done-time">0.0 s</span>
-          <span class="done-note">Write your time on the board!</span>
+          <span class="done-note">Now write your time on the board.</span>
         </div>
         <div class="side-actions">
           <button class="key wide" id="anneal-it-btn"><svg><use href="#i-snow"/></svg>Anneal it</button>
@@ -111,12 +109,9 @@
         <span class="screw bottom"></span>
       </div>
       <aside class="side notes">
-        <ol class="steps">
-          <li id="step-pencil"><span class="num">1</span><div><b>Pencil in every number that could fit</b><span>Numbers already in the same row, column or box are crossed out.</span></div></li>
-          <li id="step-cool"><span class="num">2</span><div><b>Cool it down slowly</b><span>Drag the thermometer down to COLD, or press Anneal.</span></div></li>
-        </ol>
+        <p class="how" id="anneal-how">&nbsp;</p>
         <p class="status" id="anneal-status">&nbsp;</p>
-        <p class="legend">Each pencil mark is a <b>qubit</b>. Big and dark means likely, small and faint means unlikely. Red squares are breaking a rule.</p>
+        <p class="legend">Each pencil mark is a qubit, and the bigger it is, the more likely that number is the answer. A red square is breaking a rule.</p>
         <div class="side-actions">
           <button class="key primary wide" id="anneal-btn"><svg><use href="#i-snow"/></svg>Anneal</button>
           <button class="key primary wide hidden" id="send-btn"><svg><use href="#i-chip"/></svg>Send to quantum annealer</button>
@@ -135,17 +130,17 @@
     <div class="work">
       <div class="checklist">
         <ol id="stages">
-          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Formulating the problem</b><span>Each possible number becomes a qubit.</span></div></li>
-          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Mapping to physical qubits</b><span>Finding room for them on the chip.</span></div></li>
-          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Sending the problem</b><span>Off to a chip colder than space.</span></div></li>
-          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Processing results</b><span>100 answers come back.</span></div></li>
-          <li><span class="box"><svg><use href="#i-tick"/></svg></span><div><b>Done</b><span>The best answer goes on the grid.</span></div></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><b>Formulating the problem</b></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><b>Mapping to physical qubits</b></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><b>Sending the problem</b></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><b>Processing results</b></li>
+          <li><span class="box"><svg><use href="#i-tick"/></svg></span><b>Done</b></li>
         </ol>
+        <button class="key primary wide" id="next-btn" disabled><svg><use href="#i-next"/></svg>Next</button>
         <button class="key primary wide hidden" id="again-btn"><svg><use href="#i-new"/></svg>Try another puzzle</button>
       </div>
       <div class="display">
         <div class="glass">
-          <div class="hud" id="hud"></div>
           <div class="views">
             <div class="view" id="v1"><div class="sq" id="v1-sq"><canvas id="v1-canvas"></canvas></div></div>
             <div class="view" id="v2"><div class="die" id="v2-die"><div class="die-clip"><div class="zoom" id="v2-zoom"><canvas id="v2-base"></canvas><canvas id="v2-glow"></canvas></div></div></div></div>

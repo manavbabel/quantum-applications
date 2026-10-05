@@ -16,6 +16,8 @@ Run `setup_dwave.py` once, with internet, before the event. It creates `.venv` i
 
 `serve.py` serves this folder at http://localhost:8765/ and opens it in the default browser. Press F11 for full screen, and Ctrl+C in the console to stop the server. It switches to `.venv` by itself, so there's nothing to activate. The console says whether D-Wave can be reached and prints one line per D-Wave job. `python serve.py --no-browser` starts the server without opening the page.
 
+The visitor steps through "Send to quantum annealer" with a Next button, and nothing goes to D-Wave until they press Send on the third step.
+
 Opening `index.html` directly also works, but then "Send to quantum annealer" always shows the recorded simulation. Through `serve.py`, the recording is also shown whenever D-Wave can't be used: no token, no internet, no answer within 18 s, or any error.
 
 The small dot in the bottom-right corner tells staff where the last result came from: filled for D-Wave, hollow for the recorded simulation.

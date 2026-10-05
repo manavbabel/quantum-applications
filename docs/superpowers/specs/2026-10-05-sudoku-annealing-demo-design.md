@@ -94,7 +94,8 @@ the boxes.
 
 ### 1. Pick a size
 
-Three large buttons: 4x4, 6x6, 9x9.
+A left-aligned heading and three paper sheets showing the puzzles, labelled
+4x4, 6x6 and 9x9. Each sheet is sized by its grid, so the 9x9 is the largest.
 
 ### 2. Solve it
 
@@ -105,7 +106,7 @@ Three large buttons: 4x4, 6x6, 9x9.
 - A cell turns red when its number clashes with another in its row, column or
   box. A wrong number with no clash stays uncoloured, as on paper.
 - The timer stops when the grid is full with nothing red. The time is shown
-  large, with "Write your time on the board!".
+  large, with "Now write your time on the board."
 - Buttons: "Anneal it", "New puzzle".
 
 The visitor can press "Anneal it" without solving.
@@ -129,29 +130,35 @@ The visitor can press "Anneal it" without solving.
    across the grid from the top-left corner, and "Solved!" appears.
 5. Button: "Send to quantum annealer".
 
+Beside the thermometer, one sentence says what to do (pencilling in, then
+cooling) and another describes what's happening at the current temperature.
+
 The slider is labelled as temperature, as decided on 2026-10-05. In the
 simulation it controls the transverse field; the simulation's temperature is
 fixed.
 
 ### 4. Send to quantum annealer
 
-A list of the five stages sits beside the animation, each ticked off in turn.
-Every stage stays on screen for at least 2.5 s.
+A list of the five stages sits beside the animation, each ticked off when its
+animation finishes. The visitor moves on with a Next button under the list,
+which is greyed out while a stage plays. The real figures go in the caption
+under the animation.
 
 1. Formulating the problem: each blank cell splits into a column of dots, one
-   qubit per remaining candidate, and lines join qubits that share a rule.
-   Counters show the real numbers of qubits and couplers.
+   qubit per remaining candidate, and lines join qubits that share a rule. The
+   caption gives the numbers of qubits and couplers.
 2. Mapping to physical qubits: the chip's qubit lattice is drawn faintly, and
-   the puzzle's qubits light up chain by chain. Counters show the number of
-   physical qubits and the longest chain.
-3. Sending the problem: a pulse travels down into a drawing of the chip's
-   refrigerator, beside a thermometer reading 0.015 K, "colder than outer
-   space". This stage lasts until the reply arrives.
-4. Processing results: the 100 reads drop into a histogram of energies. The
-   bar at zero lights up, with "x of 100 answers broke no rules".
+   the puzzle's qubits light up chain by chain. The caption gives the longest
+   chain and how many of the chip's qubits the puzzle uses.
+3. Sending the problem: a drawing of the chip's refrigerator, beside a
+   thermometer reading 0.015 K, "colder than outer space". The button reads
+   Send, and nothing goes to D-Wave until it's pressed. Then a pulse travels
+   down the fridge until the reply arrives, for at least 2.5 s.
+4. Processing results: the 100 reads drop into a histogram of energies, and
+   the tube at zero lights up, with "x of the 100 answers broke no rules".
 5. Done: the lowest-energy read fills the grid cell by cell. Any wrong cells go
-   red, with a caption along the lines of "Today's quantum computers still make
-   mistakes on bigger problems" (final wording to agree).
+   red, with "Today's quantum computers still make mistakes on bigger
+   problems". The button becomes "Try another puzzle".
 
 A 6px dot in the bottom-right corner tells staff where the last result came
 from: filled for D-Wave, hollow for the recorded simulation.
