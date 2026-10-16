@@ -132,8 +132,7 @@ def _sqa_inputs(bqm, variables):
     return h / scale, indptr, indices, data
 
 
-def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5, 1e-3),
-               stop_energy=None):
+def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5, 1e-3), stop_energy=None):
     """Simulated quantum annealing; Gamma decreases linearly over `sweeps`.
 
     Couplings are divided by the largest |coefficient|, so beta and gamma are in
@@ -148,8 +147,7 @@ def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5
 
     samples, energies = [], []
     for _ in range(num_reads):
-        spins, _ = _sqa_read(h, indptr, indices, data, slices, beta, gammas,
-                             np.random.randint(2**31), 0)
+        spins, _ = _sqa_read(h, indptr, indices, data, slices, beta, gammas, np.random.randint(2**31), 0)
         bits = ((spins + 1) // 2).astype(np.int8)
         slice_e = bqm.energies((bits, variables))
         best = int(np.argmin(slice_e))
@@ -157,8 +155,7 @@ def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5
         energies.append(slice_e[best])
         if stop_energy is not None and slice_e[best] <= stop_energy + 1e-9:
             break
-    return dimod.SampleSet.from_samples((np.array(samples), variables),
-                                        dimod.BINARY, energies)
+    return dimod.SampleSet.from_samples((np.array(samples), variables), dimod.BINARY, energies)
 
 
 def anneal_qpu(bqm, num_reads=1000, **kwargs):
@@ -166,8 +163,7 @@ def anneal_qpu(bqm, num_reads=1000, **kwargs):
     from dwave.system import DWaveSampler, EmbeddingComposite
 
     sampler = EmbeddingComposite(DWaveSampler())
-    return sampler.sample(bqm, num_reads=num_reads, label="quantum-sudoku",
-                          return_embedding=True, **kwargs)
+    return sampler.sample(bqm, num_reads=num_reads, label="quantum-sudoku", return_embedding=True, **kwargs)
 
 
 BACKENDS = {"statevector": anneal_statevector, "sqa": anneal_sqa, "qpu": anneal_qpu}

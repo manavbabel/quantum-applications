@@ -29,7 +29,7 @@ def data_region():
     try:
         with open("data.js", encoding="utf-8") as f:
             text = f.read()
-        return json.loads(text[text.index("=") + 1:text.rindex(";")])["chip"]["region"]
+        return json.loads(text[text.index("=") + 1 : text.rindex(";")])["chip"]["region"]
     except (OSError, ValueError, KeyError):
         return DEFAULT_REGION
 
@@ -56,7 +56,16 @@ def main():
         print("[OK] created .venv")
 
     print("Installing requirements.txt into .venv (needs internet, can take a minute) ...", flush=True)
-    pip = [venv_python(), "-m", "pip", "install", "--disable-pip-version-check", "-q", "-r", "requirements.txt"]
+    pip = [
+        venv_python(),
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "-q",
+        "-r",
+        "requirements.txt",
+    ]
     if subprocess.run(pip).returncode != 0:
         print("[FAIL] pip install failed")
         print("       Check the internet connection, then run this again.")
@@ -66,7 +75,9 @@ def main():
     if args.token or not os.path.exists("dwave.conf"):
         token = args.token
         if not token:
-            print("Paste your D-Wave API token. It is on the Leap dashboard: https://cloud.dwavesys.com/leap/")
+            print(
+                "Paste your D-Wave API token. It is on the Leap dashboard: https://cloud.dwavesys.com/leap/"
+            )
             try:
                 token = input("Token: ")
             except EOFError:

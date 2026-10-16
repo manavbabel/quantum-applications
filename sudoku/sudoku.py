@@ -24,8 +24,11 @@ BLANKS = ".0_"
 def parse(text):
     """Parse rows separated by newlines or '/'; cells are single characters,
     or whitespace-separated tokens when n > 9. '.', '0' and '_' are blanks."""
-    rows = [ln.split() if len(ln.split()) > 1 else list(ln.strip())
-            for ln in text.replace("/", "\n").splitlines() if ln.strip()]
+    rows = [
+        ln.split() if len(ln.split()) > 1 else list(ln.strip())
+        for ln in text.replace("/", "\n").splitlines()
+        if ln.strip()
+    ]
     grid = np.array([[0 if t in BLANKS else int(t) for t in row] for row in rows])
     n = len(grid)
     if grid.shape != (n, n) or grid.min() < 0 or grid.max() > n:
@@ -50,8 +53,11 @@ def units(n):
     boxes = []
     if box := box_shape(n):
         br, bc = box
-        boxes = [[(r0 + r, c0 + c) for r in range(br) for c in range(bc)]
-                 for r0 in range(0, n, br) for c0 in range(0, n, bc)]
+        boxes = [
+            [(r0 + r, c0 + c) for r in range(br) for c in range(bc)]
+            for r0 in range(0, n, br)
+            for c0 in range(0, n, bc)
+        ]
     return rows + cols + boxes
 
 
@@ -71,8 +77,12 @@ def candidates(puzzle):
         given = {puzzle[r, c] for r, c in u} - {0}
         for cell in u:
             seen.setdefault(cell, set()).update(given)
-    return {(r, c): [v for v in range(1, n + 1) if v not in seen[r, c]]
-            for r in range(n) for c in range(n) if puzzle[r, c] == 0}
+    return {
+        (r, c): [v for v in range(1, n + 1) if v not in seen[r, c]]
+        for r in range(n)
+        for c in range(n)
+        if puzzle[r, c] == 0
+    }
 
 
 def constraint_groups(puzzle):

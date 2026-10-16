@@ -10,12 +10,12 @@ from dwave.embedding import verify_embedding
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [HERE, os.path.dirname(HERE)]
 
-from precompute import count_solutions  # noqa: E402
-from sudoku import box_shape, build_bqm, constraint_groups, decode, is_solution  # noqa: E402
+from precompute import count_solutions
+from sudoku import box_shape, build_bqm, constraint_groups, decode, is_solution
 
 with open(os.path.join(HERE, "data.js")) as f:
     text = f.read()
-DATA = json.loads(text[text.index("=") + 1:text.rindex(";")])
+DATA = json.loads(text[text.index("=") + 1 : text.rindex(";")])
 PUZZLES = [p for entries in DATA["puzzles"].values() for p in entries]
 IDS = [f"{p['n']}x{p['n']}-{i}" for entries in DATA["puzzles"].values() for i, p in enumerate(entries)]
 

@@ -5,8 +5,9 @@ from collections import Counter
 from itertools import combinations, islice, product
 
 import gurobipy as gp
-from formulation import build_formulation, decode
 from gurobipy import GRB
+
+from formulation import build_formulation, decode
 from results import SolverUnavailable, make_result
 
 MAX_COMBINATIONS = 5_000_000

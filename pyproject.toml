@@ -26,7 +26,14 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+    "ruff>=0.17.1",
 ]
 
 [tool.ruff]
 line-length = 110
+# each example imports its own modules by name
+src = ["job-shop-scheduling", "sudoku", "sudoku/demo"]
+
+[tool.ruff.lint.per-file-ignores]
+# the demo server falls back to the recording on any error, and setup runs on the laptop's own Python
+"sudoku/demo/*.py" = ["BLE001", "PLW1510", "RUF012", "UP036"]

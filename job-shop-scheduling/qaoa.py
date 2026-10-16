@@ -2,15 +2,16 @@ import time
 from itertools import pairwise
 
 import numpy as np
-from formulation import best_feasible, build_formulation, qubo_to_ising
 from qiskit import QuantumCircuit, generate_preset_pass_manager
 from qiskit.circuit.library import qaoa_ansatz
 from qiskit.exceptions import QiskitError
 from qiskit.primitives import BackendSamplerV2
 from qiskit.quantum_info import SparsePauliOp
 from qiskit_ibm_runtime import IBMBackend, SamplerV2
-from results import SolverUnavailable, make_result
 from scipy.optimize import minimize
+
+from formulation import best_feasible, build_formulation, qubo_to_ising
+from results import SolverUnavailable, make_result
 
 # the QAOA solvers use the formulation without its one-hot penalty: each task's block of qubits starts
 # in an equal superposition of its start times, and an XY mixer within the block keeps exactly one set

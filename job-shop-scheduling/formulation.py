@@ -5,6 +5,7 @@ from typing import NamedTuple
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LinearSegmentedColormap
+
 from problem import Problem
 
 

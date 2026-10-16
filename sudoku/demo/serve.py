@@ -48,7 +48,7 @@ def load_demo(path):
     """data.js is one line, `window.DEMO = <json>;`."""
     with open(path, encoding="utf-8") as f:
         text = f.read()
-    return json.loads(text[text.index("=") + 1:text.rindex(";")])
+    return json.loads(text[text.index("=") + 1 : text.rindex(";")])
 
 
 def venv_python():
@@ -60,6 +60,7 @@ def venv_python():
 def in_venv():
     def norm(path):
         return os.path.normcase(os.path.realpath(path))
+
     return norm(sys.prefix) == norm(os.path.join(HERE, ".venv"))
 
 
@@ -114,8 +115,9 @@ def connect():
         if "client" not in DWAVE:
             # this folder's dwave.conf only; the short connect timeout and few retries stop a
             # dead network holding a thread for minutes (reads stay long for the 30 s long polls)
-            DWAVE["client"] = Client.from_config(config_file=CONF, request_timeout=(5, 60),
-                                                 http_retry_total=2)
+            DWAVE["client"] = Client.from_config(
+                config_file=CONF, request_timeout=(5, 60), http_retry_total=2
+            )
         DWAVE["solver"] = DWAVE["client"].get_solver(name=DEMO["chip"]["solver"])
         return DWAVE["solver"]
     finally:
@@ -147,8 +149,11 @@ def status():
         if STATUS["time"] is None or time.monotonic() - STATUS["time"] >= STATUS_TTL:
             live, reason = check_live()
             if STATUS["time"] is None or live != STATUS["live"]:
-                log(f"[OK] D-Wave live: {reason}" if live else
-                    f"[FAIL] D-Wave off, the page will show the recorded simulation: {reason}")
+                log(
+                    f"[OK] D-Wave live: {reason}"
+                    if live
+                    else f"[FAIL] D-Wave off, the page will show the recorded simulation: {reason}"
+                )
             STATUS.update(live=live, time=time.monotonic())
         return STATUS["live"]
 
@@ -185,8 +190,9 @@ def dwave_sample(qpu):
     solver = DWAVE.get("solver") or call_with_timeout(connect, CONNECT_TIMEOUT)
     h = {q: bias for q, bias in qpu["h"]}
     J = {(a, b): bias for a, b, bias in qpu["J"]}
-    future = solver.sample_ising(h, J, num_reads=qpu["num_reads"],
-                                 annealing_time=qpu["annealing_time"], label=LABEL)
+    future = solver.sample_ising(
+        h, J, num_reads=qpu["num_reads"], annealing_time=qpu["annealing_time"], label=LABEL
+    )
     if not future.wait(max(0.1, SAMPLE_TIMEOUT - (time.monotonic() - start))):
         future.cancel()
         raise TimeoutError(f"no answer from D-Wave within {SAMPLE_TIMEOUT} s")
@@ -214,10 +220,12 @@ def sample(size, index):
 
 class Handler(SimpleHTTPRequestHandler):
     # Windows can map .js to text/plain through the registry
-    extensions_map = {**SimpleHTTPRequestHandler.extensions_map,
-                      ".html": "text/html; charset=utf-8",
-                      ".js": "text/javascript; charset=utf-8",
-                      ".css": "text/css; charset=utf-8"}
+    extensions_map = {
+        **SimpleHTTPRequestHandler.extensions_map,
+        ".html": "text/html; charset=utf-8",
+        ".js": "text/javascript; charset=utf-8",
+        ".css": "text/css; charset=utf-8",
+    }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=HERE, **kwargs)
@@ -271,9 +279,11 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_json(503, {"error": describe(e)})
             return
         solved = sum(e == 0 for e in result["energies"])
-        log(f"[OK] D-Wave job for {size}x{size} puzzle {index}: {solved} of {len(result['energies'])} "
+        log(
+            f"[OK] D-Wave job for {size}x{size} puzzle {index}: {solved} of {len(result['energies'])} "
             f"reads solved it, {result['qpu_access_time'] / 1000:.1f} ms of QPU time, "
-            f"{time.monotonic() - start:.1f} s in all")
+            f"{time.monotonic() - start:.1f} s in all"
+        )
         self.send_json(200, result)
 
 
@@ -344,23 +354,28 @@ def check():
             lost_qubits = qubits - solver.nodes
             lost_couplers = [(a, b) for a, b, _ in qpu["J"] if (a, b) not in solver.edges]
             if lost_qubits or lost_couplers:
-                problems.append(f"puzzle {i} has {len(lost_qubits)} qubit(s) and "
-                                f"{len(lost_couplers)} coupler(s) no longer working")
+                problems.append(
+                    f"puzzle {i} has {len(lost_qubits)} qubit(s) and "
+                    f"{len(lost_couplers)} coupler(s) no longer working"
+                )
         if problems:
             ok = False
             print(f"[FAIL] {size}x{size}: " + "; ".join(problems))
         else:
             print(f"[OK] {size}x{size}: all {len(puzzles)} mappings fit the chip")
     if not ok:
-        print("       To fix a mapping, re-run precompute.py in the repo's uv environment and pull the new data.js.")
+        print(
+            "       To fix a mapping, re-run precompute.py in the repo's uv environment and pull the new data.js."
+        )
     return 0 if ok else 1
 
 
 def main():
     os.chdir(HERE)
     parser = argparse.ArgumentParser(description="Serve the sudoku annealing demo.")
-    parser.add_argument("--check", action="store_true",
-                        help="check the D-Wave connection and the chip mappings, then exit")
+    parser.add_argument(
+        "--check", action="store_true", help="check the D-Wave connection and the chip mappings, then exit"
+    )
     parser.add_argument("--no-browser", action="store_true", help="do not open the page")
     args = parser.parse_args()
 

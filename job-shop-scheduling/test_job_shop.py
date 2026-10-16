@@ -1,11 +1,12 @@
 import dimod
 import pytest
+from qiskit import QuantumCircuit
+from qiskit_aer import AerSimulator
+
 from classical import solve_exact
 from formulation import build_formulation, decode
 from problem import Problem
 from qaoa import counts_to_bits, sample, sampler_and_pass_manager
-from qiskit import QuantumCircuit
-from qiskit_aer import AerSimulator
 
 
 # the first few random problems that the bounds don't already solve, small enough to brute force

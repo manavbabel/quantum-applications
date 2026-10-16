@@ -15,14 +15,22 @@ import serve
 # variables x0 = (0,0)=1, x1 = (0,0)=2, x2 = (0,1)=1, x3 = (0,1)=2
 FAKE_DEMO = {
     "chip": {"solver": "fake_solver", "region": "na-west-1"},
-    "puzzles": {"4": [{
-        "variables": [[0, 0, 1], [0, 0, 2], [0, 1, 1], [0, 1, 2]],
-        "groups": [[0, 1], [2, 3], [0, 2], [1, 3]],
-        "qpu": {"chains": [[10], [11, 12], [13], [14, 15, 16]],
-                "h": [[10, 0.5], [11, 0.25], [12, 0.25], [13, 0.5], [14, 0.2], [15, 0.2], [16, 0.1]],
-                "J": [[11, 12, -2.0], [14, 15, -2.0], [15, 16, -2.0], [10, 13, 0.5]],
-                "chain_strength": 2.0, "num_reads": 3, "annealing_time": 20.0},
-    }]},
+    "puzzles": {
+        "4": [
+            {
+                "variables": [[0, 0, 1], [0, 0, 2], [0, 1, 1], [0, 1, 2]],
+                "groups": [[0, 1], [2, 3], [0, 2], [1, 3]],
+                "qpu": {
+                    "chains": [[10], [11, 12], [13], [14, 15, 16]],
+                    "h": [[10, 0.5], [11, 0.25], [12, 0.25], [13, 0.5], [14, 0.2], [15, 0.2], [16, 0.1]],
+                    "J": [[11, 12, -2.0], [14, 15, -2.0], [15, 16, -2.0], [10, 13, 0.5]],
+                    "chain_strength": 2.0,
+                    "num_reads": 3,
+                    "annealing_time": 20.0,
+                },
+            }
+        ]
+    },
 }
 
 # spins by qubit for two distinct reads
@@ -70,8 +78,9 @@ def get(url):
 
 
 def post(url, obj):
-    request = urllib.request.Request(url, data=json.dumps(obj).encode(),
-                                     headers={"Content-Type": "application/json"})
+    request = urllib.request.Request(
+        url, data=json.dumps(obj).encode(), headers={"Content-Type": "application/json"}
+    )
     try:
         with urllib.request.urlopen(request, timeout=10) as r:
             return r.status, json.loads(r.read())
@@ -89,8 +98,12 @@ def test_sample(server, monkeypatch):
     monkeypatch.setattr(serve, "dwave_sample", fake)
     code, body = post(server + "/api/sample", {"size": 4, "index": 0})
     assert code == 200
-    assert body == {"source": "dwave", "energies": [2.0, 0.0, 0.0], "best": [1, 0, 0, 1],
-                    "qpu_access_time": 1234.5}
+    assert body == {
+        "source": "dwave",
+        "energies": [2.0, 0.0, 0.0],
+        "best": [1, 0, 0, 1],
+        "qpu_access_time": 1234.5,
+    }
     assert calls == [FAKE_DEMO["puzzles"]["4"][0]["qpu"]]
 
 
@@ -132,7 +145,14 @@ def test_static_files(server):
 def test_token_not_served(server):
     with open(serve.CONF, "w") as f:
         f.write("[defaults]\ntoken = secret\n")
-    for path in ["/dwave.conf", "/dwave%2Econf", "/./dwave.conf", "/dwave.conf?x=1", "/DWAVE.CONF", "/dwave.conf."]:
+    for path in [
+        "/dwave.conf",
+        "/dwave%2Econf",
+        "/./dwave.conf",
+        "/dwave.conf?x=1",
+        "/DWAVE.CONF",
+        "/dwave.conf.",
+    ]:
         with pytest.raises(urllib.error.HTTPError) as e:
             get(server + path)
         assert e.value.code == 404
@@ -140,6 +160,7 @@ def test_token_not_served(server):
 
 def qp_message(rows, counts, active, num_qubits):
     """A made-up SAPI answer in the 'qp' format: rows are the spins of the active qubits."""
+
     def b64(fmt, values):
         return base64.b64encode(struct.pack("<" + fmt * len(values), *values)).decode()
 
@@ -150,10 +171,18 @@ def qp_message(rows, counts, active, num_qubits):
             if s > 0:
                 row_bytes[i // 8] |= 0x80 >> (i % 8)
         packed += bytes(row_bytes)
-    return {"type": "ising", "answer": {
-        "format": "qp", "num_variables": num_qubits, "active_variables": b64("i", active),
-        "energies": b64("d", [0.0] * len(rows)), "num_occurrences": b64("i", counts),
-        "solutions": base64.b64encode(packed).decode(), "timing": {"qpu_access_time": 15000.5}}}
+    return {
+        "type": "ising",
+        "answer": {
+            "format": "qp",
+            "num_variables": num_qubits,
+            "active_variables": b64("i", active),
+            "energies": b64("d", [0.0] * len(rows)),
+            "num_occurrences": b64("i", counts),
+            "solutions": base64.b64encode(packed).decode(),
+            "timing": {"qpu_access_time": 15000.5},
+        },
+    }
 
 
 @pytest.mark.parametrize("use_numpy", [True, False])
@@ -165,11 +194,21 @@ def test_read_future(monkeypatch, use_numpy):
 
     # the client picks its decoder from this flag, set by trying `import numpy`
     monkeypatch.setattr(solver_module, "_numpy", use_numpy)
-    solver = solver_module.StructuredSolver(client=None, data={
-        "identity": {"name": "fake", "version": {"graph_id": "0"}}, "status": "online",
-        "description": "", "avg_load": 0.0,
-        "properties": {"supported_problem_types": ["ising", "qubo"], "qubits": list(range(12)),
-                       "couplers": [[1, 3], [3, 4]], "parameters": {}}})
+    solver = solver_module.StructuredSolver(
+        client=None,
+        data={
+            "identity": {"name": "fake", "version": {"graph_id": "0"}},
+            "status": "online",
+            "description": "",
+            "avg_load": 0.0,
+            "properties": {
+                "supported_problem_types": ["ising", "qubo"],
+                "qubits": list(range(12)),
+                "couplers": [[1, 3], [3, 4]],
+                "parameters": {},
+            },
+        },
+    )
     active = [1, 3, 4, 9]
     rows = [[1, -1, 1, -1], [-1, -1, 1, 1]]
     future = Future(solver, "fake-id")

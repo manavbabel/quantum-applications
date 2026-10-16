@@ -22,8 +22,8 @@ from dwave.system import DWaveSampler
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
-from annealers import _sqa_inputs, _sqa_read, anneal_sqa  # noqa: E402
-from sudoku import box_shape, build_bqm, candidates, constraint_groups, random_puzzle  # noqa: E402
+from annealers import _sqa_inputs, _sqa_read, anneal_sqa
+from sudoku import box_shape, build_bqm, candidates, constraint_groups, random_puzzle
 
 DATA = os.path.join(HERE, "data.js")
 SEED = 2026
@@ -109,13 +109,14 @@ def record(bqm, variables, groups, cells):
         return {"p": np.round(bits.mean(axis=0), 3).tolist(), "heat": np.round(heat, 3).tolist()}
 
     for tries in range(1, MAX_SEEDS + 1):
-        spins, history = _sqa_read(h, indptr, indices, data, REC_SLICES, REC_BETA, gammas,
-                                   np.random.randint(2**31), RECORD_EVERY)
+        spins, history = _sqa_read(
+            h, indptr, indices, data, REC_SLICES, REC_BETA, gammas, np.random.randint(2**31), RECORD_EVERY
+        )
         bits = ((spins + 1) // 2).astype(np.int8)
         energies = bqm.energies((bits, variables))
         best = int(np.argmin(energies))
         if energies[best] <= 1e-9 and np.all(bits == bits[best]):
-            frames = [frame((s + 1) / 2) for s in history] + [frame(bits[best:best + 1])]
+            frames = [frame((s + 1) / 2) for s in history] + [frame(bits[best : best + 1])]
             return frames, tries
     raise SystemExit(f"[FAIL] no read ended at energy 0 with all slices agreeing in {MAX_SEEDS} seeds")
 
@@ -192,8 +193,10 @@ def puzzle_entry(grid, solution, sampler):
     }
     chains = [len(chain) for chain in entry["qpu"]["chains"]]
     solved = int(np.sum(sampleset.record.energy <= 1e-9))
-    print(f"  {len(variables)} qubits, {entry['num_couplers']} couplers, recorded on seed {tries}, "
-          f"fallback {solved}/{NUM_READS} solved, {sum(chains)} physical qubits, longest chain {max(chains)}")
+    print(
+        f"  {len(variables)} qubits, {entry['num_couplers']} couplers, recorded on seed {tries}, "
+        f"fallback {solved}/{NUM_READS} solved, {sum(chains)} physical qubits, longest chain {max(chains)}"
+    )
     return entry
 
 
@@ -201,30 +204,42 @@ def qpu_check():
     """Send each stored problem once and print the share of reads that broke no rules."""
     with open(DATA) as f:
         text = f.read()
-    data = json.loads(text[text.index("=") + 1:text.rindex(";")])
+    data = json.loads(text[text.index("=") + 1 : text.rindex(";")])
     sampler = DWaveSampler(solver=data["chip"]["solver"])
     for size, entries in data["puzzles"].items():
         for i, p in enumerate(entries):
             qpu = p["qpu"]
-            sampleset = sampler.sample_ising({q: b for q, b in qpu["h"]}, {(q1, q2): b for q1, q2, b in qpu["J"]},
-                                             num_reads=qpu["num_reads"], annealing_time=qpu["annealing_time"],
-                                             label="nqcc-sudoku-demo-check")
+            sampleset = sampler.sample_ising(
+                {q: b for q, b in qpu["h"]},
+                {(q1, q2): b for q1, q2, b in qpu["J"]},
+                num_reads=qpu["num_reads"],
+                annealing_time=qpu["annealing_time"],
+                label="nqcc-sudoku-demo-check",
+            )
             spins = np.repeat(sampleset.record.sample, sampleset.record.num_occurrences, axis=0)
             column = {q: k for k, q in enumerate(sampleset.variables)}
             # majority vote over each chain; a tie gives 0
-            bits = np.stack([spins[:, [column[q] for q in chain]].sum(axis=1) > 0 for chain in qpu["chains"]],
-                            axis=1)
+            bits = np.stack(
+                [spins[:, [column[q] for q in chain]].sum(axis=1) > 0 for chain in qpu["chains"]], axis=1
+            )
             energy = sum((bits[:, g].sum(axis=1) - 1) ** 2 for g in p["groups"])
             seconds = sampleset.info["timing"]["qpu_access_time"] / 1e6
-            print(f"{size}x{size} #{i}: {np.mean(energy == 0):.0%} of {len(bits)} reads solved, "
-                  f"qpu_access_time {seconds:.3f} s")
+            print(
+                f"{size}x{size} #{i}: {np.mean(energy == 0):.0%} of {len(bits)} reads solved, "
+                f"qpu_access_time {seconds:.3f} s"
+            )
 
 
 def main():
     parser = argparse.ArgumentParser(description="Build data.js for the sudoku annealing demo.")
-    parser.add_argument("--solver", default="Advantage2_system1", help="D-Wave solver to map the puzzles onto")
-    parser.add_argument("--qpu-check", action="store_true",
-                        help="send each problem in data.js to the QPU once (costs QPU time)")
+    parser.add_argument(
+        "--solver", default="Advantage2_system1", help="D-Wave solver to map the puzzles onto"
+    )
+    parser.add_argument(
+        "--qpu-check",
+        action="store_true",
+        help="send each problem in data.js to the QPU once (costs QPU time)",
+    )
     args = parser.parse_args()
     if args.qpu_check:
         qpu_check()

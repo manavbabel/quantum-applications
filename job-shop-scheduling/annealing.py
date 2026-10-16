@@ -4,6 +4,7 @@ import dimod
 import minorminer
 import numpy as np
 from dwave.system import DWaveSampler, FixedEmbeddingComposite
+
 from formulation import best_feasible, build_formulation
 from results import SolverUnavailable, make_result
 
