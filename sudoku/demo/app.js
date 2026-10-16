@@ -159,7 +159,7 @@ function buildSolve() {
   setSheetHead(sheet, P);
   sheet.classList.remove("started");
   $("solve").classList.remove("started", "solved");
-  $("anneal-it-btn").classList.remove("primary");
+  $("anneal-it-btn").classList.replace("primary", "ghost");
   buildPad(P.n);
   setTimerText(0);
 }
@@ -175,7 +175,7 @@ function buildPad(n) {
   }
   var e = el("button", "key erase", pad);
   e.dataset.v = 0;
-  e.innerHTML = '<svg><use href="#i-erase"/></svg>Erase';
+  e.textContent = "Erase";
 }
 
 function startSolve() {
@@ -248,7 +248,7 @@ function finishSolve() {
   $("solve").classList.add("solved");
   sv.grid.cells.forEach(function (row) { row.forEach(function (x) { x.el.classList.remove("sel", "peer"); }); });
   sv.grid.root.classList.add("ripple");
-  $("anneal-it-btn").classList.add("primary");
+  $("anneal-it-btn").classList.replace("ghost", "primary");
 }
 
 function elapsed() { return sv.acc + (sv.running ? performance.now() - sv.t0 : 0); }
@@ -373,8 +373,8 @@ function frameAt(t) {
 
 function setStep(which) {
   $("anneal-how").textContent = which === "pencil"
-    ? "First, each empty square gets a pencil mark for every number. Any number already in its row, column or box is crossed out."
-    : "Now drag the thermometer down to cold, or press Anneal to let it cool on its own.";
+    ? "First, every empty square gets pencilled in with every number. Any number already used in its row, column or box gets crossed out."
+    : "Now cool it down. Drag the thermometer slowly to COLD, or press Anneal.";
 }
 
 function enterAnneal(skipIntro) {
@@ -468,10 +468,10 @@ function renderAnneal() {
       an.amp = amp;
       an.grid.root.style.setProperty("--amp", amp.toFixed(2));
     }
-    if (t < .12) setStatus("While it's hot, the qubits keep flipping and no square has made up its mind.");
-    else if (t < .55) setStatus("As it cools, the flipping slows down and some squares pick a number.");
-    else if (t < .999) setStatus("It's nearly cold, and only a few squares are still deciding.");
-    else setStatus("Every square now has one number, and no rule is broken.");
+    if (t < .12) setStatus("It's hot, so every qubit is flipping about and the marks in each square look much the same.");
+    else if (t < .55) setStatus("Cooling down. Qubits that break a rule switch off first, so the orange starts to fade.");
+    else if (t < .999) setStatus("Nearly there! Just a few squares are still making up their minds.");
+    else setStatus("Every square has one number now, and no rules are broken.");
   }
   // thermometer: liquid top and knob share the same offset, as a share of the tube
   var off = "translateY(" + ((KNOB_TOP + KNOB_SPAN * t) * 100).toFixed(2) + "%)";
@@ -498,7 +498,7 @@ function goCold() {
   an.timers.push(setTimeout(function () { if (an.cold) $("anneal-stamp").classList.add("on"); }, 2 * an.P.n * 55 + 300));
   $("anneal-btn").classList.add("hidden");
   $("send-btn").classList.remove("hidden");
-  $("send-btn").classList.add("primary");
+  $("send-btn").classList.replace("ghost", "primary");
 }
 
 function unCold() {
@@ -506,7 +506,7 @@ function unCold() {
   an.grid.root.classList.remove("cold", "ripple");
   $("anneal-stamp").classList.remove("on");
   $("anneal-btn").classList.remove("hidden");
-  $("send-btn").classList.remove("primary");
+  $("send-btn").classList.replace("primary", "ghost");
 }
 
 function autoAnneal() {
@@ -590,7 +590,7 @@ function stopSend() {
 // The step button: shown with a label, and pressable only once the stage is ready.
 function stepButton(label, icon, ready) {
   var b = $("next-btn");
-  b.innerHTML = '<svg><use href="#' + icon + '"/></svg>' + label;
+  b.innerHTML = (icon ? '<svg><use href="#' + icon + '"/></svg>' : "") + label;
   b.disabled = !ready;
 }
 
@@ -668,7 +668,7 @@ function sizeCanvas(canvas, w, h, k) {
 // Stage 1: each blank cell splits into one glowing dot per remaining candidate,
 // and lines join qubits that share an "exactly one" rule.
 async function stage1(token, P) {
-  setCaption("Every number that could still go in an empty square becomes a qubit.");
+  setCaption("Each pencil mark from before becomes a qubit.");
   var sq = $("v1-sq"), n = P.n;
   sq.querySelectorAll(".qdot, .clue, .lines").forEach(function (e) { e.remove(); });
   var size = sq.getBoundingClientRect().width, q = size / n;
@@ -716,7 +716,7 @@ async function stage1(token, P) {
   });
   ctx.globalCompositeOperation = "lighter";
   ctx.lineWidth = 1.3;
-  ctx.strokeStyle = n === 9 ? "rgba(110, 200, 255, .3)" : "rgba(110, 200, 255, .45)";
+  ctx.strokeStyle = n === 9 ? "rgba(90, 140, 255, .4)" : "rgba(90, 140, 255, .6)";
   var drawn = 0;
   await animate(token, 1500, function (u) {
     var upto = Math.floor(pairs.length * u);
@@ -732,8 +732,8 @@ async function stage1(token, P) {
     ctx.stroke();
   });
   if (token !== sd.token) return;
-  setCaption("This puzzle needs " + fmt(P.variables.length) + " qubits and " + fmt(P.num_couplers) +
-    " couplers. A coupler joins two qubits that can't both be right.");
+  setCaption("That's " + fmt(P.variables.length) + " qubits! The " + fmt(P.num_couplers) +
+    " lines are couplers. Each one links two numbers that can't both be right.");
 }
 
 var chipCache = { key: "", coupled: null, index: null, xy: null };
@@ -766,7 +766,7 @@ function drawChipBase(size, k) {
   var chip = DEMO.chip, idx = chipIndex(), xy = chipCache.xy, pad = size * .04, w = size - 2 * pad;
   var ctx = sizeCanvas($("v2-base"), size, size, k);
   ctx.clearRect(0, 0, size, size);
-  ctx.strokeStyle = "rgba(120, 170, 215, .07)";
+  ctx.strokeStyle = "rgba(255, 255, 255, .05)";
   ctx.lineWidth = .6;
   ctx.beginPath();
   chip.couplers.forEach(function (e) {
@@ -776,7 +776,7 @@ function drawChipBase(size, k) {
     ctx.lineTo(pad + b[0] * w, pad + b[1] * w);
   });
   ctx.stroke();
-  ctx.fillStyle = "rgba(150, 190, 225, .5)";
+  ctx.fillStyle = "rgba(255, 255, 255, .35)";
   var s = Math.max(1.2, w / 400);
   xy.forEach(function (p) { ctx.fillRect(pad + p[0] * w - s / 2, pad + p[1] * w - s / 2, s, s); });
 }
@@ -799,7 +799,7 @@ function coreBox(pts) {
 // Stage 2: the chip's qubits drawn faintly, the puzzle's chains lit one by one, then a zoom
 // into the corner of the chip they use.
 async function stage2(token, P) {
-  setCaption("Finding room for the puzzle's qubits on the chip...");
+  setCaption("Finding space on the chip...");
   var die = $("v2-die"), zoom = $("v2-zoom"), size = die.getBoundingClientRect().width;
   var chip = DEMO.chip, idx = chipIndex(), cxy = chipCache.xy, pad = size * .04, w = size - 2 * pad;
   var chains = P.qpu.chains, all = [];
@@ -821,8 +821,7 @@ async function stage2(token, P) {
     var upto = Math.floor(chains.length * u);
     for (; done < upto; done++) {
       var ch = chains[done], pts = ch.map(xy);
-      ctx.globalCompositeOperation = "lighter";
-      ctx.strokeStyle = "rgba(130, 215, 255, .9)";
+      ctx.strokeStyle = "#34d4ae";
       ctx.lineWidth = Math.max(1.5, rad * .8);
       ctx.beginPath();
       for (var a = 0; a < ch.length; a++) {
@@ -834,15 +833,11 @@ async function stage2(token, P) {
         }
       }
       ctx.stroke();
+      ctx.fillStyle = "#34d4ae";
       pts.forEach(function (p) {
         if (!p) return;
-        ctx.fillStyle = "rgba(60, 170, 255, .22)";
         ctx.beginPath();
-        ctx.arc(p[0], p[1], rad * 3, 0, 7);
-        ctx.fill();
-        ctx.fillStyle = "#e9f8ff";
-        ctx.beginPath();
-        ctx.arc(p[0], p[1], rad, 0, 7);
+        ctx.arc(p[0], p[1], rad * 1.4, 0, 7);
         ctx.fill();
       });
       phys += ch.length;
@@ -851,9 +846,8 @@ async function stage2(token, P) {
   });
   if (token !== sd.token) return;
   // the chip only couples neighbouring qubits, so some puzzle qubits need a chain of them
-  setCaption((longest > 1 ? "Some of the puzzle's qubits need a chain of up to " + longest +
-    " chip qubits to reach all their partners. " : "") +
-    "In all, it uses " + fmt(phys) + " of the chip's " + fmt(chip.qubits.length) + " qubits.");
+  setCaption((longest > 1 ? "The chip can only link qubits that sit next to each other, so some of ours become chains of up to " +
+    longest + ". " : "") + "Altogether the puzzle uses " + fmt(phys) + " of its " + fmt(chip.qubits.length) + " qubits.");
   if (z > 1.05) {
     // centre the chains, but keep the view on the chip
     var tx = clamp(size / 2 - z * (pad + (box[0] + box[2]) / 2 * w), size * (1 - z), 0);
@@ -871,7 +865,7 @@ function buildFridge() {
   for (var i = 0; i < plates.length - 1; i++) {
     var A = plates[i], B = plates[i + 1], y1 = A[0] + A[2], y2 = B[0];
     [-.78, -.3, .3, .78].forEach(function (f) {
-      s += '<rect x="' + (cx + f * B[1] - 3.5) + '" y="' + y1 + '" width="7" height="' + (y2 - y1) + '" fill="url(#g-rod)"/>';
+      s += '<rect x="' + (cx + f * B[1] - 3) + '" y="' + y1 + '" width="6" height="' + (y2 - y1) + '" fill="#aab4c8"/>';
     });
   }
   // coaxial lines snaking down between the plates
@@ -881,14 +875,15 @@ function buildFridge() {
       var w = (j % 2 ? 7 : -7);
       d += " C" + (cx + dx + w) + " " + (y + 13) + " " + (cx + dx - w) + " " + (y + 27) + " " + (cx + dx * .85) + " " + (y + 40);
     }
-    s += '<path d="' + d + '" fill="none" stroke="' + (j % 2 ? "#b87333" : "#9aa4ad") + '" stroke-width="2.2" opacity=".85"/>';
+    s += '<path d="' + d + '" fill="none" stroke="' + (j % 2 ? "#c98a52" : "#8b96b3") + '" stroke-width="2.2"/>';
   });
-  s += '<rect x="' + (cx - 4) + '" y="388" width="8" height="46" fill="url(#g-rod)"/>';
+  s += '<rect x="' + (cx - 3) + '" y="388" width="6" height="46" fill="#aab4c8"/>';
+  // gold-plated copper stages, drawn flat: top, rim and underside
   plates.forEach(function (p) {
     var y = p[0], rx = p[1], th = p[2], ry = rx * .13;
-    s += '<ellipse cx="' + cx + '" cy="' + (y + th) + '" rx="' + rx + '" ry="' + ry + '" fill="#5c4311"/>';
-    s += '<rect x="' + (cx - rx) + '" y="' + y + '" width="' + 2 * rx + '" height="' + th + '" fill="url(#g-side)"/>';
-    s += '<ellipse cx="' + cx + '" cy="' + y + '" rx="' + rx + '" ry="' + ry + '" fill="url(#g-top)"/>';
+    s += '<ellipse cx="' + cx + '" cy="' + (y + th) + '" rx="' + rx + '" ry="' + ry + '" fill="#8a6420"/>';
+    s += '<rect x="' + (cx - rx) + '" y="' + y + '" width="' + 2 * rx + '" height="' + th + '" fill="#c79a3b"/>';
+    s += '<ellipse cx="' + cx + '" cy="' + y + '" rx="' + rx + '" ry="' + ry + '" fill="#e9c46a"/>';
     s += '<text class="lbl" x="' + (cx + rx + 14) + '" y="' + (y + th / 2 + 5) + '">' + p[3] + "</text>";
   });
   document.getElementById("fridge-parts").innerHTML = s;
@@ -897,19 +892,26 @@ function buildFridge() {
 // Stage 3: nothing is sent until the visitor presses Send; then a pulse runs down into
 // the fridge until the reply arrives.
 async function stage3(token, P, result, auto) {
-  setCaption("The chip sits at the bottom of this fridge. Press Send to give it the puzzle.");
-  stepButton("Send", "i-chip", true);
+  setCaption("The chip lives at the bottom of this fridge. Press Send when you're ready!");
+  stepButton("Send", null, true);
   await press(auto);
   if (token !== sd.token) return null;
   stepButton("Next", "i-next", false);
-  setCaption("Sending the puzzle and waiting for " + fmt(P.qpu.num_reads) + " answers...");
+  setCaption("Off it goes. Waiting for " + fmt(P.qpu.num_reads) + " answers...");
   var pulse = document.querySelector(".pulse");
   pulse.classList.add("go");
-  var replies = await Promise.all([requestSample(P, state.index), sleep(SEND_MIN)]);
+  var t0 = performance.now(), took = 0;
+  var replies = await Promise.all([
+    requestSample(P, state.index).then(function (r) { took = performance.now() - t0; return r; }),
+    sleep(SEND_MIN)
+  ]);
   result = replies[0];
   if (token !== sd.token) return result;
   pulse.classList.remove("go");
-  setCaption("The answers are back.");
+  setCaption(result.source === "dwave" && result.qpu_access_time
+    ? "Back after " + (took / 1000).toFixed(1) + " s, and only " +
+      (result.qpu_access_time / 1e6).toFixed(3) + " s of that was on the chip."
+    : "The answers are back!");
   var dot = $("staff-dot");
   dot.className = result.source === "dwave" ? "dwave" : "sim";
   dot.title = result.source === "dwave" ? "Last answer: D-Wave" : "Last answer: recorded simulation";
@@ -920,7 +922,7 @@ async function stage3(token, P, result, auto) {
 async function stage4(token, P, result) {
   var E = result.energies.map(function (e) { return Math.max(0, Math.round(e)); });
   var N = E.length, zeros = E.filter(function (e) { return e === 0; }).length;
-  setCaption("Each ball is one answer, dropped into a tube by how many rules it broke.");
+  setCaption("Each ball is one answer. It drops into the tube for the number of rules it broke.");
   // bin 0 holds exactly the perfect answers; the rest share bins of width w
   var maxE = Math.max.apply(null, E), w = Math.max(1, Math.ceil(maxE / 12));
   var nb = Math.max(6, 1 + Math.ceil(maxE / w));
@@ -965,9 +967,9 @@ async function stage4(token, P, result) {
   await sleep(2400);
   if (token !== sd.token) return;
   hist.classList.add("lit");
-  if (zeros === N) setCaption("All " + N + " answers broke no rules.", "good");
-  else if (zeros) setCaption(zeros + " of the " + N + " answers broke no rules.", "good");
-  else setCaption("Every one of the " + N + " answers broke at least one rule.");
+  if (zeros === N) setCaption("All " + N + " answers followed every rule!", "good");
+  else if (zeros) setCaption(zeros + " of the " + N + " answers broke no rules at all.", "good");
+  else setCaption("None of the " + N + " answers got everything right this time.");
 }
 
 // Map a read to a grid: a cell gets v when exactly one of its variables is on, else 0.
@@ -986,7 +988,7 @@ function decodeRead(P, bits) {
 // Stage 5: the best read fills the grid cell by cell; wrong cells go red.
 async function stage5(token, P, result) {
   var g = decodeRead(P, result.best);
-  setCaption("Here is the best answer.");
+  setCaption("Here's the answer that broke the fewest rules...");
   var sheet = $("result-sheet");
   var grid = buildGrid(P, sheet.querySelector(".grid-slot"));
   $("result-stamp").classList.remove("on");
@@ -1010,15 +1012,13 @@ async function stage5(token, P, result) {
   await sleep(450);
   if (token !== sd.token) return;
   wrong.forEach(function (cell) { cell.el.classList.add("wrong"); });
-  var chip = result.source === "dwave" && result.qpu_access_time
-    ? " It used the chip for " + (result.qpu_access_time / 1e6).toFixed(3) + " s." : "";
   if (wrong.length) {
-    setCaption((wrong.length === 1 ? "1 square is" : wrong.length + " squares are") +
-      " wrong. Today's quantum computers still make mistakes on bigger problems." + chip, "bad");
+    setCaption("So close! " + (wrong.length === 1 ? "1 square is" : wrong.length + " squares are") +
+      " wrong. Today's quantum computers still make mistakes on bigger puzzles.", "bad");
   } else {
     grid.root.classList.add("ripple");
     setTimeout(function () { if (token === sd.token) $("result-stamp").classList.add("on"); }, 2 * P.n * 55 + 200);
-    setCaption("The quantum computer solved it!" + chip, "good");
+    setCaption("The quantum computer solved it!", "good");
   }
 }
 
