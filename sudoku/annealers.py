@@ -136,7 +136,7 @@ def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5
     return dimod.SampleSet.from_samples((np.array(samples), variables), dimod.BINARY, energies)
 
 
-def anneal_qpu(bqm, num_reads=1000, **kwargs):
-    """Submit one job to a D-Wave QPU, letting EmbeddingComposite find the minor embedding."""
-    sampler = EmbeddingComposite(DWaveSampler())
+def anneal_qpu(bqm, num_reads=1000, solver="Advantage2_system1", **kwargs):
+    """Submit one job to a D-Wave QPU, by default the latest generation, embedded by EmbeddingComposite."""
+    sampler = EmbeddingComposite(DWaveSampler(solver=solver))
     return sampler.sample(bqm, num_reads=num_reads, label="quantum-sudoku", return_embedding=True, **kwargs)

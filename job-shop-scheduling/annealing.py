@@ -9,10 +9,10 @@ from formulation import best_feasible, build_formulation
 from results import SolverUnavailable, make_result
 
 
-def dwave_sampler():
-    """A D-Wave QPU, found through the local dwave config."""
+def dwave_sampler(solver="Advantage2_system1"):
+    """A D-Wave QPU, by default the latest generation, through the local dwave config."""
     try:
-        return DWaveSampler()
+        return DWaveSampler(solver=solver)
     except Exception as exc:  # no token, no QPU online, network down
         raise SolverUnavailable(f"cannot reach a D-Wave QPU: {exc}") from exc
 
