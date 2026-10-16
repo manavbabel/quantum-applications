@@ -372,9 +372,11 @@ function frameAt(t) {
 }
 
 function setStep(which) {
-  $("anneal-how").textContent = which === "pencil"
-    ? "First, every empty square gets pencilled in with every number. Any number already used in its row, column or box gets crossed out."
-    : "Now cool it down. Drag the thermometer slowly to COLD, or press Anneal.";
+  $("anneal-how").textContent = {
+    pencil: "First, every empty square gets pencilled in with every number. Any number already used in its row, column or box gets crossed out.",
+    cool: "Now cool it down. Drag the thermometer slowly to COLD, or press Anneal.",
+    cold: "That's how an annealer does it. Now send the puzzle to a real one."
+  }[which];
 }
 
 function enterAnneal(skipIntro) {
@@ -499,6 +501,7 @@ function goCold() {
   $("anneal-btn").classList.add("hidden");
   $("send-btn").classList.remove("hidden");
   $("send-btn").classList.replace("ghost", "primary");
+  setStep("cold");
 }
 
 function unCold() {
@@ -507,6 +510,7 @@ function unCold() {
   $("anneal-stamp").classList.remove("on");
   $("anneal-btn").classList.remove("hidden");
   $("send-btn").classList.replace("primary", "ghost");
+  setStep("cool");
 }
 
 function autoAnneal() {
