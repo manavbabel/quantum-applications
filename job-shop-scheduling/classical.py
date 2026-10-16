@@ -19,8 +19,8 @@ def solve_greedy(problem):
     return make_result(problem, "greedy", start_times, time.perf_counter() - t0, calls=1)
 
 
-# try every combination of start times in the windows, and keep the best feasible one
 def solve_exact(problem, max_combinations=MAX_COMBINATIONS):
+    """Try every combination of start times in the windows, and keep the best feasible one."""
     windows = problem.windows()
     total = math.prod(len(w) for w in windows)
     if total > max_combinations:
@@ -35,8 +35,8 @@ def solve_exact(problem, max_combinations=MAX_COMBINATIONS):
     return make_result(problem, "exact", best, tts, calls=total, metadata=metadata)
 
 
-# the number of combinations, and the expected time from timing the first `trials` of them
 def estimate_exact(problem, trials=1000):
+    """The number of combinations, and the expected time from timing the first `trials` of them."""
     windows = problem.windows()
     total = math.prod(len(w) for w in windows)
 
@@ -55,9 +55,8 @@ def estimate_exact(problem, trials=1000):
     }
 
 
-# random guessing: each shot picks every task's start time uniformly from its window
-# this is the distribution QAOA starts from, so it's the baseline the samplers have to beat
 def solve_random(problem, shots=4096, seed=None):
+    """Guess each start time uniformly from its window: where QAOA starts, so the baseline to beat."""
     rng = random.Random(seed)
     windows = problem.windows()
 
@@ -76,8 +75,8 @@ def solve_random(problem, shots=4096, seed=None):
     )
 
 
-# solves either the MILP directly, or the QUBO to see how the formulation affects things
 def solve_gurobi(problem, method="milp", time_limit=None):
+    """Solve the MILP, or the QUBO to see how the formulation affects things."""
     model = gp.Model(f"job_shop_{method}")
     if time_limit is not None:
         model.Params.TimeLimit = time_limit
@@ -113,13 +112,11 @@ def solve_gurobi(problem, method="milp", time_limit=None):
     return make_result(problem, f"gurobi/{method}", start_times, tts, calls=1, metadata=metadata)
 
 
-# the problem as a MILP: integer start times, and a binary order variable for each pair sharing a machine
-# returns the start-time variables
 def add_milp(model, problem):
+    """Add the problem to the model as a MILP, and return its start-time variables."""
     windows = problem.windows()
     horizon = problem.horizon
 
-    # start times, bounded by each task's window
     start = [
         model.addVar(lb=w.start, ub=w.stop - 1, vtype=GRB.INTEGER, name=f"s{i}")
         for i, w in enumerate(windows)
@@ -132,13 +129,11 @@ def add_milp(model, problem):
         if not problem.children[i]:
             model.addConstr(makespan >= start[i] + duration)
 
-    # constraint: every parent finishes before its child starts
     for i, dependencies in enumerate(problem.dependencies):
         for p in dependencies:
             model.addConstr(start[i] >= start[p] + problem.tasks[p][1])
 
-    # constraint: one task per machine at a time
-    # y = 1 means i finishes before j starts, 0 means j finishes before i starts
+    # one task per machine at a time: y = 1 puts i before j, y = 0 puts j before i
     # every task finishes by the horizon, so the horizon is a big enough M to switch off the unused side
     for i, j in combinations(range(len(problem)), 2):
         if problem.tasks[i][0] == problem.tasks[j][0]:
@@ -150,9 +145,8 @@ def add_milp(model, problem):
     return start
 
 
-# the QUBO as a binary quadratic program, with the constraints as penalty terms
-# returns the binary variables
 def add_qubo(model, formulation):
+    """Add the QUBO as a binary quadratic program, returning its variables."""
     x = [model.addVar(vtype=GRB.BINARY, name=f"x{n}") for n in range(formulation.num_variables)]
     objective = gp.quicksum(coefficient * x[a] * x[b] for (a, b), coefficient in formulation.Q.items())
     model.setObjective(objective + formulation.offset, GRB.MINIMIZE)

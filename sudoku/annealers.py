@@ -1,33 +1,20 @@
-"""Quantum-annealing backends. Each takes a dimod BQM and returns a dimod SampleSet.
+"""Quantum annealing of a dimod BQM, exactly, by simulated quantum annealing (SQA), or on a D-Wave QPU.
 
-All three run the same algorithm, H(s) = A(s) * (-sum_i X_i) + B(s) * H_problem,
-with the transverse-field driver switched off as s goes 0 -> 1:
-
-- statevector: exact Schrodinger evolution of the full wavefunction (<= 20 qubits).
-- sqa: simulated quantum annealing, i.e. path-integral Monte Carlo of the
-  transverse-field Ising model (Martonak, Santoro & Tosatti, PRB 66, 094203).
-  It samples the quantum system's thermal state along the anneal rather than
-  its unitary dynamics, and scales polynomially, so large grids are feasible.
-- qpu: a D-Wave annealer via minor embedding.
-
-Randomness comes from the global numpy RNG so np.random.seed() makes runs
-reproducible.
+The simulators use numpy's global RNG, so np.random.seed() makes runs reproducible.
 """
 
 import dimod
 import numpy as np
+from dwave.system import DWaveSampler, EmbeddingComposite
 from numba import njit
 
 MAX_STATEVECTOR_QUBITS = 20
 
 
 def anneal_statevector(bqm, num_reads=100, total_time=100.0, steps=1000):
-    """Exact adiabatic evolution, first-order Trotterised.
+    """Exact Schrodinger evolution under H(s) = (1 - s)(-sum X) + s H_problem, Trotterised.
 
-    Qubit i is variables[i] and is bit i of the basis-state index
-    (little-endian), so basis state k assigns variables[i] = (k >> i) & 1.
-    Energies are divided by the largest |coefficient| so that total_time is in
-    units of the inverse problem energy scale.
+    Basis state k sets variable i to bit i of k, so the qubit order is little-endian.
     """
     variables = list(bqm.variables)
     n = len(variables)
@@ -36,8 +23,9 @@ def anneal_statevector(bqm, num_reads=100, total_time=100.0, steps=1000):
 
     bits = ((np.arange(2**n)[:, None] >> np.arange(n)) & 1).astype(np.int8)  # (2^n, n)
     energy = bqm.energies((bits, variables))
+    # scaled so that total_time is in units of the inverse problem energy scale
     scale = max(np.abs(list(bqm.linear.values()) + list(bqm.quadratic.values())), default=1.0)
-    # H_problem is diagonal with few distinct levels; shifting it only changes a global phase.
+    # H_problem is diagonal with few distinct levels; shifting it only changes a global phase
     levels, level_of = np.unique((energy - energy.min()) / scale, return_inverse=True)
 
     psi = np.full(2**n, 2 ** (-n / 2), dtype=complex)  # |+>^n, ground state of -sum X
@@ -53,8 +41,7 @@ def anneal_statevector(bqm, num_reads=100, total_time=100.0, steps=1000):
 
 @njit(cache=True)
 def _evolve(psi, n, levels, level_of, total_time, steps):
-    """In place: psi <- prod_k exp(-i dt B(s_k) H_problem) exp(-i dt A(s_k) (-sum X)),
-    with A(s) = 1 - s, B(s) = s and H_problem[j] = levels[level_of[j]]."""
+    """In place, psi <- prod_k exp(-i dt s_k H_problem) exp(-i dt (1 - s_k)(-sum X))."""
     dt = total_time / steps
     for k in range(steps):
         s = (k + 0.5) / steps
@@ -73,15 +60,9 @@ def _evolve(psi, n, levels, level_of, total_time, steps):
 
 @njit(cache=True)
 def _sqa_read(h, indptr, indices, data, slices, beta, gammas, seed, record_every):
-    """One SQA run on the Ising model sum h_i s_i + sum_{i<j} J_ij s_i s_j.
+    """One SQA run on sum h_i s_i + sum J_ij s_i s_j, J in symmetric CSR (Martonak et al., PRB 66, 094203).
 
-    J is symmetric CSR (indptr, indices, data). Trotter slices are coupled
-    ferromagnetically with Jp = 1/2 ln coth(beta Gamma / P), so Boltzmann
-    weight is exp(-(beta/P) sum_k E(s_k) + Jp sum_k sum_i s_i^k s_i^(k+1)).
-    Returns all slices (the caller keeps the best) and a history of shape
-    (frames, slices, n): all slices at the random start, after every
-    record_every sweeps and after the last sweep, or no frames if record_every
-    is 0.
+    Returns the final slices, and snapshots of them every record_every sweeps if that is above 0.
     """
     np.random.seed(seed)
     n = h.size
@@ -93,8 +74,9 @@ def _sqa_read(h, indptr, indices, data, slices, beta, gammas, seed, record_every
         history[0] = s
     for t in range(gammas.size):
         gamma = gammas[t]
+        # neighbouring Trotter slices are coupled ferromagnetically, more strongly as Gamma falls
         jp = 0.5 * np.log(1.0 / np.tanh(beta * gamma / slices))
-        # Local single-spin flips in each slice.
+        # single-spin flips within each slice
         for k in range(slices):
             up, dn = (k + 1) % slices, (k + slices - 1) % slices
             for i in range(n):
@@ -104,7 +86,7 @@ def _sqa_read(h, indptr, indices, data, slices, beta, gammas, seed, record_every
                 dx = 2.0 * s[k, i] * (bp * f - jp * (s[up, i] + s[dn, i]))
                 if dx >= 0.0 or np.random.random() < np.exp(dx):
                     s[k, i] = -s[k, i]
-        # Global moves: flip spin i in every slice (leaves the slice coupling unchanged).
+        # global moves: flip spin i in every slice, which leaves the slice coupling unchanged
         for i in range(n):
             dx = 0.0
             for k in range(slices):
@@ -133,13 +115,9 @@ def _sqa_inputs(bqm, variables):
 
 
 def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5, 1e-3), stop_energy=None):
-    """Simulated quantum annealing; Gamma decreases linearly over `sweeps`.
+    """SQA with Gamma falling linearly over the sweeps, stopping early once a read reaches stop_energy.
 
-    Couplings are divided by the largest |coefficient|, so beta and gamma are in
-    units of the problem energy scale. Defaults were tuned on 6x6 and 9x9
-    puzzles: what matters most is the per-slice inverse temperature beta/slices
-    (5-20 worked best; below 1 or at 40 it failed). If stop_energy is given, reads stop as
-    soon as one reaches it (sudoku ground states have energy 0).
+    Tuned on 6x6 and 9x9 puzzles: beta / slices from 5 to 20 works best, and below 1 or at 40 fails.
     """
     variables = list(bqm.variables)
     h, indptr, indices, data = _sqa_inputs(bqm, variables)
@@ -159,11 +137,6 @@ def anneal_sqa(bqm, num_reads=20, sweeps=2000, slices=16, beta=160.0, gamma=(0.5
 
 
 def anneal_qpu(bqm, num_reads=1000, **kwargs):
-    """Submit one job to the D-Wave QPU (EmbeddingComposite finds the minor embedding)."""
-    from dwave.system import DWaveSampler, EmbeddingComposite
-
+    """Submit one job to a D-Wave QPU, letting EmbeddingComposite find the minor embedding."""
     sampler = EmbeddingComposite(DWaveSampler())
     return sampler.sample(bqm, num_reads=num_reads, label="quantum-sudoku", return_embedding=True, **kwargs)
-
-
-BACKENDS = {"statevector": anneal_statevector, "sqa": anneal_sqa, "qpu": anneal_qpu}

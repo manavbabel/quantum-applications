@@ -9,8 +9,8 @@ from problem import Problem
 from qaoa import counts_to_bits, sample, sampler_and_pass_manager
 
 
-# the first few random problems that the bounds don't already solve, small enough to brute force
 def small_problems(count=3, max_variables=16):
+    """The first few random problems the bounds don't already solve, small enough to brute force."""
     problems = []
     for seed in range(1000):
         problem = Problem.random(

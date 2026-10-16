@@ -1,15 +1,6 @@
-"""Sudoku grids and their QUBO encoding.
+"""Sudoku grids, as n x n arrays with 0 for a blank, and their QUBO encoding.
 
-A grid is an n x n integer array with values 1..n and 0 for a blank. Boxes are
-br x bc with br * bc == n, chosen as square as possible (4 -> 2x2, 6 -> 2x3,
-9 -> 3x3). Prime n has no boxes, so the puzzle is a Latin square.
-
-Encoding: one binary variable x[r, c, v] per blank cell (r, c) and candidate
-value v. Candidates exclude values already given in the cell's row, column or
-box, which is the same as substituting the clues into the full one-hot QUBO;
-no further constraint propagation is done. Each "exactly one of this group is
-1" constraint adds the penalty (sum(group) - 1)^2, so the valid solutions are
-the assignments with energy 0, and each violation costs at least 1.
+One variable x[r, c, v] per blank cell and candidate value, with energy 0 exactly at the solutions.
 """
 
 import itertools
@@ -22,8 +13,10 @@ BLANKS = ".0_"
 
 
 def parse(text):
-    """Parse rows separated by newlines or '/'; cells are single characters,
-    or whitespace-separated tokens when n > 9. '.', '0' and '_' are blanks."""
+    """Parse rows separated by newlines or '/', with '.', '0' or '_' for blanks.
+
+    Cells are single characters, or whitespace-separated tokens when n > 9.
+    """
     rows = [
         ln.split() if len(ln.split()) > 1 else list(ln.strip())
         for ln in text.replace("/", "\n").splitlines()
@@ -37,11 +30,13 @@ def parse(text):
 
 
 def fmt(grid):
+    """The grid as text, with dots for blanks."""
     w = len(str(len(grid)))
     return "\n".join(" ".join(f"{v if v else '.':>{w}}" for v in row) for row in grid)
 
 
 def box_shape(n):
+    """Box rows and columns, as square as possible (6 -> 2x3); None for prime n, a Latin square."""
     br = max(d for d in range(1, math.isqrt(n) + 1) if n % d == 0)
     return (br, n // br) if br > 1 else None
 
@@ -70,7 +65,10 @@ def is_solution(grid, puzzle=None):
 
 
 def candidates(puzzle):
-    """{(r, c): [values]} for each blank cell, excluding values given in its units."""
+    """{(r, c): [values]} for each blank cell, excluding values given in its units.
+
+    This is the same as substituting the clues into the full QUBO; nothing further is propagated.
+    """
     n = len(puzzle)
     seen = {}
     for u in units(n):
@@ -110,6 +108,7 @@ def build_bqm(puzzle):
 
 
 def decode(sample, puzzle):
+    """The puzzle with each set variable (r, c, v) written into its cell."""
     grid = np.array(puzzle)
     for (r, c, v), bit in sample.items():
         if bit:
@@ -118,11 +117,9 @@ def decode(sample, puzzle):
 
 
 def random_puzzle(n, blanks):
-    """Random valid n x n grid with `blanks` cells cleared (uses the global numpy RNG).
+    """A random valid n x n grid with `blanks` cells cleared, and its solution, from the global numpy RNG.
 
-    Starts from the canonical pattern (bc*(r%br) + r//br + c) % n and applies
-    validity-preserving shuffles: rows within bands, bands, columns within
-    stacks, stacks, and a relabelling of symbols.
+    It shuffles the rows, columns and symbols of the pattern (bc*(r%br) + r//br + c) % n.
     """
     br, bc = box_shape(n) or (1, n)
     r = np.concatenate([b * br + np.random.permutation(br) for b in np.random.permutation(n // br)])

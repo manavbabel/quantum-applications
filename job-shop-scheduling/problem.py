@@ -13,11 +13,8 @@ from matplotlib import patches
 INSTANCES = Path(__file__).parent / "benchmark_instances.json"
 
 
-# a random dependency graph with no redundant edges (never A -> C as well as A -> B -> C)
-# tasks are placed one at a time, each picking between min_parents and max_parents parents from the
-# earlier tasks unrelated to the parents it already has; a task that can't find min_parents gets none
-# the order is then shuffled, so a parent may have a higher index than its child
 def random_dependencies(num_tasks, min_parents, max_parents, rng):
+    """Random parents for each task, with no redundant edges (never A -> C as well as A -> B -> C)."""
     # ancestors[i] is a bitmask of every task that task i depends on, directly or not
     ancestors, parents = [], []
     for i in range(num_tasks):
@@ -33,11 +30,13 @@ def random_dependencies(num_tasks, min_parents, max_parents, rng):
             picked.append(j)
             chosen |= 1 << j
             excluded |= ancestors[j] | 1 << j
+        # a task that can't find min_parents gets none
         if len(picked) < max(min_parents, 1):
             picked, excluded = [], 0
         parents.append(picked)
         ancestors.append(excluded)
 
+    # shuffled, so a parent may have a higher index than its child
     order = list(range(num_tasks))
     rng.shuffle(order)
     dependencies = [()] * num_tasks
@@ -46,9 +45,9 @@ def random_dependencies(num_tasks, min_parents, max_parents, rng):
     return dependencies
 
 
-# a uniformly random assignment of tasks to machines, among those that give every machine at least one task
-# ways[i][j] is how many ways the last i tasks can be assigned so that the j machines still unused all get one
 def random_machines(num_tasks, num_machines, rng):
+    """A uniformly random assignment of tasks to machines, among those that give every machine a task."""
+    # ways[i][j] is how many ways the last i tasks can be assigned so that the j unused machines all get one
     ways = [[1] + [0] * num_machines]
     for i in range(1, num_tasks + 1):
         ways.append(
@@ -71,8 +70,9 @@ def random_machines(num_tasks, num_machines, rng):
 
 
 class Problem:
+    """A job shop: each task is a (machine, duration, dependencies) tuple, dependencies being task indices."""
+
     def __init__(self, tasks, name: str | None = None, optimum: int | None = None):
-        # each task is a tuple of (machine, duration, dependencies), where dependencies is a tuple of task indices, 0-indexed
         for task in tasks:
             machine, duration, dependencies = task
 
@@ -92,7 +92,7 @@ class Problem:
 
     @classmethod
     def load(cls, instance_name):
-        """Load a named instance from benchmark_instances.json. These are classic job shops, where each job is a chain of tasks, so every task has at most one parent."""
+        """Load a classic job shop from benchmark_instances.json, where each job is a chain of tasks."""
         with open(INSTANCES) as f:
             instance_dict = json.load(f)[instance_name]
 
@@ -124,9 +124,7 @@ class Problem:
         max_duration=10,
         seed=None,
     ):
-        # a random problem where every machine gets at least one task, each task gets between min_parents
-        # and max_parents parents (or none, if too few are available), and durations are uniform integers
-        # implied dependencies are left out, as they would only add QUBO couplings
+        """A random problem: every machine gets a task, and each task min_parents to max_parents parents."""
         if num_tasks < 1:
             raise ValueError(f"need at least one task, got {num_tasks}")
         if not 1 <= num_machines <= num_tasks:
@@ -137,6 +135,7 @@ class Problem:
             raise ValueError(f"need 0 <= min_duration <= max_duration, got {min_duration} and {max_duration}")
 
         rng = random.Random(seed)
+        # implied dependencies are left out, as they would only add QUBO couplings
         dependencies = random_dependencies(num_tasks, min_parents, max_parents, rng)
         machines = random_machines(num_tasks, num_machines, rng)
         durations = [rng.randint(min_duration, max_duration) for _ in range(num_tasks)]
@@ -153,10 +152,9 @@ class Problem:
         print(f" * makespan     : between {self.lower_bound} and {self.horizon}")
         print(f" * optimum      : {'unknown' if self.optimum is None else self.optimum}")
 
-    # the optimal makespan if known: given (by the benchmark set, or set after an exact solve), or implied
-    # when the lower bound meets the greedy makespan; the solvers measure success against it
     @property
     def optimum(self):
+        """The optimal makespan if known: given, set after an exact solve, or implied by the bounds."""
         if self._optimum is None and self.lower_bound == self.horizon:
             return self.lower_bound
         return self._optimum
@@ -169,22 +167,22 @@ class Problem:
     def num_machines(self):
         return max(machine for machine, _, _ in self.tasks) + 1
 
-    # the tasks that directly precede each task
     @cached_property
     def dependencies(self):
+        """The tasks that directly precede each task."""
         return [dependencies for _, _, dependencies in self.tasks]
 
-    # the tasks that directly follow each task
     @cached_property
     def children(self):
+        """The tasks that directly follow each task."""
         children = [[] for _ in self.tasks]
         for i, dependencies in enumerate(self.dependencies):
             for p in dependencies:
                 children[p].append(i)
         return children
 
-    # every task reachable from task_index through an adjacency list (parents or children), excluding itself
     def reachable(self, task_index, adjacency):
+        """Every task reachable from task_index through an adjacency list (parents or children)."""
         found, stack = set(), list(adjacency[task_index])
         while stack:
             j = stack.pop()
@@ -193,19 +191,17 @@ class Problem:
                 stack.extend(adjacency[j])
         return found
 
-    # what is the total duration on the busiest machine for a given set of tasks?
     def machine_load(self, task_indices):
+        """The total duration on the busiest machine for a set of tasks."""
         load = defaultdict(int)
         for i in task_indices:
             machine, duration, _ = self.tasks[i]
             load[machine] += duration
         return max(load.values(), default=0)
 
-    # the earliest each task can start: after every parent has finished, and after the busiest machine
-    # has worked through all of the task's ancestors on it
-    # computed parents first, so each task builds on its parents' heads
     @cached_property
     def heads(self):
+        """The earliest each task can start: after its parents, and after its ancestors' machine load."""
         heads = [0] * len(self)
         for i in TopologicalSorter(dict(enumerate(self.dependencies))).static_order():
             heads[i] = max(
@@ -214,10 +210,9 @@ class Problem:
             )
         return heads
 
-    # the least time from each task starting to the end of the schedule, by the same two bounds,
-    # computed children first
     @cached_property
     def tails(self):
+        """The least time from each task starting to the end of the schedule, by the same two bounds."""
         tails = [0] * len(self)
         for i in TopologicalSorter(dict(enumerate(self.children))).static_order():
             tails[i] = max(
@@ -226,18 +221,16 @@ class Problem:
             )
         return tails
 
-    # the makespan is at least any task's earliest start plus the least time after it,
-    # and at least the busiest machine's total load
     @cached_property
     def lower_bound(self):
+        """The makespan is at least any task's head plus its tail, and at least the busiest machine's load."""
         return max(
             max(head + tail for head, tail in zip(self.heads, self.tails)),
             self.machine_load(range(len(self))),
         )
 
-    # a quick schedule: tasks are placed once their parents are done, longest remaining chain first,
-    # each in the first gap on its machine that fits
     def greedy_schedule(self):
+        """A quick schedule: ready tasks go longest remaining chain first, each in the first gap that fits."""
         # each task's priority: the longest chain of durations from it to the end, itself included
         chain = [0] * len(self)
         for i in TopologicalSorter(dict(enumerate(self.children))).static_order():
@@ -253,8 +246,7 @@ class Problem:
             for i in ready:
                 machine, duration, dependencies = self.tasks[i]
                 start = max((start_times[p] + self.tasks[p][1] for p in dependencies), default=0)
-                # skip the intervals over by the time the parents finish, then move past any in the way
-                # until the task fits in a gap
+                # skip the intervals over by the time the parents finish, then any in the way
                 intervals = busy[machine]
                 k = bisect_right(intervals, start, key=lambda interval: interval[1])
                 while k < len(intervals) and intervals[k][0] < start + duration:
@@ -265,31 +257,28 @@ class Problem:
             order.done(*ready)
         return start_times
 
-    # an upper bound on the makespan: the greedy schedule's
     @cached_property
     def horizon(self):
+        """An upper bound on the makespan: the greedy schedule's."""
         return self.makespan(self.greedy_schedule())
 
-    # for a given task, what are the possible start times?
-    # from its earliest start, to the horizon less the least time after it
     def windows(self):
+        """Each task's possible start times, from its head to the horizon less its tail."""
         return [range(head, self.horizon - tail + 1) for head, tail in zip(self.heads, self.tails)]
 
-    # given a solution (start times for each task), what is the makespan?
     def makespan(self, start_times):
         return max(start + duration for start, (_, duration, _) in zip(start_times, self.tasks))
 
-    # check the dependency and machine constraints hold (start times are assumed to be non-negative)
     def is_feasible(self, start_times):
+        """Whether the (non-negative) start times meet every dependency and machine constraint."""
         if start_times is None or any(start is None for start in start_times):
             return False
 
-        # check that all dependencies finish by the time this task starts
         for i, dependencies in enumerate(self.dependencies):
             if any(start_times[p] + self.tasks[p][1] > start_times[i] for p in dependencies):
                 return False
 
-        # check that no two tasks on the same machine overlap
+        # no two tasks on the same machine overlap
         busy = defaultdict(list)
         for i, (machine, duration, _) in enumerate(self.tasks):
             busy[machine].append((start_times[i], start_times[i] + duration))
@@ -299,9 +288,8 @@ class Problem:
             for (_, end), (next_start, _) in pairwise(sorted(intervals))
         )
 
-    # draw a schedule as a Gantt chart (by default the greedy one), with an arrow from each parent's end
-    # to its child's start; zero-duration tasks, such as the makespan task, get no bar
     def draw(self, start_times=None, title=None, ax=None):
+        """Draw a schedule (by default the greedy one) as a Gantt chart, with arrows from parents."""
         if start_times is None:
             start_times = self.greedy_schedule()
             title = title or "greedy"
@@ -310,6 +298,7 @@ class Problem:
         total = self.makespan(start_times)
 
         for i, (machine, duration, dependencies) in enumerate(self.tasks):
+            # zero-duration tasks, such as the makespan task, get no bar
             if duration:
                 bar = patches.Rectangle(
                     (start_times[i], machine - 0.4),

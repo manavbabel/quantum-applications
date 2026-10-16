@@ -5,13 +5,14 @@ from dataclasses import dataclass, field
 import matplotlib.pyplot as plt
 
 
-# raised when a solver can't take a problem (too big, no licence, no device), so a loop can skip it
 class SolverUnavailable(RuntimeError):
-    pass
+    """Raised when a solver can't take a problem (too big, no licence, no device), so a loop can skip it."""
 
 
 @dataclass
 class SolverResult:
+    """What every solver returns."""
+
     solver: str
     makespan: int | None
     feasible: bool
@@ -33,14 +34,13 @@ class SolverResult:
         print(f" * metadata     : {json.dumps(self.metadata, indent=4, default=str)}")
 
 
-# the share of samples (makespan -> weight) at a given makespan, None for infeasible
 def fraction(samples, makespan):
+    """The share of samples (makespan -> weight) at a makespan, None meaning infeasible."""
     return samples.get(makespan, 0) / sum(samples.values())
 
 
-# the runs (reads or shots) needed to see the optimum at least once with 99% confidence,
-# ln(0.01) / ln(1 - p) when each run finds it with probability p, and at least one
 def reps99(p):
+    """The runs needed to see the optimum with 99% confidence, ln(0.01) / ln(1 - p), and at least one."""
     if p is None:
         return None
     if p == 0:
@@ -48,11 +48,11 @@ def reps99(p):
     return 1.0 if p >= 0.99 else math.log(0.01) / math.log(1 - p)
 
 
-# turn a solver's output into a SolverResult
-# start_times may include the makespan task at the end, which is dropped
-# samples (makespan -> weight) is None for deterministic solvers, whose one run finds the optimum or doesn't
-# success is measured against problem.optimum, so set that first if the bounds don't already give it
 def make_result(problem, solver, start_times, tts, calls, metadata=None, samples=None):
+    """A solver's output as a SolverResult, scored against problem.optimum, so set that first.
+
+    samples (makespan -> weight) is None for deterministic solvers; a trailing makespan task is dropped.
+    """
     if start_times is not None:
         start_times = list(start_times)[: len(problem)]
     feasible = problem.is_feasible(start_times)
@@ -84,8 +84,8 @@ def make_result(problem, solver, start_times, tts, calls, metadata=None, samples
     )
 
 
-# what each sampler's runs came out as: optimal, feasible but longer, or infeasible
 def draw_outcomes(results):
+    """A bar per sampler of the share of its runs that were optimal, feasible but longer, or infeasible."""
     names = list(results)
     optimal = [result.success_probability for result in results.values()]
     infeasible = [result.samples.get(None, 0) for result in results.values()]

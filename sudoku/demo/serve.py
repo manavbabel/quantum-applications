@@ -1,13 +1,6 @@
-"""Local server for the sudoku annealing demo.
+"""Serves the sudoku demo at http://localhost:8765/ and sends its puzzles to D-Wave; see --help.
 
-    python serve.py                start the server and open the page
-    python serve.py --no-browser   start the server only
-    python serve.py --check        check the D-Wave connection and the chip mappings in data.js
-
-Serves this folder at http://localhost:8765/ and sends puzzles to D-Wave for
-the page. If .venv exists here (made by setup_dwave.py), the script re-runs
-itself with that venv's Python. Without dwave-cloud-client or dwave.conf, the
-page is still served and /api/status reports that live runs are off.
+Without dwave-cloud-client or dwave.conf the page is still served, and shows the recorded results.
 """
 
 import argparse
@@ -169,13 +162,9 @@ def as_list(x):
 
 
 def read_future(future):
-    """Spins (one row per distinct read, indexed by qubit), occurrences and QPU access time (us).
+    """Spins (a row per distinct read, indexed by qubit), occurrences and QPU access time in microseconds.
 
-    Reads the client's own decoded answer, so dimod is not needed. The client
-    decodes with numpy when it is installed and converts back to lists; without
-    numpy the counts come back as tuples. Qubits outside the problem read as 0
-    with numpy and -1 without, which never matters here since every chain
-    qubit is in h or J.
+    The client's own decoding gives lists with numpy installed and tuples without, so both are handled.
     """
     spins = as_list(future.samples)
     counts = [int(k) for k in as_list(future.num_occurrences)]

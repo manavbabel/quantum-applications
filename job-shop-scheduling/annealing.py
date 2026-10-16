@@ -9,19 +9,19 @@ from formulation import best_feasible, build_formulation
 from results import SolverUnavailable, make_result
 
 
-# a D-Wave QPU, found through the local dwave config
 def dwave_sampler():
+    """A D-Wave QPU, found through the local dwave config."""
     try:
         return DWaveSampler()
     except Exception as exc:  # no token, no QPU online, network down
         raise SolverUnavailable(f"cannot reach a D-Wave QPU: {exc}") from exc
 
 
-# samples the QUBO with any dimod sampler: a D-Wave QPU from dwave_sampler(), or locally a simulator
-# such as dwave.samplers.PathIntegralAnnealingSampler
-# a QPU only has certain couplers, so the QUBO is minor-embedded onto it first
-# any other keyword goes straight to the sampler, e.g. seed for a simulator or annealing_time for a QPU
 def solve_annealing(problem, sampler, num_reads=1000, **parameters):
+    """Sample the QUBO with any dimod sampler, such as a QPU from dwave_sampler() or a local simulator.
+
+    Other keywords go to the sampler, e.g. seed for a simulator or annealing_time for a QPU.
+    """
     formulation = build_formulation(problem)
     bqm = dimod.BinaryQuadraticModel.from_qubo(formulation.Q, offset=formulation.offset)
     name = f"annealing/{sampler.properties.get('chip_id', type(sampler).__name__)}"
@@ -32,7 +32,7 @@ def solve_annealing(problem, sampler, num_reads=1000, **parameters):
 
     t0 = time.perf_counter()
     if structured:
-        # timed separately, as the embedding is a one-off cost
+        # a QPU only has certain couplers, so the QUBO is minor-embedded onto it, timed as a one-off cost
         # self-loops make sure variables with no couplings are embedded too
         source = list(bqm.quadratic) + [(v, v) for v in bqm.variables]
         embedding = minorminer.find_embedding(source, target)
@@ -78,9 +78,8 @@ def solve_annealing(problem, sampler, num_reads=1000, **parameters):
     return make_result(problem, name, start_times, t1 - t0, num_reads, metadata, samples)
 
 
-# the logical problem size, and on a QPU the expected access time for the reads
-# (quoted for one qubit per variable, so a lower bound once chains are added)
 def estimate_annealing(problem, sampler, num_reads=1000, **parameters):
+    """The logical problem size, and on a QPU a lower bound on the access time (it ignores chains)."""
     formulation = build_formulation(problem)
     bqm = dimod.BinaryQuadraticModel.from_qubo(formulation.Q, offset=formulation.offset)
 

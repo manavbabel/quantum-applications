@@ -1073,7 +1073,7 @@ function wire() {
   wireThermo();
 }
 
-// See the comment at the top of the file.
+// The URL hash hook described at the top of the file.
 function fromHash() {
   var h = new URLSearchParams(location.hash.slice(1));
   var screen = h.get("screen");

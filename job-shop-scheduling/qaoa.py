@@ -1,3 +1,8 @@
+"""QAOA without the one-hot penalty: each task's qubits start in a W state, and an XY mixer keeps one set.
+
+Qubit n is variable n, and every sample is turned into a list of bits in variable order.
+"""
+
 import time
 from itertools import pairwise
 
@@ -13,20 +18,17 @@ from scipy.optimize import minimize
 from formulation import best_feasible, build_formulation, qubo_to_ising
 from results import SolverUnavailable, make_result
 
-# the QAOA solvers use the formulation without its one-hot penalty: each task's block of qubits starts
-# in an equal superposition of its start times, and an XY mixer within the block keeps exactly one set
-# bit order: qubit n is variable n, and every sample is turned into a list of bits in variable order
 
-
-# convert a Qiskit counts key into a list of bits
-# Qiskit keys are little-endian: qubit 0 is the rightmost character, so reverse it
 def counts_to_bits(key):
+    """A Qiskit counts key as bits in variable order; Qiskit puts qubit 0 rightmost."""
     return [int(bit) for bit in reversed(key)]
 
 
-# the cost Hamiltonian: the QUBO's Ising form as Z and ZZ terms, scaled so the largest coefficient is 1,
-# so the same angles suit different instances; the constant is a global phase, so it is dropped
 def cost_operator(formulation):
+    """The QUBO's Ising form as Z and ZZ terms, scaled to a largest coefficient of 1 so angles transfer.
+
+    The constant is a global phase, so it is dropped.
+    """
     h, J = qubo_to_ising(formulation.Q)
     scale = max(map(abs, [*h.values(), *J.values()]), default=0) or 1
     terms = [("Z", [a], c / scale) for a, c in h.items()]
@@ -34,8 +36,8 @@ def cost_operator(formulation):
     return SparsePauliOp.from_sparse_list(terms, num_qubits=formulation.num_variables).simplify()
 
 
-# put each block into a W state (an equal superposition of its start times), using O(len(block)) gates
 def w_states(formulation):
+    """Put each block into a W state, an equal superposition of its start times, in O(len(block)) gates."""
     circuit = QuantumCircuit(formulation.num_variables)
     for block in formulation.blocks:
         circuit.x(block[0])
@@ -45,13 +47,15 @@ def w_states(formulation):
     return circuit
 
 
-# the XY mixer, -(XX + YY)/2 around a ring within each block
-# it moves a task between start times without setting two at once, and its ground state is the W state
-# a block of two gets a single pair, as a ring would couple it twice
 def xy_mixer(formulation):
+    """The XY mixer, -(XX + YY)/2 around a ring in each block, which moves a task between start times.
+
+    It never sets two start times at once, and its ground state is the W state.
+    """
     terms = []
     for block in formulation.blocks:
         pairs = list(pairwise(block))
+        # a block of two gets a single pair, as a ring would couple it twice
         if len(block) > 2:
             pairs.append((block[-1], block[0]))
         for a, b in pairs:
@@ -59,35 +63,31 @@ def xy_mixer(formulation):
     return SparsePauliOp.from_sparse_list(terms, num_qubits=formulation.num_variables)
 
 
-# the linear ramps from arXiv:2405.09169 eq. 4
-# over layers i = 0 .. p-1 gamma ramps up and beta ramps down, neither reaching zero
-# ordered betas then gammas, as qaoa_ansatz orders its parameters
 def linear_ramp(p, delta_gamma, delta_beta):
+    """arXiv:2405.09169 eq. 4: gamma ramps up and beta down over p layers, as betas then gammas."""
     layers = np.arange(p)
     return np.concatenate([(1 - layers / p) * delta_beta, (layers + 1) / p * delta_gamma])
 
 
-# the energy of each bitstring (bits in variable order, one row each) under an operator of Z terms
-# each term counts its coefficient, negated when an odd number of the bits it acts on are set
 def energies(operator, bits):
+    """The energy of each row of bits under an operator of Z terms."""
+    # each term counts its coefficient, negated when an odd number of the bits it acts on are set
     parity = np.asarray(bits, dtype=np.int64) @ operator.paulis.z.T.astype(np.int64) % 2
     return (1 - 2 * parity) @ operator.coeffs.real
 
 
-# the mean energy of the lowest alpha fraction of the shots (the CVaR), with alpha = 1 the plain mean
-# weights say how often each energy came up; the shots straddling the alpha cut count in part
 def cvar(energies, weights, alpha):
+    """The CVaR: the mean energy of the lowest alpha fraction of the weighted shots."""
     order = np.argsort(energies)
     energies, weights = energies[order], np.asarray(weights, dtype=float)[order]
     weights /= weights.sum()
-    # each energy's share of the alpha taken: its weight, or what is left of alpha once the lower
-    # energies have taken theirs
+    # each energy takes its weight, or whatever is left of alpha once the lower energies have had theirs
     taken = np.clip(alpha - (np.cumsum(weights) - weights), 0, weights)
     return taken @ energies / alpha
 
 
-# the formulation without its one-hot penalty, with one qubit per variable, which has to fit on the backend
 def qaoa_formulation(problem, backend):
+    """The formulation without its one-hot penalty, if its qubits fit on the backend."""
     formulation = build_formulation(problem, for_qaoa=True)
     if formulation.num_variables > backend.num_qubits:
         raise SolverUnavailable(
@@ -96,8 +96,8 @@ def qaoa_formulation(problem, backend):
     return formulation
 
 
-# the QAOA circuit with p layers, its angles left free
 def ansatz(formulation, p):
+    """The QAOA circuit with p layers, its angles left free."""
     circuit = qaoa_ansatz(
         cost_operator(formulation),
         reps=p,
@@ -108,32 +108,30 @@ def ansatz(formulation, p):
     return circuit
 
 
-# a sampler and a transpiler for the backend; seed fixes the transpiler and, on a simulator, the shots
-# an IBM backend runs on the device through Qiskit Runtime; an AerSimulator (or fake backend) runs locally
-# through Qiskit's BackendSamplerV2, which is what Runtime's local testing mode uses, but that mode
-# ignores a seed of 0
 def sampler_and_pass_manager(backend, shots, seed):
+    """A sampler and transpiler for the backend; seed fixes the transpiler and any simulated shots."""
     if isinstance(backend, IBMBackend):
         sampler = SamplerV2(mode=backend, options={"default_shots": shots})
     else:
+        # what Runtime's local testing mode uses underneath, called directly as that mode ignores a seed of 0
         sampler = BackendSamplerV2(backend=backend, options={"default_shots": shots, "seed_simulator": seed})
     return sampler, generate_preset_pass_manager(backend=backend, seed_transpiler=seed)
 
 
-# one run of the transpiled circuit at the given angles: Qiskit counts, and the seconds the QPU spent on
-# it (None on a simulator)
 def sample(sampler, circuit, angles):
+    """Run the transpiled circuit once: Qiskit counts, and the QPU seconds (None on a simulator)."""
     result = sampler.run([(circuit, angles)]).result()
     spans = result.metadata.get("execution", {}).get("execution_spans")
     return result[0].data.meas.get_counts(), spans.duration if spans else None
 
 
-# QAOA with the angles tuned by scipy's COBYLA, as in IBM's QAOA tutorial, starting from LR-QAOA's ramp
-# each evaluation samples the circuit; alpha < 1 minimises the CVaR (the mean energy of the best alpha
-# fraction of shots) instead of the mean
 def solve_qaoa(
     problem, backend, p=1, alpha=1.0, maxiter=100, shots=4096, seed=None, delta_gamma=0.6, delta_beta=0.3
 ):
+    """QAOA with the angles tuned by COBYLA from LR-QAOA's ramp, as in IBM's QAOA tutorial.
+
+    Each evaluation samples the circuit; alpha < 1 minimises the CVaR instead of the mean energy.
+    """
     if not 0 < alpha <= 1:
         raise ValueError(f"alpha must be in (0, 1], got {alpha}")
     formulation = qaoa_formulation(problem, backend)
@@ -182,9 +180,8 @@ def solve_qaoa(
     )
 
 
-# LR-QAOA: the angles follow a fixed annealing-like schedule, so there is no optimiser and one execution
-# the ramps and the default slopes are from arXiv:2405.09169
 def solve_lr_qaoa(problem, backend, p=10, shots=4096, seed=None, delta_gamma=0.6, delta_beta=0.3):
+    """LR-QAOA: fixed linear ramps of the angles (arXiv:2405.09169), so no optimiser and one execution."""
     formulation = qaoa_formulation(problem, backend)
     sampler, pass_manager = sampler_and_pass_manager(backend, shots, seed)
     circuit = pass_manager.run(ansatz(formulation, p))
@@ -211,10 +208,8 @@ def solve_lr_qaoa(problem, backend, p=10, shots=4096, seed=None, delta_gamma=0.6
     return make_result(problem, f"lr-qaoa/{backend.name}", start_times, t1 - t0, 1, metadata, samples)
 
 
-# what one QAOA circuit with p layers needs: its depth and two-qubit gates in a generic all-to-all gate
-# set, and if it fits the backend, the same on the device and (where gate durations are published, as on
-# IBM hardware) the time per shot
 def estimate_circuit(problem, backend, p):
+    """Depth and two-qubit gates of a p-layer circuit, all-to-all and on the backend, and time per shot."""
     formulation = build_formulation(problem, for_qaoa=True)
     circuit = ansatz(formulation, p)
     logical = generate_preset_pass_manager(optimization_level=1, basis_gates=["cx", "rz", "sx", "x"]).run(

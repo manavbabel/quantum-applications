@@ -1,9 +1,6 @@
-"""Builds data.js for the booth demo: puzzles, annealing recordings, chip mappings and fallback results.
+"""Builds data.js for the demo: puzzles, annealing recordings, chip mappings and fallback results.
 
-    uv run python sudoku/demo/precompute.py [--solver NAME] [--qpu-check]
-
-Fetching the solver's properties is free. --qpu-check instead sends each problem stored in data.js to
-the QPU once (15 jobs of 100 reads) and prints the share of reads that solved it.
+Fetching the solver's properties is free; --qpu-check spends QPU time (15 jobs of 100 reads).
 """
 
 import argparse
@@ -77,21 +74,19 @@ def make_puzzles(n, blanks, singles):
 
 
 def display_gammas():
-    """Gamma from REC_GAMMA[0] to REC_GAMMA[1], spaced so that the slice coupling
-    Jp = 1/2 ln coth(beta Gamma / P) rises linearly. A linear Gamma leaves the slices almost
-    uncoupled until the last few frames, so every puzzle would settle at the very end."""
+    """Gamma spaced so the slice coupling Jp = 1/2 ln coth(beta Gamma / P) rises linearly.
+
+    A linear Gamma leaves the slices almost uncoupled until the end, so every puzzle would settle late.
+    """
     bp = REC_BETA / REC_SLICES
     jp = np.linspace(*(0.5 * np.log(1 / np.tanh(bp * g)) for g in REC_GAMMA), REC_SWEEPS)
     return np.arctanh(np.exp(-2 * jp)) / bp
 
 
 def record(bqm, variables, groups, cells):
-    """Frames of one SQA read that ends at energy 0 with every slice agreeing, trying seeds from the
-    global RNG.
+    """Frames of one SQA read that ends at energy 0 with every slice agreeing, trying seeds in turn.
 
-    Each frame has p, the share of Trotter slices with each variable set, and heat, each blank
-    cell's broken share of the groups it is in, averaged over the slices. The first frame is the
-    random start and the last is the read-out.
+    A frame has p, the share of slices with each variable set, and heat, each cell's share of broken groups.
     """
     h, indptr, indices, data = _sqa_inputs(bqm, variables)
     gammas = display_gammas()

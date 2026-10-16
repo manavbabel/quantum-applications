@@ -1,11 +1,6 @@
-"""One-off setup for live D-Wave runs in the sudoku demo; safe to re-run.
+"""One-off, re-runnable setup for live D-Wave runs: a .venv here, the client, and the token in dwave.conf.
 
-    python setup_dwave.py                 create .venv, install the client, save the token, check
-    python setup_dwave.py --token TOKEN   the same, replacing the saved token
-
-Standard library only. The token goes in dwave.conf in this folder, and
-serve.py reads only that file, so the laptop's own D-Wave settings are neither
-used nor changed.
+Standard library only, so it runs on the demo laptop's own Python.
 """
 
 import argparse

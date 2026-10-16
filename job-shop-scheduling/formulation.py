@@ -9,10 +9,9 @@ from matplotlib.colors import LinearSegmentedColormap
 from problem import Problem
 
 
-# QUBO formulation
-# energy is sum over a,b of Q[a,b]x_ax_b + offset
-# for a feasible solution, energy is makespan
 class Formulation(NamedTuple):
+    """A QUBO whose energy, sum of Q[a, b] x_a x_b plus the offset, is the makespan of a feasible schedule."""
+
     horizon: int  # the latest start time considered
     penalty: int  # the cost of breaking any one constraint
     variables: list  # variables[n] is the (task, time) pair that index n stands for
@@ -35,9 +34,8 @@ class Formulation(NamedTuple):
 
 
 def build_formulation(problem: Problem, for_qaoa: bool = False):
+    """The problem's QUBO; for_qaoa leaves out the one-hot penalty, which QAOA's mixer enforces instead."""
     problem = add_makespan_task(problem)
-
-    # get the list of possible start times for each task
     windows = problem.windows()
 
     # the makespan task can't start before `earliest`, so we measure the objective from there
@@ -45,13 +43,9 @@ def build_formulation(problem: Problem, for_qaoa: bool = False):
     earliest = windows[-1].start
     penalty = problem.horizon - earliest + 1
 
-    # variables indexed by task and time
+    # one variable per task and start time
     variables = [(i, k) for i in range(len(problem)) for k in windows[i]]
-
-    # map each variable back to its index
     index = {variable: n for n, variable in enumerate(variables)}
-
-    # group the variable indices by task
     blocks = [[index[(i, k)] for k in windows[i]] for i in range(len(problem))]
 
     Q = defaultdict(int)
@@ -61,10 +55,8 @@ def build_formulation(problem: Problem, for_qaoa: bool = False):
     for n in blocks[-1]:  # the makespan task is the last one
         Q[(n, n)] += variables[n][1] - earliest
 
-    # constraint: each task starts exactly once
-    # penalty * (sum_k x_ik - 1)^2, expanded using x^2 = x for binary x
-    # the +1 from each square is constant, and is collected in the offset below
-    # left out for QAOA, where a Hamming-weight-preserving mixer enforces it
+    # each task starts exactly once: penalty * (sum_k x_ik - 1)^2, expanded using x^2 = x,
+    # with the constant +1 from each square collected in the offset
     if not for_qaoa:
         for block in blocks:
             for n in block:
@@ -72,8 +64,7 @@ def build_formulation(problem: Problem, for_qaoa: bool = False):
             for a, b in combinations(block, 2):
                 Q[(a, b)] += 2 * penalty
 
-    # constraints: parents finish before their children start, and one task per machine at a time
-    # penalise each pair of start times that would break either
+    # parents finish before their children start, and one task per machine at a time
     for a, b in clashes(problem, windows):
         Q[(index[a], index[b])] += penalty
 
@@ -82,10 +73,8 @@ def build_formulation(problem: Problem, for_qaoa: bool = False):
     return Formulation(problem.horizon, penalty, variables, blocks, dict(Q), offset)
 
 
-# the pairs of (task, time) variables that cannot both be set
-# a pair that breaks both constraints comes up twice, so is penalised twice
 def clashes(problem: Problem, windows):
-    # every parent finishes before its child starts: pair each child start before the parent finishes
+    """The pairs of (task, time) variables that can't both be set; one breaking both comes up twice."""
     for i, (_, _, dependencies) in enumerate(problem.tasks):
         for p in dependencies:
             for kp in windows[p]:
@@ -93,7 +82,7 @@ def clashes(problem: Problem, windows):
                     if ki < kp + problem.tasks[p][1]:  # i starts before p finishes
                         yield (p, kp), (i, ki)
 
-    # one task per machine at a time: pair each two start times whose intervals overlap
+    # two tasks on one machine whose intervals overlap
     for i, j in combinations(range(len(problem)), 2):
         if problem.tasks[i][0] == problem.tasks[j][0]:
             for ki in windows[i]:
@@ -102,15 +91,14 @@ def clashes(problem: Problem, windows):
                         yield (i, ki), (j, kj)
 
 
-# add zero-duration makespan task whose parents are every childless task, on its own machine
 def add_makespan_task(problem: Problem):
+    """Add a zero-duration task on its own machine that follows every childless task."""
     sinks = tuple(i for i in range(len(problem)) if not problem.children[i])
     return Problem(list(problem.tasks) + [(problem.num_machines, 0, sinks)])
 
 
-# substitute x = (1-s)/2 to get the Ising energy, up to a constant
-# energy = sum h[i] s_i + sum J[i, j] s_i s_j + constant
 def qubo_to_ising(Q):
+    """h and J of the Ising energy sum h_i s_i + sum J_ij s_i s_j, up to a constant, from x = (1 - s) / 2."""
     h, J = defaultdict(float), defaultdict(float)
     for (a, b), coefficient in Q.items():
         if a == b:
@@ -122,9 +110,8 @@ def qubo_to_ising(Q):
     return dict(h), dict(J)
 
 
-# convert bits (bits[n] is variable n) into start times
-# a task whose block isn't one-hot gets None, which is infeasible
 def decode(bits, formulation):
+    """Start times from bits in variable order; a task whose block isn't one-hot gets None."""
     start_times = []
     for block in formulation.blocks:
         on = [n for n in block if int(bits[n])]
@@ -132,11 +119,9 @@ def decode(bits, formulation):
     return start_times
 
 
-# the best feasible schedule among samples (bits in variable order), weighted by how often each came up
-# samples are ranked by the real tasks' makespan, so one with the makespan task unset or late still counts
-# returns the best start times (None if none were feasible) and the weight at each makespan (None for
-# infeasible)
 def best_feasible(samples, weights, formulation, problem):
+    """The best feasible start times among samples, and the weight at each makespan (None for infeasible)."""
+    # judged on the real tasks alone, so a sample with the makespan task unset or late still counts
     best, best_makespan, makespans = None, None, Counter()
     for bits, weight in zip(samples, weights):
         start_times = decode(bits, formulation)[: len(problem)]
@@ -147,9 +132,8 @@ def best_feasible(samples, weights, formulation, problem):
     return best, dict(makespans)
 
 
-# the QUBO as a heatmap, one row and column per variable, grouped into each task's block of start times
-# a pair's colour is its total coupling; the one-hot terms show as the blocks on the diagonal
 def draw_qubo(formulation):
+    """The QUBO as a heatmap, one row and column per variable, grouped into each task's start times."""
     matrix = np.zeros((formulation.num_variables, formulation.num_variables))
     for (a, b), coefficient in formulation.Q.items():
         matrix[a, b] += coefficient
