@@ -1,28 +1,16 @@
 # TODO
 
-TO-DO:
-
 - unit commitment use-case (MAX-LINSAT with DQI)
-- finance use-case (QCMC)
+- finance use-case (tbd)
 
-Benchmarks:
-- OR-Tools
-- MILP (HiGHS or CBC)
-- noiseless simulation
-- noisy simulation
-- real QC
-
-Remember:
-- use real public data
-- prominently show negative results and crossover analysis
-- resource estimation (what's needed, when expected?)
+Goals:
+- scaling/crossover analyses
+- resource estimation
 - fair evaluation (TTS, seeds, confidences, tuning budgets)
-- tests, CI, type hints, packaged, reproducibility
+- type hints, packaging, reproducibility
+- tune D-Wave chain strength: on Advantage2, some job shop runs lose every read to broken chains
 
 Rust integration:
-- build framework in python
-- profile it
+- profile python
 - identify the computationally intensive part
 - write *that* in Rust behind PyO3, show speedup
-- be disciplined about scope! do one app thoroughly before touching the others
-- write clear short descriptions, communication is important!

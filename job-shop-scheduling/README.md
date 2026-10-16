@@ -6,6 +6,21 @@ The notebook writes this as a QUBO and solves it classically, with QAOA (simulat
 
 ![The optimal schedule for the notebook's example problem, with an arrow from each task to the tasks that wait for it](figures/schedule.png)
 
+## Results
+
+On the notebook's example problem (21 qubits), the noiseless samplers all beat random guessing comfortably, and D-Wave does best, with half of its reads optimal. The IBM device does worse than guessing: none of its 4,096 shots was a valid schedule.
+
+![The share of each method's shots or reads that came out optimal, feasible but longer, or infeasible](figures/outcomes.png)
+
+The benchmark runs 20 random problems at each size, from 4 tasks up to the size where the brute-force solver takes about a second (8 tasks). The gate-based solvers only get problems of up to 20 qubits.
+
+![Fraction of results optimal, mean approximation ratio and median time against the number of tasks](figures/benchmark.png)
+
+- Gurobi's MILP proves every optimum in under a millisecond, so there's no quantum advantage at these sizes.
+- With 4,096 guesses per problem, random guessing finds the optimum every time up to 6 tasks. The annealers only pull ahead of it at 7 and 8 tasks.
+- D-Wave (`Advantage2_system1`) finds the optimum on 80% of problems at 7 tasks and 70% at 8. It does well or not at all: 10 of its 60 runs at 6 to 8 tasks had no feasible read, with chains breaking.
+- IBM (`ibm_miami`) manages 62 to 75% at 4 to 6 tasks, below random guessing.
+
 ## Running it
 
 The modules import each other by name, so run everything from this folder:
@@ -15,7 +30,7 @@ cd job-shop-scheduling
 uv run jupyter lab job_shop_scheduling.ipynb
 ```
 
-The IBM and D-Wave cells need accounts (see the [top-level README](../README.md)). Without them, skip those two cells and set `use_hardware = False` in the benchmark.
+Everything except the IBM and D-Wave cells runs on your laptop. Those cells need accounts (see the [top-level README](../README.md)); without them, skip the two cells and set `use_hardware = False` in the benchmark.
 
 Or use the modules directly:
 
@@ -40,20 +55,6 @@ solve_random(problem, seed=0).describe()
 
 ![The QUBO matrix for the example problem, one block of start times per task](figures/qubo.png)
 
-## Results
-
-On the notebook's example problem (21 qubits), the noiseless samplers all beat random guessing comfortably, and D-Wave does best, with half of its reads optimal. The IBM device does worse than guessing: none of its 4,096 shots was a valid schedule.
-
-![The share of each method's shots or reads that came out optimal, feasible but longer, or infeasible](figures/outcomes.png)
-
-The benchmark runs 20 random problems at each size, from 4 tasks up to the size where the brute-force solver takes about a second (8 tasks). The gate-based solvers only get problems of up to 20 qubits.
-
-![Fraction of results optimal, mean approximation ratio and median time against the number of tasks](figures/benchmark.png)
-
-- Gurobi's MILP proves every optimum in under a millisecond, so there's no quantum advantage at these sizes.
-- With 4,096 guesses per problem, random guessing finds the optimum every time up to 6 tasks. The annealers only pull ahead of it at 7 and 8 tasks.
-- D-Wave (`Advantage2_system1`) finds the optimum on 80% of problems at 7 tasks and 70% at 8. It does well or not at all: 10 of its 60 runs at 6 to 8 tasks had no feasible read, with chains breaking. IBM (`ibm_miami`) manages 62 to 75% at 4 to 6 tasks, below random guessing.
-
 ## Files
 
 | file | contents |
@@ -75,6 +76,7 @@ The benchmark runs 20 random problems at each size, from 4 tasks up to the size 
 - Only small problems: the brute-force solver sets the size limit, and statevector simulation stops at about 20 qubits.
 - TTS in the code is the wall-clock time of a solve, and the benchmark plots QPU time for hardware. In the literature, time-to-solution usually means the time per run multiplied by reps99.
 - Simulator and classical times are wall-clock times on a laptop, and varied by about 3x between runs.
+- The benchmark's D-Wave rows were rerun on Advantage2 after the rest; the other rows, IBM's included, come from the first full run.
 
 ## References
 
