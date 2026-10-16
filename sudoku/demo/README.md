@@ -1,6 +1,6 @@
 # Sudoku annealing demo
 
-An interactive sudoku demo for the NQCC stand at New Scientist Live. Visitors solve a puzzle against the clock, watch a recorded simulated quantum annealing run settle the same puzzle, then send it to a D-Wave quantum annealer. The design is in [the spec](../../docs/superpowers/specs/2026-10-05-sudoku-annealing-demo-design.md).
+An interactive sudoku demo for the NQCC stand at New Scientist Live. Visitors solve a puzzle against the clock, watch a recorded simulated quantum annealing run settle the same puzzle, then send it to a D-Wave quantum annealer.
 
 ## Running it
 
