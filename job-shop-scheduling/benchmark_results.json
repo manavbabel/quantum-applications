@@ -96,8 +96,8 @@
   "qubits": 17,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.672,
-  "time": 0.12887796
+  "p_optimum": 0.564,
+  "time": 0.161832
  },
  {
   "solver": "exact",
@@ -166,8 +166,8 @@
   "qubits": 21,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.022,
-  "time": 0.10743756
+  "p_optimum": 0.021,
+  "time": 0.1618716
  },
  {
   "solver": "exact",
@@ -266,8 +266,8 @@
   "qubits": 13,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.629,
-  "time": 0.11007796
+  "p_optimum": 0.868,
+  "time": 0.16253279999999998
  },
  {
   "solver": "exact",
@@ -336,8 +336,8 @@
   "qubits": 21,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.051,
-  "time": 0.16203795999999998
+  "p_optimum": 0.085,
+  "time": 0.167652
  },
  {
   "solver": "exact",
@@ -436,8 +436,8 @@
   "qubits": 17,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.298,
-  "time": 0.16661716000000001
+  "p_optimum": 0.819,
+  "time": 0.156652
  },
  {
   "solver": "exact",
@@ -536,8 +536,8 @@
   "qubits": 18,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.292,
-  "time": 0.15961716
+  "p_optimum": 0.425,
+  "time": 0.1597124
  },
  {
   "solver": "exact",
@@ -636,8 +636,8 @@
   "qubits": 19,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.094,
-  "time": 0.14025676
+  "p_optimum": 0.391,
+  "time": 0.15819239999999998
  },
  {
   "solver": "exact",
@@ -706,8 +706,8 @@
   "qubits": 22,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.183,
-  "time": 0.16441876
+  "p_optimum": 0.024,
+  "time": 0.1704348
  },
  {
   "solver": "exact",
@@ -806,8 +806,8 @@
   "qubits": 18,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.671,
-  "time": 0.11547755999999999
+  "p_optimum": 0.943,
+  "time": 0.158232
  },
  {
   "solver": "exact",
@@ -876,8 +876,8 @@
   "qubits": 25,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.187,
-  "time": 0.21067635999999998
+  "p_optimum": 0.695,
+  "time": 0.164832
  },
  {
   "solver": "exact",
@@ -976,8 +976,8 @@
   "qubits": 13,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.826,
-  "time": 0.15141756
+  "p_optimum": 0.998,
+  "time": 0.165872
  },
  {
   "solver": "exact",
@@ -1046,8 +1046,8 @@
   "qubits": 23,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.098,
-  "time": 0.12321716
+  "p_optimum": 0.045,
+  "time": 0.1679332
  },
  {
   "solver": "exact",
@@ -1146,8 +1146,8 @@
   "qubits": 20,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.36,
-  "time": 0.10933716
+  "p_optimum": 0.519,
+  "time": 0.16049360000000001
  },
  {
   "solver": "exact",
@@ -1246,8 +1246,8 @@
   "qubits": 14,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.664,
-  "time": 0.15317716
+  "p_optimum": 0.974,
+  "time": 0.1601136
  },
  {
   "solver": "exact",
@@ -1316,8 +1316,8 @@
   "qubits": 21,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.413,
-  "time": 0.13575795999999998
+  "p_optimum": 0.53,
+  "time": 0.1697736
  },
  {
   "solver": "exact",
@@ -1386,8 +1386,8 @@
   "qubits": 23,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.044,
-  "time": 0.13019716
+  "p_optimum": 0.216,
+  "time": 0.155434
  },
  {
   "solver": "exact",
@@ -1486,8 +1486,8 @@
   "qubits": 20,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.681,
-  "time": 0.10533596
+  "p_optimum": 0.293,
+  "time": 0.15669360000000002
  },
  {
   "solver": "exact",
@@ -1586,8 +1586,8 @@
   "qubits": 17,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.659,
-  "time": 0.11099716
+  "p_optimum": 0.925,
+  "time": 0.161814
  },
  {
   "solver": "exact",
@@ -1686,8 +1686,8 @@
   "qubits": 17,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.416,
-  "time": 0.12973716
+  "p_optimum": 0.477,
+  "time": 0.1624544
  },
  {
   "solver": "exact",
@@ -1786,8 +1786,8 @@
   "qubits": 17,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.677,
-  "time": 0.14381676000000002
+  "p_optimum": 0.901,
+  "time": 0.1597944
  },
  {
   "solver": "exact",
@@ -1886,8 +1886,8 @@
   "qubits": 19,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.668,
-  "time": 0.14887796
+  "p_optimum": 0.924,
+  "time": 0.1697336
  },
  {
   "solver": "exact",
@@ -1986,8 +1986,8 @@
   "qubits": 18,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.855,
-  "time": 0.09419836
+  "p_optimum": 0.986,
+  "time": 0.1619728
  },
  {
   "solver": "exact",
@@ -2056,8 +2056,8 @@
   "qubits": 25,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.497,
-  "time": 0.15109756
+  "p_optimum": 0.9,
+  "time": 0.17051239999999998
  },
  {
   "solver": "exact",
@@ -2156,8 +2156,8 @@
   "qubits": 18,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.859,
-  "time": 0.10615716
+  "p_optimum": 0.986,
+  "time": 0.165794
  },
  {
   "solver": "exact",
@@ -2226,8 +2226,8 @@
   "qubits": 28,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.036,
-  "time": 0.12597716
+  "p_optimum": 0.077,
+  "time": 0.15547439999999998
  },
  {
   "solver": "exact",
@@ -2296,8 +2296,8 @@
   "qubits": 38,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.008,
-  "time": 0.15103835999999998
+  "p_optimum": 0.004,
+  "time": 0.17569479999999998
  },
  {
   "solver": "exact",
@@ -2366,8 +2366,8 @@
   "qubits": 24,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.592,
-  "time": 0.14527716000000002
+  "p_optimum": 0.652,
+  "time": 0.1634544
  },
  {
   "solver": "exact",
@@ -2436,8 +2436,8 @@
   "qubits": 37,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.013,
-  "time": 0.14919796
+  "p_optimum": 0.002,
+  "time": 0.16953320000000002
  },
  {
   "solver": "exact",
@@ -2536,8 +2536,8 @@
   "qubits": 17,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.726,
-  "time": 0.12935756
+  "p_optimum": 0.93,
+  "time": 0.1570136
  },
  {
   "solver": "exact",
@@ -2636,8 +2636,8 @@
   "qubits": 20,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.492,
-  "time": 0.14211716
+  "p_optimum": 0.836,
+  "time": 0.16213360000000002
  },
  {
   "solver": "exact",
@@ -2736,8 +2736,8 @@
   "qubits": 20,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.596,
-  "time": 0.11833716
+  "p_optimum": 0.832,
+  "time": 0.1664136
  },
  {
   "solver": "exact",
@@ -2836,8 +2836,8 @@
   "qubits": 19,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.641,
-  "time": 0.12671636
+  "p_optimum": 0.978,
+  "time": 0.1590136
  },
  {
   "solver": "exact",
@@ -2906,8 +2906,8 @@
   "qubits": 27,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.131,
-  "time": 0.14043716
+  "p_optimum": 0.623,
+  "time": 0.173872
  },
  {
   "solver": "exact",
@@ -2976,8 +2976,8 @@
   "qubits": 24,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.303,
-  "time": 0.13743756
+  "p_optimum": 0.614,
+  "time": 0.1688732
  },
  {
   "solver": "exact",
@@ -3046,8 +3046,8 @@
   "qubits": 25,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.218,
-  "time": 0.10617796
+  "p_optimum": 0.421,
+  "time": 0.1655336
  },
  {
   "solver": "exact",
@@ -3116,8 +3116,8 @@
   "qubits": 33,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.005,
-  "time": 0.14109835999999998
+  "p_optimum": 0.007,
+  "time": 0.16771439999999999
  },
  {
   "solver": "exact",
@@ -3186,8 +3186,8 @@
   "qubits": 42,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.015,
-  "time": 0.20319876
+  "p_optimum": 0.013,
+  "time": 0.17227520000000002
  },
  {
   "solver": "exact",
@@ -3256,8 +3256,8 @@
   "qubits": 25,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.164,
-  "time": 0.20077796
+  "p_optimum": 0.477,
+  "time": 0.172354
  },
  {
   "solver": "exact",
@@ -3356,8 +3356,8 @@
   "qubits": 18,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.764,
-  "time": 0.12205676
+  "p_optimum": 0.919,
+  "time": 0.158054
  },
  {
   "solver": "exact",
@@ -3426,8 +3426,8 @@
   "qubits": 25,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.201,
-  "time": 0.11889636
+  "p_optimum": 0.802,
+  "time": 0.1638736
  },
  {
   "solver": "exact",
@@ -3494,10 +3494,10 @@
   "tasks": 6,
   "problem": "random-0",
   "qubits": 58,
-  "optimal": true,
-  "ratio": 1.0,
-  "p_optimum": 0.002,
-  "time": 0.10901796000000001
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.1844752
  },
  {
   "solver": "exact",
@@ -3564,10 +3564,10 @@
   "tasks": 6,
   "problem": "random-7",
   "qubits": 49,
-  "optimal": true,
-  "ratio": 1.0,
-  "p_optimum": 0.008,
-  "time": 0.14075756
+  "optimal": false,
+  "ratio": 1.0625,
+  "p_optimum": 0,
+  "time": 0.1809552
  },
  {
   "solver": "exact",
@@ -3666,8 +3666,8 @@
   "qubits": 20,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.316,
-  "time": 0.14427716000000002
+  "p_optimum": 0.706,
+  "time": 0.160954
  },
  {
   "solver": "exact",
@@ -3736,8 +3736,8 @@
   "qubits": 24,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.509,
-  "time": 0.13091796
+  "p_optimum": 0.846,
+  "time": 0.158114
  },
  {
   "solver": "exact",
@@ -3806,8 +3806,8 @@
   "qubits": 26,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.585,
-  "time": 0.14089716
+  "p_optimum": 0.582,
+  "time": 0.1622748
  },
  {
   "solver": "exact",
@@ -3874,10 +3874,10 @@
   "tasks": 6,
   "problem": "random-12",
   "qubits": 48,
-  "optimal": true,
-  "ratio": 1.0,
-  "p_optimum": 0.008,
-  "time": 0.13551796
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.1796356
  },
  {
   "solver": "exact",
@@ -3946,8 +3946,8 @@
   "qubits": 30,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.122,
-  "time": 0.13795676
+  "p_optimum": 0.379,
+  "time": 0.172374
  },
  {
   "solver": "exact",
@@ -4016,8 +4016,8 @@
   "qubits": 26,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.199,
-  "time": 0.12913716
+  "p_optimum": 0.689,
+  "time": 0.162554
  },
  {
   "solver": "exact",
@@ -4086,8 +4086,8 @@
   "qubits": 32,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.036,
-  "time": 0.13589836
+  "p_optimum": 0.66,
+  "time": 0.161092
  },
  {
   "solver": "exact",
@@ -4156,8 +4156,8 @@
   "qubits": 28,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.304,
-  "time": 0.14409796
+  "p_optimum": 0.722,
+  "time": 0.168794
  },
  {
   "solver": "exact",
@@ -4226,8 +4226,8 @@
   "qubits": 34,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.078,
-  "time": 0.11491836
+  "p_optimum": 0.215,
+  "time": 0.166434
  },
  {
   "solver": "exact",
@@ -4296,8 +4296,8 @@
   "qubits": 37,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.135,
-  "time": 0.13715796
+  "p_optimum": 0.035,
+  "time": 0.17101360000000002
  },
  {
   "solver": "exact",
@@ -4364,10 +4364,10 @@
   "tasks": 6,
   "problem": "random-38",
   "qubits": 28,
-  "optimal": true,
-  "ratio": 1.0,
-  "p_optimum": 0.103,
-  "time": 0.10993716
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.1582748
  },
  {
   "solver": "exact",
@@ -4466,8 +4466,8 @@
   "qubits": 17,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.94,
-  "time": 0.15131756
+  "p_optimum": 1.0,
+  "time": 0.1622344
  },
  {
   "solver": "exact",
@@ -4566,8 +4566,8 @@
   "qubits": 20,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.522,
-  "time": 0.13214076
+  "p_optimum": 0.987,
+  "time": 0.1573936
  },
  {
   "solver": "exact",
@@ -4666,8 +4666,8 @@
   "qubits": 20,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.407,
-  "time": 0.12032076
+  "p_optimum": 0.82,
+  "time": 0.1638136
  },
  {
   "solver": "exact",
@@ -4737,7 +4737,7 @@
   "optimal": true,
   "ratio": 1.0,
   "p_optimum": 0.012,
-  "time": 0.21912196
+  "time": 0.18103439999999998
  },
  {
   "solver": "exact",
@@ -4806,8 +4806,8 @@
   "qubits": 24,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.346,
-  "time": 0.13770076
+  "p_optimum": 0.814,
+  "time": 0.158614
  },
  {
   "solver": "exact",
@@ -4876,8 +4876,8 @@
   "qubits": 39,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.056,
-  "time": 0.11092156
+  "p_optimum": 0.285,
+  "time": 0.1752328
  },
  {
   "solver": "exact",
@@ -4946,8 +4946,8 @@
   "qubits": 22,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.248,
-  "time": 0.13564156
+  "p_optimum": 0.694,
+  "time": 0.1682332
  },
  {
   "solver": "exact",
@@ -5016,8 +5016,8 @@
   "qubits": 34,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.332,
-  "time": 0.18292235999999998
+  "p_optimum": 0.176,
+  "time": 0.16585360000000002
  },
  {
   "solver": "exact",
@@ -5086,8 +5086,8 @@
   "qubits": 29,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.231,
-  "time": 0.13636196
+  "p_optimum": 0.823,
+  "time": 0.16139520000000002
  },
  {
   "solver": "exact",
@@ -5156,8 +5156,8 @@
   "qubits": 43,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.022,
-  "time": 0.21889996
+  "p_optimum": 0.202,
+  "time": 0.1742536
  },
  {
   "solver": "exact",
@@ -5226,8 +5226,8 @@
   "qubits": 35,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.018,
-  "time": 0.16472035999999998
+  "p_optimum": 0.003,
+  "time": 0.1672364
  },
  {
   "solver": "exact",
@@ -5296,8 +5296,8 @@
   "qubits": 31,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.178,
-  "time": 0.11004236
+  "p_optimum": 0.199,
+  "time": 0.1676936
  },
  {
   "solver": "exact",
@@ -5365,9 +5365,9 @@
   "problem": "random-17",
   "qubits": 69,
   "optimal": false,
-  "ratio": 1.2142857142857142,
+  "ratio": null,
   "p_optimum": 0,
-  "time": 0.17459956
+  "time": 0.1905164
  },
  {
   "solver": "exact",
@@ -5436,8 +5436,8 @@
   "qubits": 42,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.016,
-  "time": 0.13689956
+  "p_optimum": 0.012,
+  "time": 0.1710336
  },
  {
   "solver": "exact",
@@ -5507,7 +5507,7 @@
   "optimal": false,
   "ratio": null,
   "p_optimum": 0,
-  "time": 0.20146155999999998
+  "time": 0.18933360000000002
  },
  {
   "solver": "exact",
@@ -5574,10 +5574,10 @@
   "tasks": 7,
   "problem": "random-27",
   "qubits": 46,
-  "optimal": true,
-  "ratio": 1.0,
-  "p_optimum": 0.003,
-  "time": 0.17684035999999997
+  "optimal": false,
+  "ratio": 1.0833333333333333,
+  "p_optimum": 0,
+  "time": 0.179156
  },
  {
   "solver": "exact",
@@ -5646,8 +5646,8 @@
   "qubits": 60,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.004,
-  "time": 0.19548076
+  "p_optimum": 0.001,
+  "time": 0.1846544
  },
  {
   "solver": "exact",
@@ -5716,8 +5716,8 @@
   "qubits": 27,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.321,
-  "time": 0.12813876
+  "p_optimum": 0.938,
+  "time": 0.1633736
  },
  {
   "solver": "exact",
@@ -5786,8 +5786,8 @@
   "qubits": 52,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.006,
-  "time": 0.13916035999999998
+  "p_optimum": 0.002,
+  "time": 0.1685948
  },
  {
   "solver": "exact",
@@ -5856,8 +5856,8 @@
   "qubits": 26,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.678,
-  "time": 0.12955916
+  "p_optimum": 0.937,
+  "time": 0.1578936
  },
  {
   "solver": "exact",
@@ -5924,10 +5924,10 @@
   "tasks": 7,
   "problem": "random-41",
   "qubits": 42,
-  "optimal": true,
-  "ratio": 1.0,
-  "p_optimum": 0.01,
-  "time": 0.14391956
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.1629332
  },
  {
   "solver": "exact",
@@ -5996,8 +5996,8 @@
   "qubits": 40,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.093,
-  "time": 0.18166116000000002
+  "p_optimum": 0.002,
+  "time": 0.17077479999999998
  },
  {
   "solver": "exact",
@@ -6066,8 +6066,8 @@
   "qubits": 47,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.021,
-  "time": 0.10694116000000001
+  "p_optimum": 0.092,
+  "time": 0.1739156
  },
  {
   "solver": "exact",
@@ -6136,8 +6136,8 @@
   "qubits": 39,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.147,
-  "time": 0.10345955999999999
+  "p_optimum": 0.32,
+  "time": 0.1730336
  },
  {
   "solver": "exact",
@@ -6206,8 +6206,8 @@
   "qubits": 42,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.018,
-  "time": 0.15441956
+  "p_optimum": 0.005,
+  "time": 0.177874
  },
  {
   "solver": "exact",
@@ -6276,8 +6276,8 @@
   "qubits": 29,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.025,
-  "time": 0.12651916
+  "p_optimum": 0.171,
+  "time": 0.16091360000000002
  },
  {
   "solver": "exact",
@@ -6346,8 +6346,8 @@
   "qubits": 51,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.007,
-  "time": 0.18047996
+  "p_optimum": 0.054,
+  "time": 0.17423439999999998
  },
  {
   "solver": "exact",
@@ -6416,8 +6416,8 @@
   "qubits": 41,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.023,
-  "time": 0.16390036
+  "p_optimum": 0.003,
+  "time": 0.1757144
  },
  {
   "solver": "greedy",
@@ -6475,9 +6475,9 @@
   "problem": "random-3",
   "qubits": 74,
   "optimal": false,
-  "ratio": 1.0952380952380953,
+  "ratio": null,
   "p_optimum": 0,
-  "time": 0.11774076
+  "time": 0.171318
  },
  {
   "solver": "exact",
@@ -6546,8 +6546,8 @@
   "qubits": 47,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.034,
-  "time": 0.12384036
+  "p_optimum": 0.081,
+  "time": 0.17949279999999998
  },
  {
   "solver": "greedy",
@@ -6605,9 +6605,9 @@
   "problem": "random-9",
   "qubits": 64,
   "optimal": false,
-  "ratio": 1.0833333333333333,
+  "ratio": 1.1666666666666667,
   "p_optimum": 0,
-  "time": 0.14769916
+  "time": 0.1743576
  },
  {
   "solver": "exact",
@@ -6676,8 +6676,8 @@
   "qubits": 45,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.068,
-  "time": 0.10787956
+  "p_optimum": 0.001,
+  "time": 0.178894
  },
  {
   "solver": "greedy",
@@ -6735,9 +6735,9 @@
   "problem": "random-11",
   "qubits": 72,
   "optimal": false,
-  "ratio": 1.0666666666666667,
+  "ratio": null,
   "p_optimum": 0,
-  "time": 0.18001836
+  "time": 0.185976
  },
  {
   "solver": "exact",
@@ -6806,8 +6806,8 @@
   "qubits": 30,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.651,
-  "time": 0.12009956
+  "p_optimum": 0.982,
+  "time": 0.1728136
  },
  {
   "solver": "greedy",
@@ -6864,10 +6864,10 @@
   "tasks": 8,
   "problem": "random-14",
   "qubits": 75,
-  "optimal": true,
-  "ratio": 1.0,
-  "p_optimum": 0.002,
-  "time": 0.18703876
+  "optimal": false,
+  "ratio": null,
+  "p_optimum": 0,
+  "time": 0.1746748
  },
  {
   "solver": "exact",
@@ -6936,8 +6936,8 @@
   "qubits": 55,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.015,
-  "time": 0.13938035999999998
+  "p_optimum": 0.057,
+  "time": 0.168116
  },
  {
   "solver": "exact",
@@ -7006,8 +7006,8 @@
   "qubits": 35,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.338,
-  "time": 0.13531916
+  "p_optimum": 0.3,
+  "time": 0.17441479999999998
  },
  {
   "solver": "exact",
@@ -7076,8 +7076,8 @@
   "qubits": 41,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.085,
-  "time": 0.12182076
+  "p_optimum": 0.008,
+  "time": 0.1685524
  },
  {
   "solver": "greedy",
@@ -7137,7 +7137,7 @@
   "optimal": false,
   "ratio": null,
   "p_optimum": 0,
-  "time": 0.19197756
+  "time": 0.1922528
  },
  {
   "solver": "exact",
@@ -7206,8 +7206,8 @@
   "qubits": 41,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.044,
-  "time": 0.13195916
+  "p_optimum": 0.02,
+  "time": 0.1702148
  },
  {
   "solver": "exact",
@@ -7276,8 +7276,8 @@
   "qubits": 28,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.114,
-  "time": 0.20763876
+  "p_optimum": 0.652,
+  "time": 0.160254
  },
  {
   "solver": "greedy",
@@ -7336,8 +7336,8 @@
   "qubits": 63,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.004,
-  "time": 0.21661996
+  "p_optimum": 0.001,
+  "time": 0.1858756
  },
  {
   "solver": "greedy",
@@ -7395,9 +7395,9 @@
   "problem": "random-27",
   "qubits": 63,
   "optimal": false,
-  "ratio": 1.1666666666666667,
+  "ratio": 1.0833333333333333,
   "p_optimum": 0,
-  "time": 0.12082076
+  "time": 0.17015439999999998
  },
  {
   "solver": "greedy",
@@ -7454,10 +7454,10 @@
   "tasks": 8,
   "problem": "random-28",
   "qubits": 65,
-  "optimal": false,
-  "ratio": null,
-  "p_optimum": 0,
-  "time": 0.17167756
+  "optimal": true,
+  "ratio": 1.0,
+  "p_optimum": 0.005,
+  "time": 0.1894736
  },
  {
   "solver": "exact",
@@ -7526,8 +7526,8 @@
   "qubits": 60,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.002,
-  "time": 0.16013916
+  "p_optimum": 0.001,
+  "time": 0.18225
  },
  {
   "solver": "exact",
@@ -7597,7 +7597,7 @@
   "optimal": true,
   "ratio": 1.0,
   "p_optimum": 0.008,
-  "time": 0.15321996
+  "time": 0.1807308
  },
  {
   "solver": "exact",
@@ -7666,7 +7666,7 @@
   "qubits": 42,
   "optimal": true,
   "ratio": 1.0,
-  "p_optimum": 0.004,
-  "time": 0.11181916
+  "p_optimum": 0.048,
+  "time": 0.176494
  }
 ]

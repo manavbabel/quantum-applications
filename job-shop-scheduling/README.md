@@ -42,7 +42,7 @@ solve_random(problem, seed=0).describe()
 
 ## Results
 
-On the notebook's example problem (21 qubits), the noiseless samplers all beat random guessing comfortably, and D-Wave does best. The IBM device does worse than guessing: only one of its 4,096 shots was a valid schedule.
+On the notebook's example problem (21 qubits), the noiseless samplers all beat random guessing comfortably, and D-Wave does best, with half of its reads optimal. The IBM device does worse than guessing: none of its 4,096 shots was a valid schedule.
 
 ![The share of each method's shots or reads that came out optimal, feasible but longer, or infeasible](figures/outcomes.png)
 
@@ -52,7 +52,7 @@ The benchmark runs 20 random problems at each size, from 4 tasks up to the size 
 
 - Gurobi's MILP proves every optimum in under a millisecond, so there's no quantum advantage at these sizes.
 - With 4,096 guesses per problem, random guessing finds the optimum every time up to 6 tasks. The annealers only pull ahead of it at 7 and 8 tasks.
-- D-Wave finds the optimum on 90% of problems at 7 tasks and 70% at 8. IBM (`ibm_miami`) manages 62 to 75% at 4 to 6 tasks, below random guessing.
+- D-Wave (`Advantage2_system1`) finds the optimum on 80% of problems at 7 tasks and 70% at 8. It does well or not at all: 10 of its 60 runs at 6 to 8 tasks had no feasible read, with chains breaking. IBM (`ibm_miami`) manages 62 to 75% at 4 to 6 tasks, below random guessing.
 
 ## Files
 
