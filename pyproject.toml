@@ -1,8 +1,10 @@
 [project]
 name = "quantum-applications"
 version = "0.1.0"
-description = "Demonstration of various applications of quantum algorithms"
+description = "Optimisation problems solved with quantum algorithms and benchmarked against classical methods"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
     { name = "Manav Babel", email = "manavbabel@gmail.com" }
 ]
