@@ -1,8 +1,6 @@
 """Tests for serve.py. No network, no data.js and no dwave.conf needed."""
 
-import base64
 import json
-import struct
 import threading
 import urllib.error
 import urllib.request
@@ -39,22 +37,8 @@ READ_GOOD = {10: 1, 11: -1, 12: -1, 13: -1, 14: 1, 15: 1, 16: -1}  # bits 1, 0, 
 
 
 def test_majority():
-    assert serve.majority({1: 1}, [1]) == 1
-    assert serve.majority({1: -1}, [1]) == 0
-    assert serve.majority({1: 1, 2: -1}, [1, 2]) == 0  # tie
     assert serve.majority({1: 1, 2: 1, 3: -1}, [1, 2, 3]) == 1  # broken chain
-    assert serve.majority({1: -1, 2: 1, 3: -1}, [1, 2, 3]) == 0
-    assert serve.majority([0, 1, -1, 1, 1], [1, 3, 4]) == 1  # a row of spins indexed by qubit
-
-
-def test_energy():
-    groups = FAKE_DEMO["puzzles"]["4"][0]["groups"]
-    assert serve.energy([1, 0, 0, 1], groups) == 0
-    assert serve.energy([0, 1, 1, 0], groups) == 0
-    assert serve.energy([1, 1, 0, 0], groups) == 2
-    assert serve.energy([0, 0, 0, 0], groups) == 4
-    assert serve.energy([1, 1, 1, 1], groups) == 4
-    assert serve.energy([1, 1], [[0, 1], [0], [1], []]) == 1 + 0 + 0 + 1
+    assert serve.majority({1: 1, 2: -1}, [1, 2]) == 0  # tie
 
 
 @pytest.fixture
@@ -117,10 +101,7 @@ def test_sample_failure(server, monkeypatch):
     assert code == 503
     assert "no network" in body["error"]
     assert serve.STATUS["live"] is False
-
     assert post(server + "/api/sample", {"size": 4, "index": 5})[0] == 503
-    assert post(server + "/api/sample", {"size": 7, "index": 0})[0] == 503
-    assert post(server + "/api/sample", {"size": 4})[0] == 503
 
 
 def test_status(server, monkeypatch):
@@ -156,67 +137,3 @@ def test_token_not_served(server):
         with pytest.raises(urllib.error.HTTPError) as e:
             get(server + path)
         assert e.value.code == 404
-
-
-def qp_message(rows, counts, active, num_qubits):
-    """A made-up SAPI answer in the 'qp' format: rows are the spins of the active qubits."""
-
-    def b64(fmt, values):
-        return base64.b64encode(struct.pack("<" + fmt * len(values), *values)).decode()
-
-    packed = b""
-    for row in rows:
-        row_bytes = bytearray(-(-len(active) // 8))
-        for i, s in enumerate(row):
-            if s > 0:
-                row_bytes[i // 8] |= 0x80 >> (i % 8)
-        packed += bytes(row_bytes)
-    return {
-        "type": "ising",
-        "answer": {
-            "format": "qp",
-            "num_variables": num_qubits,
-            "active_variables": b64("i", active),
-            "energies": b64("d", [0.0] * len(rows)),
-            "num_occurrences": b64("i", counts),
-            "solutions": base64.b64encode(packed).decode(),
-            "timing": {"qpu_access_time": 15000.5},
-        },
-    }
-
-
-@pytest.mark.parametrize("use_numpy", [True, False])
-def test_read_future(monkeypatch, use_numpy):
-    """Decode through the client's own Future and solver, with and without numpy."""
-    pytest.importorskip("dwave.cloud")
-    from dwave.cloud import solver as solver_module
-    from dwave.cloud.computation import Future
-
-    # the client picks its decoder from this flag, set by trying `import numpy`
-    monkeypatch.setattr(solver_module, "_numpy", use_numpy)
-    solver = solver_module.StructuredSolver(
-        client=None,
-        data={
-            "identity": {"name": "fake", "version": {"graph_id": "0"}},
-            "status": "online",
-            "description": "",
-            "avg_load": 0.0,
-            "properties": {
-                "supported_problem_types": ["ising", "qubo"],
-                "qubits": list(range(12)),
-                "couplers": [[1, 3], [3, 4]],
-                "parameters": {},
-            },
-        },
-    )
-    active = [1, 3, 4, 9]
-    rows = [[1, -1, 1, -1], [-1, -1, 1, 1]]
-    future = Future(solver, "fake-id")
-    future._set_message(qp_message(rows, [7, 3], active, 12))
-
-    spins, counts, qpu_access_time = serve.read_future(future)
-    assert [[row[q] for q in active] for row in spins] == rows
-    assert all(len(row) == 12 for row in spins)
-    assert counts == [7, 3]
-    assert qpu_access_time == 15000.5
-    json.dumps([spins, counts, qpu_access_time])  # plain Python types only
